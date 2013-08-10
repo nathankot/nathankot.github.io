@@ -43,10 +43,6 @@ for each file type this is a good way to set it up.
 
     class ImageAttachment < Attachment
 
-      has_attached_file :file,
-        styles: {},
-        default_url: 'images/:style/missing.png'
-
       validates_attachment :file,
         presence: true,
         size: { in: 0..5.megabytes },
@@ -58,8 +54,6 @@ for each file type this is a good way to set it up.
 **document_attachment.rb**
 
     class DocumentAttachment < Attachment
-
-      has_attached_file :file
 
       validates_attachment :file,
         presence: true,
