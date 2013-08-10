@@ -4,7 +4,7 @@
 	<title><![CDATA[Nathan Kot's Musings]]></title>
 	<link href="http://nathankot.github.io/atom.xml" rel="self"/>
 	<link href="http://nathankot.github.io/"/>
-	<updated>2013-08-10T20:12:36+12:00</updated>
+	<updated>2013-08-10T21:00:55+12:00</updated>
 	<id>http://nathankot.github.io/</id>
 	<author>
 		<name><![CDATA[Nathan Kot]]></name>
@@ -63,10 +63,6 @@ end
 
 <pre><code>class ImageAttachment &lt; Attachment
 
-  has_attached_file :file,
-    styles: {},
-    default_url: 'images/:style/missing.png'
-
   validates_attachment :file,
     presence: true,
     size: { in: 0..5.megabytes },
@@ -78,8 +74,6 @@ end
 <p><strong>document_attachment.rb</strong></p>
 
 <pre><code>class DocumentAttachment &lt; Attachment
-
-  has_attached_file :file
 
   validates_attachment :file,
     presence: true,
