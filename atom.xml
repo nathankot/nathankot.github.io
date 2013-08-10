@@ -4,7 +4,7 @@
 	<title><![CDATA[Nathan Kot's Musings]]></title>
 	<link href="http://nathankot.github.io/atom.xml" rel="self"/>
 	<link href="http://nathankot.github.io/"/>
-	<updated>2013-08-10T21:00:55+12:00</updated>
+	<updated>2013-08-10T22:03:48+12:00</updated>
 	<id>http://nathankot.github.io/</id>
 	<author>
 		<name><![CDATA[Nathan Kot]]></name>
@@ -88,24 +88,6 @@ end
 
 <p>So when you run something like <code>@attachment.save</code>, it will automatically choose the
 best model for you and save it with that type :)</p>
-]]>
-		</content>
-	</entry>
-	
-	<entry>
-		
-			<title type="html"><![CDATA[Setting up Octopress]]></title>
-		
-		<link href="http://nathankot.github.io/blog/2013/08/10/setting-up-octopress/"/>
-		<updated>2013-08-10T17:36:00+12:00</updated>
-		<id>http://nathankot.github.io/blog/2013/08/10/setting-up-octopress</id>
-		<content type="html">
-			<![CDATA[
-				
-					<p></p>
-				
-			]]>
-			<![CDATA[<h1>Hmmm just trying this out.</h1>
 ]]>
 		</content>
 	</entry>
