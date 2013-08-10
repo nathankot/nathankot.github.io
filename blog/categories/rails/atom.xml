@@ -1,32 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-	<title><![CDATA[Nathan Kot's Musings]]></title>
-	<link href="http://nathankot.github.io/atom.xml" rel="self"/>
-	<link href="http://nathankot.github.io/"/>
-	<updated>2013-08-10T20:12:36+12:00</updated>
-	<id>http://nathankot.github.io/</id>
-	<author>
-		<name><![CDATA[Nathan Kot]]></name>
-		
-	</author>
-	<generator uri="http://octopress.org/">Octopress</generator>
+  <title><![CDATA[Category: rails | Nathan Kot's Musings]]></title>
+  <link href="http://nathankot.github.io/blog/categories/rails/atom.xml" rel="self"/>
+  <link href="http://nathankot.github.io/"/>
+  <updated>2013-08-10T20:12:36+12:00</updated>
+  <id>http://nathankot.github.io/</id>
+  <author>
+    <name><![CDATA[Nathan Kot]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
 
-	
-	<entry>
-		
-			<title type="html"><![CDATA[Setting up Paperclip + Single Table Inheritance + Rails 4]]></title>
-		
-		<link href="http://nathankot.github.io/blog/2013/08/10/setting-up-paperclip-plus-single-table-inheritance-plus-rails-4/"/>
-		<updated>2013-08-10T18:11:00+12:00</updated>
-		<id>http://nathankot.github.io/blog/2013/08/10/setting-up-paperclip-plus-single-table-inheritance-plus-rails-4</id>
-		<content type="html">
-			<![CDATA[
-				
-					<p></p>
-				
-			]]>
-			<![CDATA[<p>If you want to have a single table describing a file upload, with different validations
+  
+  <entry>
+    <title type="html"><![CDATA[Setting up Paperclip + Single Table Inheritance + Rails 4]]></title>
+    <link href="http://nathankot.github.io/blog/2013/08/10/setting-up-paperclip-plus-single-table-inheritance-plus-rails-4/"/>
+    <updated>2013-08-10T18:11:00+12:00</updated>
+    <id>http://nathankot.github.io/blog/2013/08/10/setting-up-paperclip-plus-single-table-inheritance-plus-rails-4</id>
+    <content type="html"><![CDATA[<p>If you want to have a single table describing a file upload, with different validations
 for each file type this is a good way to set it up.</p>
 
 <p><strong>attachment.rb:</strong></p>
@@ -94,26 +86,7 @@ end
 
 <p>So when you run something like <code>@attachment.save</code>, it will automatically choose the
 best model for you and save it with that type :)</p>
-]]>
-		</content>
-	</entry>
-	
-	<entry>
-		
-			<title type="html"><![CDATA[Setting up Octopress]]></title>
-		
-		<link href="http://nathankot.github.io/blog/2013/08/10/setting-up-octopress/"/>
-		<updated>2013-08-10T17:36:00+12:00</updated>
-		<id>http://nathankot.github.io/blog/2013/08/10/setting-up-octopress</id>
-		<content type="html">
-			<![CDATA[
-				
-					<p></p>
-				
-			]]>
-			<![CDATA[<h1>Hmmm just trying this out.</h1>
-]]>
-		</content>
-	</entry>
-	
+]]></content>
+  </entry>
+  
 </feed>
