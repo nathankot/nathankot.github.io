@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How to setup Integrity with Heroku and Github."
+title: "How to setup Integrity with Rails, Heroku and Github."
 date: 2013-08-14 22:29
 comments: true
 categories: guides
@@ -56,4 +56,92 @@ Deploy:
     $ heroku run rake db
 
 
-Now go to the Heroku app you just created and set up a project :)
+Go to the Heroku app you just created and set up a project, you'll need to setup an
+additional database on Heroku for your builds to use:
+
+    $ heroku addons:add heroku-postgresql:dev # (Add another one)
+
+
+Now copy and paste this script into `config/database.ci.yml`
+
+    <%
+
+    # This is taken from how Heroku does it.
+    # Need to setup db this way for CI
+
+    require 'cgi'
+    require 'uri'
+
+    begin
+      uri = URI.parse(ENV["HEROKU_POSTGRESQL_PINK_URL"]) # <<< Replace this with your color
+    rescue URI::InvalidURIError
+      raise "Invalid DATABASE_URL"
+    end
+
+    raise "No RACK_ENV or RAILS_ENV found" unless ENV["RAILS_ENV"] || ENV["RACK_ENV"]
+
+    def attribute(name, value, force_string = false)
+      if value
+        value_string =
+          if force_string
+            '"' + value + '"'
+          else
+            value
+          end
+        "#{name}: #{value_string}"
+      else
+        ""
+      end
+    end
+
+    adapter = uri.scheme
+    adapter = "postgresql" if adapter == "postgres"
+
+    database = (uri.path || "").split("/")[1]
+
+    username = uri.user
+    password = uri.password
+
+    host = uri.host
+    port = uri.port
+
+    params = CGI.parse(uri.query || "")
+
+    %>
+
+    <%= ENV["RAILS_ENV"] || ENV["RACK_ENV"] %>:
+      <%= attribute "adapter",  adapter %>
+      <%= attribute "database", database %>
+      <%= attribute "username", username %>
+      <%= attribute "password", password, true %>
+      <%= attribute "host",     host %>
+      <%= attribute "port",     port %>
+
+    <% params.each do |key, value| %>
+      <%= key %>: <%= value.first %>
+    <% end %>
+
+
+Replace the key marked above with the database url that you just generated.
+
+Create a task with this:
+
+
+    namespace :ci do
+
+      task :copy_yml do
+        system("cp #{Rails.root}/config/database.ci.yml #{Rails.root}/config/database.yml")
+      end
+
+      desc "Prepare for CI and run test suite."
+      task :build => ['ci:copy_yml', 'db:test:prepare', 'spec'] do
+      end
+
+    end
+
+In the build script of your project run this:
+
+    bundle install
+    rake ci:build
+
+Happy building :)
