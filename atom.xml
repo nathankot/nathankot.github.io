@@ -4,7 +4,7 @@
 	<title><![CDATA[Nathan Kot's Musings]]></title>
 	<link href="http://nathankot.github.io/atom.xml" rel="self"/>
 	<link href="http://nathankot.github.io/"/>
-	<updated>2013-08-14T22:46:25+12:00</updated>
+	<updated>2013-08-14T23:49:15+12:00</updated>
 	<id>http://nathankot.github.io/</id>
 	<author>
 		<name><![CDATA[Nathan Kot]]></name>
@@ -15,7 +15,7 @@
 	
 	<entry>
 		
-			<title type="html"><![CDATA[How to setup Integrity with Heroku and Github.]]></title>
+			<title type="html"><![CDATA[How to setup Integrity with Rails, Heroku and Github.]]></title>
 		
 		<link href="http://nathankot.github.io/blog/2013/08/14/how-to-setup-integrity-with-heroku-and-github/"/>
 		<updated>2013-08-14T22:29:00+12:00</updated>
@@ -77,7 +77,96 @@ to your <code>ANY_TOKEN_HERE</code>.</p>
 $ heroku run rake db
 </code></pre>
 
-<p>Now go to the Heroku app you just created and set up a project :)</p>
+<p>Go to the Heroku app you just created and set up a project, you&rsquo;ll need to setup an
+additional database on Heroku for your builds to use:</p>
+
+<pre><code>$ heroku addons:add heroku-postgresql:dev # (Add another one)
+</code></pre>
+
+<p>Now copy and paste this script into <code>config/database.ci.yml</code></p>
+
+<pre><code>&lt;%
+
+# This is taken from how Heroku does it.
+# Need to setup db this way for CI
+
+require 'cgi'
+require 'uri'
+
+begin
+  uri = URI.parse(ENV["HEROKU_POSTGRESQL_PINK_URL"]) # &lt;&lt;&lt; Replace this with your color
+rescue URI::InvalidURIError
+  raise "Invalid DATABASE_URL"
+end
+
+raise "No RACK_ENV or RAILS_ENV found" unless ENV["RAILS_ENV"] || ENV["RACK_ENV"]
+
+def attribute(name, value, force_string = false)
+  if value
+    value_string =
+      if force_string
+        '"' + value + '"'
+      else
+        value
+      end
+    "#{name}: #{value_string}"
+  else
+    ""
+  end
+end
+
+adapter = uri.scheme
+adapter = "postgresql" if adapter == "postgres"
+
+database = (uri.path || "").split("/")[1]
+
+username = uri.user
+password = uri.password
+
+host = uri.host
+port = uri.port
+
+params = CGI.parse(uri.query || "")
+
+%&gt;
+
+&lt;%= ENV["RAILS_ENV"] || ENV["RACK_ENV"] %&gt;:
+  &lt;%= attribute "adapter",  adapter %&gt;
+  &lt;%= attribute "database", database %&gt;
+  &lt;%= attribute "username", username %&gt;
+  &lt;%= attribute "password", password, true %&gt;
+  &lt;%= attribute "host",     host %&gt;
+  &lt;%= attribute "port",     port %&gt;
+
+&lt;% params.each do |key, value| %&gt;
+  &lt;%= key %&gt;: &lt;%= value.first %&gt;
+&lt;% end %&gt;
+</code></pre>
+
+<p>Replace the key marked above with the database url that you just generated.</p>
+
+<p>Create a task with this:</p>
+
+<pre><code>namespace :ci do
+
+  task :copy_yml do
+    system("cp #{Rails.root}/config/database.ci.yml #{Rails.root}/config/database.yml")
+  end
+
+  desc "Prepare for CI and run test suite."
+  task :build =&gt; ['ci:copy_yml', 'db:test:prepare', 'spec'] do
+  end
+
+end
+</code></pre>
+
+<p>In the build script of your project run this:</p>
+
+<pre><code>bundle install
+rake ci:build
+</code></pre>
+
+<p>Happy building :)</p>
 ]]>
 		</content>
 	</entry>
