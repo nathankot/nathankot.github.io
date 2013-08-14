@@ -4,7 +4,7 @@
 	<title><![CDATA[Nathan Kot's Musings]]></title>
 	<link href="http://nathankot.github.io/atom.xml" rel="self"/>
 	<link href="http://nathankot.github.io/"/>
-	<updated>2013-08-10T22:03:48+12:00</updated>
+	<updated>2013-08-14T22:46:25+12:00</updated>
 	<id>http://nathankot.github.io/</id>
 	<author>
 		<name><![CDATA[Nathan Kot]]></name>
@@ -12,6 +12,75 @@
 	</author>
 	<generator uri="http://octopress.org/">Octopress</generator>
 
+	
+	<entry>
+		
+			<title type="html"><![CDATA[How to setup Integrity with Heroku and Github.]]></title>
+		
+		<link href="http://nathankot.github.io/blog/2013/08/14/how-to-setup-integrity-with-heroku-and-github/"/>
+		<updated>2013-08-14T22:29:00+12:00</updated>
+		<id>http://nathankot.github.io/blog/2013/08/14/how-to-setup-integrity-with-heroku-and-github</id>
+		<content type="html">
+			<![CDATA[
+				
+					<p></p>
+				
+			]]>
+			<![CDATA[<p>So I realized that <a href="http://ideasaurus.io">Ideasaurus</a> really needs some CI. Did some
+searching and found <a href="http://integrity.github.io/">Integrity</a>. Seems good, let&rsquo;s go!</p>
+
+<p>First clone it:</p>
+
+<pre><code>$ git clone https://github.com/integrity/integrity.git
+</code></pre>
+
+<p>Lets take a look at the <code>init.rb</code> config, it basically tells you what to do.
+Just uncomment the Heroku-related stuff and comment out the conflicting stuff.</p>
+
+<p>Make some changes to the <code>Gemfile</code>, you&rsquo;ll need to comment out the following gems
+since Heroku can&rsquo;t build them:</p>
+
+<pre><code># gem 'dm-sqlite-adapter'
+# gem 'do_sqlite3'
+</code></pre>
+
+<p>Also make sure you uncomment the Postgres adapters:</p>
+
+<pre><code># Uncomment if you're using pg or mysql instead of sqlite
+gem 'pg'
+gem 'dm-postgres-adapter', '~&gt; 1.2.0'
+</code></pre>
+
+<p>Bundle install:</p>
+
+<pre><code>$ bundle install
+</code></pre>
+
+<p>Make a new heroku app:</p>
+
+<pre><code>$ heroku apps:create
+$ heroku addons:add heroku-postgresql:dev
+</code></pre>
+
+<p>Setup a Github <a href="https://help.github.com/articles/post-receive-hooks">post-receive webhook</a>,
+set the webhook url to: <code>http://YOURAPP.com/build/github/ANY_TOKEN_HERE</code> and set the <code>github_token</code>
+to your <code>ANY_TOKEN_HERE</code>.</p>
+
+<p>Choose a username/password you want to use with integrity:</p>
+
+<pre><code>$ heroku config:set ADMIN_USERNAME=your_user_name ADMIN_PASSWORD=yourpassword
+</code></pre>
+
+<p>Deploy:</p>
+
+<pre><code>$ git push heroku master --set-upstream
+$ heroku run rake db
+</code></pre>
+
+<p>Now go to the Heroku app you just created and set up a project :)</p>
+]]>
+		</content>
+	</entry>
 	
 	<entry>
 		
