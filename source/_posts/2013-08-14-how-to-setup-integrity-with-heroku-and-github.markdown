@@ -4,6 +4,7 @@ title: "How to setup Integrity with Rails, Heroku and Github."
 date: 2013-08-14 22:29
 comments: true
 categories: guides
+published: false
 ---
 
 So I realized that [Ideasaurus](http://ideasaurus.io) really needs some CI. Did some
