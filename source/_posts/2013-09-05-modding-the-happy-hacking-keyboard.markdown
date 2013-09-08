@@ -22,13 +22,13 @@ although I intend to change that. Originally I was gonna go with a Teensy 2
 and try to hack all the hardware together, but [after finding this post on
 Geekhack][geekhack] I decided against risking my precious as a guinea pig for
 my first ever hardware mod, instead I purchased a complete board from a guy
-who goes by **hasu** on GeekHack. If you would like a more detailed guide
+who goes by **hasu on GeekHack**. If you would like a more detailed guide
 about how to build this mod yourself, [Grumpy Lemming's guide][grumpy] is a
 really good start.
 
 Installation was surprisingly easy using Hasu's board. Everything was in the right
-place - the board has a hole for the screw in the same spot as the original and bolts on
-securely. He even made use of the dip switch location to expose the bootloader
+place - the board has a hole for the screw in the same spot as the original 
+board. He even made use of the dip switch location to expose the bootloader
 reset button!
 
 {% img /images/posts/hhkb-1.jpg 600 Hasu's Controller Board %}
