@@ -53,7 +53,11 @@ What has been the most powerful aspect of this for me are dual purpose modifier
 keys. For example, the following makes the left control key act as `<ESC>` when
 tapped, and `<CTRL>` when held down.
 
-{% gist 6482424 %}
+``` cpp
+static const uint16_t PROGMEM fn_actions[] = {
+  [2] = ACTION_MODS_TAP_KEY(MOD_LCTL, KC_ESC)      // LControl with tap Esc*
+};
+```
 
 When working in VIM, you no longer have to reach up to the edge of the keyboard
 in order to hit escape, just tap control on your home row :) This may take
@@ -72,9 +76,25 @@ centered around `J` on my home row. When I hold tab (using the same
 dual-purpose modifier strategy as before), the _numpad layer_ is
 switched on, something like this:
 
-{% gist 6482417 %}
+
+```
+/* Layer 4: Numpad mode
+  * ,-----------------------------------------------------------.
+  * |Esc|   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+  * |-----------------------------------------------------------|
+  * |FN0  |  |   |   |   |   | 7 | 8 | 9 | = |   |   |   |Backs|
+  * |-----------------------------------------------------------|
+  * |Contro|   |   |   |   |   | 4 | 5 | 6 | + |   |   |Return  |
+  * |-----------------------------------------------------------|
+  * |Shift   |   |   |   |   |   | 1 | 2 | 3 | - |   |Shift |   |
+  * `-----------------------------------------------------------'
+  *       |Alt|Gui  |           0           |Gui  |Alt|
+  *       `-------------------------------------------'
+  */
+```
 
 With this setup, numeric input can finally feel like it's part of the 'vi-flow'!
+
 
 ## #3 - Vi Mode
 
@@ -82,7 +102,22 @@ Although HHKB has some nice arrow key bindings, it never feels right after
 prolonged use of VIM. My letter `f` key is now also dual purpose, and when held down
 it activates vi-mode:
 
-{% gist 6482387 %}
+```
+/* Layer 2: Vi mode
+  * ,-----------------------------------------------------------.
+  * |Esc| F1| F2| F3| F4| F5| F6| F7| F8| F9|F10|F11|F12|Ins|Del|
+  * |-----------------------------------------------------------|
+  * |Tab  |  |   |   |   |   |   |   |PgU|   |   |   |   |Backs|
+  * |-----------------------------------------------------------|
+  * |Contro|   |   |PgD|FN0|   |Lef|Dow|Up |Rig|   |   |Return  |
+  * |-----------------------------------------------------------|
+  * |Shift   |   |   |   |   |   |   |   |   |   |   |Shift |   |
+  * `-----------------------------------------------------------'
+  *       |Alt|Gui  |         Space         |Gui  |Alt|
+  *       `-------------------------------------------'
+  */
+```
+
 
 ## #4 - Mouse Bindings
 
@@ -93,7 +128,23 @@ this time I made the escape button on the top left dual purpose - press for
 `<esc>`, hold for mouse mouse. In mouse mode `hjkl` control movement, and the
 space bar is left click. Like so:
 
-{% gist 6482433 %}
+```
+/* Layer 3: Mouse mode
+  * ,-----------------------------------------------------------.
+  * |FN0| F1| F2| F3| F4| F5| F6| F7| F8| F9|F10|F11|F12|Ins|Del|
+  * |-----------------------------------------------------------|
+  * |Tab  |   |   |   |   |   |MwL|MwD|MwU|MwR|   |   |   |Backs|
+  * |-----------------------------------------------------------|
+  * |Contro|   |   |   |   |   |McL|McD|McU|McR|   |   |Return  |
+  * |-----------------------------------------------------------|
+  * |Shift   |   |   |   |   |Mb3|Mb2|Mb1|Mb4|Mb5|   |Shift |   |
+  * `-----------------------------------------------------------'
+  *      |Alt |Gui  |          Mb1          |Gui  |Alt|
+  *      `--------------------------------------------'
+  * Mc: Mouse Cursor / Mb: Mouse Button / Mw: Mouse Wheel 
+  */
+```
+
 
 I'm sure that are plenty of other tweaks and hacks that I haven't thought of.
 I'm still continuously tweaking the firmware in search of that holy grail of
