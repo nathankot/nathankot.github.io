@@ -6,7 +6,7 @@
 		<meta charset="utf-8">
 		<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" >
 		<meta content="width=device-width,initial-scale=1" name="viewport">
-		<meta content="" name="description">
+		<meta content="Nathan Kot's Blog. I like to talk about building things." name="description">
 		<meta content="Nathan Kot's Musings" name="author">
 		
 		<title>Nathan Kot's Musings</title>
@@ -51,72 +51,144 @@
 		<!-- START OF _includes/article.html -->
 <article>
 	<header>
-		<h1><a href="/blog/2013/08/10/setting-up-paperclip-plus-single-table-inheritance-plus-rails-4/">Setting up Paperclip + Single Table Inheritance + Rails 4</a></h1>
-		<time>10 August 2013</time>
+		<h1><a href="/blog/2013/09/05/modding-the-happy-hacking-keyboard/">Modding the Happy Hacking Keyboard</a></h1>
+		<time>05 September 2013</time>
 	</header>
 		<div class="content">
-			<p>If you want to have a single table describing a file upload, with different validations
-for each file type this is a good way to set it up.</p>
+			<p>After reading <a href="http://grumpylemming.com/blog/2012/12/24/hacking-a-happy-hacking-keyboard/">this post about hacking your HHKB</a>, I set out to do the
+same thing. Now that I have the finished product, I can truly say that it is
+freaking awesome to have a keyboard with <strong>all your favorite keybindings set in the
+hardware</strong>. Basically I can now &lsquo;plug and go&rsquo; into any computer and <em>it just
+works</em>.</p>
 
-<p><strong>attachment.rb:</strong></p>
+<p>Being able to do this goes beyond the already awesome feel and sound of the
+HHKB. A modded board is a whole different beast and this is what keyboard
+nirvana feels like. No more feeling awkward about working on other computers!
+Just bring your extremely portable modded keyboard ;)</p>
 
-<pre><code>class Attachment &lt; ActiveRecord::Base
+<p>Shamefully, as a programmer I&rsquo;ve never been much of an electronics guy,
+although I intend to change that. Originally I was gonna go with a Teensy 2
+and try to hack all the hardware together, but <a href="http://geekhack.org/index.php?topic=12047.0">after finding this post on
+Geekhack</a> I decided against risking my precious as a guinea pig for
+my first ever hardware mod, instead I purchased a complete board from a guy
+who goes by <strong>hasu</strong> on GeekHack. If you would like a more detailed guide
+about how to build this mod yourself, <a href="http://grumpylemming.com/blog/2012/12/24/hacking-a-happy-hacking-keyboard/">Grumpy Lemming&rsquo;s guide</a> is a
+really good start.</p>
 
-  # Load up all descendant models
+<p>Installation was surprisingly easy using Hasu&rsquo;s board. Everything was in the right
+place &ndash; the board has a hole for the screw in the same spot as the original and bolts on
+securely. He even made use of the dip switch location to expose the bootloader
+reset button!</p>
 
-  @@descendants = Dir[Rails.root + 'app/models/**/*_attachment.rb'].map do |f|
-    File.basename(f, '.*').camelize
-  end
+<p><img src="/images/posts/IMG_0052.JPG" width="600" title="Hasu's Controller Board" ></p>
 
-  ###
+<p><img src="/images/posts/IMG_0055.JPG" width="600" title="Taking it Apart" ></p>
 
-  has_attached_file :file
-  belongs_to :attachable, polymorphic: true
+<p><img src="/images/posts/IMG_0061.JPG" width="600" title="Bootloader Reset Button" ></p>
 
-  before_create do
-    break if @@descendants.each do |descendant|
-      descendant = descendant.constantize
-      other = self.becomes descendant
-      if other.valid?
-        next self.type = descendant.to_s
-      end
-    end
+<p>I want to avoid turning this post into a guide, for complete instructions on
+how to set this up yourself again check out Grumpy Lemming&rsquo;s post. Instead I
+want to focus on describing how I feel this new board has benefited me as a
+programmer, and <em>why I think every programmer that have keyboard addictions
+should try this out</em>.</p>
 
-    throw ActiveRecord::RecordInvalid.new("Uploaded file does not satisfy any available attachment types.")
-  end
+<p>I&rsquo;m sure that possibilities are limited only to your imagination, but here are
+a few of my favorite tweaks that can be easily programmed with the
+<a href="https://github.com/tmk/tmk_keyboard">tmk_keyboard repo</a>.</p>
 
-end
+<h2>#1 &ndash; Dual-purpose modifier keys</h2>
+
+<p>What has been the most powerful aspect of this for me are dual purpose modifier
+keys. For example, the following makes the left control key act as <code>&lt;ESC&gt;</code> when
+tapped, and <code>&lt;CTRL&gt;</code> when held down.</p>
+
+<pre><code>static const uint16_t PROGMEM fn_actions[] = {
+  [2] = ACTION_MODS_TAP_KEY(MOD_LCTL, KC_ESC)      // LControl with tap Esc*
+};
 </code></pre>
 
-<p><strong>image_attachment.rb</strong></p>
+<p>When working in VIM, you no longer have to reach up to the edge of the keyboard
+in order to hit escape, just tap control on your home row :) This may take
+some getting used to but I promise your fingers will thank you for it!</p>
 
-<pre><code>class ImageAttachment &lt; Attachment
+<p>I realize the same thing can be achieved using something like
+<a href="https://pqrs.org/macosx/keyremap4macbook/">KeyRemap4Macbook</a>. But overall the flexibility, portability and
+feel-rightness makes this a superior option!</p>
 
-  validates_attachment :file,
-    presence: true,
-    size: { in: 0..5.megabytes },
-    content_type: { content_type: /image/ }
+<h2>#2 &ndash; Numpad on the home row</h2>
 
-end
+<p>The HHKB doesn&rsquo;t have a numpad. But even when I had a board that did, I rarely
+used it &ndash; it was just too far away. With my current setup I have a numpad
+centered around <code>J</code> on my home row. When I hold tab (using the same
+dual-purpose modifier strategy as before), the <em>numpad layer</em> is
+switched on, something like this:</p>
+
+<pre><code>/* Layer 4: Numpad mode
+ * ,-----------------------------------------------------------.
+ * |Esc|   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+ * |-----------------------------------------------------------|
+ * |FN0  |  |   |   |   |   | 7 | 8 | 9 | = |   |   |   |Backs|
+ * |-----------------------------------------------------------|
+ * |Contro|   |   |   |   |   | 4 | 5 | 6 | + |   |   |Return  |
+ * |-----------------------------------------------------------|
+ * |Shift   |   |   |   |   |   | 1 | 2 | 3 | - |   |Shift |   |
+ * `-----------------------------------------------------------'
+ *       |Alt|Gui  |           0           |Gui  |Alt|
+ *       `-------------------------------------------'
+ */
 </code></pre>
 
-<p><strong>document_attachment.rb</strong></p>
+<p>With this setup, numeric input can finally feel like it&rsquo;s part of the &lsquo;vi-flow&rsquo;!</p>
 
-<pre><code>class DocumentAttachment &lt; Attachment
+<h2>#3 &ndash; Vi Mode</h2>
 
-  validates_attachment :file,
-    presence: true,
-    size: { in: 0..5.megabytes },
-    content_type: { content_type: [
-      "application/pdf",
-      "text/plain"
-    ] }
+<p>Although HHKB has some nice arrow key bindings, it never feels right after
+prolonged use of VIM. My letter <code>f</code> key is now also dual purpose, and when held down
+it activates vi-mode:</p>
 
-end
+<pre><code>/* Layer 2: Vi mode
+ * ,-----------------------------------------------------------.
+ * |Esc| F1| F2| F3| F4| F5| F6| F7| F8| F9|F10|F11|F12|Ins|Del|
+ * |-----------------------------------------------------------|
+ * |Tab  |  |   |   |   |   |   |   |PgU|   |   |   |   |Backs|
+ * |-----------------------------------------------------------|
+ * |Contro|   |   |PgD|FN0|   |Lef|Dow|Up |Rig|   |   |Return  |
+ * |-----------------------------------------------------------|
+ * |Shift   |   |   |   |   |   |   |   |   |   |   |Shift |   |
+ * `-----------------------------------------------------------'
+ *       |Alt|Gui  |         Space         |Gui  |Alt|
+ *       `-------------------------------------------'
+ */
 </code></pre>
 
-<p>So when you run something like <code>@attachment.save</code>, it will automatically choose the
-best model for you and save it with that type :)</p>
+<h2>#4 &ndash; Mouse Bindings</h2>
+
+<p>Yep, you can control the cursor with your keyboard! This is really just a
+cool-show-off kinda thing but there have been some cases where it actually
+gets useful, e.g changing focus between scrollable panes on a website. Again,
+this time I made the escape button on the top left dual purpose &ndash; press for
+<code>&lt;esc&gt;</code>, hold for mouse mouse. In mouse mode <code>hjkl</code> control movement, and the
+spacebar is left click. Like so:</p>
+
+<pre><code>/* Layer 3: Mouse mode
+ * ,-----------------------------------------------------------.
+ * |FN0| F1| F2| F3| F4| F5| F6| F7| F8| F9|F10|F11|F12|Ins|Del|
+ * |-----------------------------------------------------------|
+ * |Tab  |   |   |   |   |   |MwL|MwD|MwU|MwR|   |   |   |Backs|
+ * |-----------------------------------------------------------|
+ * |Contro|   |   |   |   |   |McL|McD|McU|McR|   |   |Return  |
+ * |-----------------------------------------------------------|
+ * |Shift   |   |   |   |   |Mb3|Mb2|Mb1|Mb4|Mb5|   |Shift |   |
+ * `-----------------------------------------------------------'
+ *      |Alt |Gui  |          Mb1          |Gui  |Alt|
+ *      `--------------------------------------------'
+ * Mc: Mouse Cursor / Mb: Mouse Button / Mw: Mouse Wheel 
+ */
+</code></pre>
+
+<p>I&rsquo;m sure that are plenty of other tweaks and hacks that I haven&rsquo;t thought of.
+I&rsquo;m still continuously tweaking the firmware in search of that holy grail of
+key-bindings &ndash; it&rsquo;s been such an enjoyable experience.</p>
 
 		</div>
 	<footer>
@@ -131,7 +203,7 @@ best model for you and save it with that type :)</p>
 		
 			Tagged under
 		
-    <a class='category' href='/blog/categories/rails/'>rails</a>
+    <a class='category' href='/blog/categories/keyboard/'>keyboard</a>
 	
 
 
@@ -146,8 +218,10 @@ best model for you and save it with that type :)</p>
 	
 <div class="pagination">
 	
+		<a class="older" href="/blog/page/2/">Older</a>
 	
-	<span class="total">1 of 1</span>
+	
+	<span class="total">1 of 2</span>
 	
 	
 </div>

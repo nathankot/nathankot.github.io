@@ -1,32 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-	<title><![CDATA[Nathan Kot's Musings]]></title>
-	<link href="http://nathankot.github.io/atom.xml" rel="self"/>
-	<link href="http://nathankot.github.io/"/>
-	<updated>2013-09-08T17:25:35+12:00</updated>
-	<id>http://nathankot.github.io/</id>
-	<author>
-		<name><![CDATA[Nathan Kot]]></name>
-		
-	</author>
-	<generator uri="http://octopress.org/">Octopress</generator>
+  <title><![CDATA[Category: keyboard | Nathan Kot's Musings]]></title>
+  <link href="http://nathankot.github.io/blog/categories/keyboard/atom.xml" rel="self"/>
+  <link href="http://nathankot.github.io/"/>
+  <updated>2013-09-08T17:25:35+12:00</updated>
+  <id>http://nathankot.github.io/</id>
+  <author>
+    <name><![CDATA[Nathan Kot]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
 
-	
-	<entry>
-		
-			<title type="html"><![CDATA[Modding the Happy Hacking Keyboard]]></title>
-		
-		<link href="http://nathankot.github.io/blog/2013/09/05/modding-the-happy-hacking-keyboard/"/>
-		<updated>2013-09-05T22:45:00+12:00</updated>
-		<id>http://nathankot.github.io/blog/2013/09/05/modding-the-happy-hacking-keyboard</id>
-		<content type="html">
-			<![CDATA[
-				
-					<p></p>
-				
-			]]>
-			<![CDATA[<p>After reading <a href="http://grumpylemming.com/blog/2012/12/24/hacking-a-happy-hacking-keyboard/">this post about hacking your HHKB</a>, I set out to do the
+  
+  <entry>
+    <title type="html"><![CDATA[Modding the Happy Hacking Keyboard]]></title>
+    <link href="http://nathankot.github.io/blog/2013/09/05/modding-the-happy-hacking-keyboard/"/>
+    <updated>2013-09-05T22:45:00+12:00</updated>
+    <id>http://nathankot.github.io/blog/2013/09/05/modding-the-happy-hacking-keyboard</id>
+    <content type="html"><![CDATA[<p>After reading <a href="http://grumpylemming.com/blog/2012/12/24/hacking-a-happy-hacking-keyboard/">this post about hacking your HHKB</a>, I set out to do the
 same thing. Now that I have the finished product, I can truly say that it is
 freaking awesome to have a keyboard with <strong>all your favorite keybindings set in the
 hardware</strong>. Basically I can now &lsquo;plug and go&rsquo; into any computer and <em>it just
@@ -51,11 +43,11 @@ place &ndash; the board has a hole for the screw in the same spot as the origina
 securely. He even made use of the dip switch location to expose the bootloader
 reset button!</p>
 
-<p><img src="http://nathankot.github.io/images/posts/IMG_0052.JPG" width="600" title="Hasu's Controller Board" ></p>
+<p><img src="/images/posts/IMG_0052.JPG" width="600" title="Hasu&rsquo;s Controller Board" ></p>
 
-<p><img src="http://nathankot.github.io/images/posts/IMG_0055.JPG" width="600" title="Taking it Apart" ></p>
+<p><img src="/images/posts/IMG_0055.JPG" width="600" title="Taking it Apart" ></p>
 
-<p><img src="http://nathankot.github.io/images/posts/IMG_0061.JPG" width="600" title="Bootloader Reset Button" ></p>
+<p><img src="/images/posts/IMG_0061.JPG" width="600" title="Bootloader Reset Button" ></p>
 
 <p>I want to avoid turning this post into a guide, for complete instructions on
 how to set this up yourself again check out Grumpy Lemming&rsquo;s post. Instead I
@@ -160,87 +152,7 @@ spacebar is left click. Like so:</p>
 <p>I&rsquo;m sure that are plenty of other tweaks and hacks that I haven&rsquo;t thought of.
 I&rsquo;m still continuously tweaking the firmware in search of that holy grail of
 key-bindings &ndash; it&rsquo;s been such an enjoyable experience.</p>
-]]>
-		</content>
-	</entry>
-	
-	<entry>
-		
-			<title type="html"><![CDATA[Setting up Paperclip + Single Table Inheritance + Rails 4]]></title>
-		
-		<link href="http://nathankot.github.io/blog/2013/08/10/setting-up-paperclip-plus-single-table-inheritance-plus-rails-4/"/>
-		<updated>2013-08-10T18:11:00+12:00</updated>
-		<id>http://nathankot.github.io/blog/2013/08/10/setting-up-paperclip-plus-single-table-inheritance-plus-rails-4</id>
-		<content type="html">
-			<![CDATA[
-				
-					<p></p>
-				
-			]]>
-			<![CDATA[<p>If you want to have a single table describing a file upload, with different validations
-for each file type this is a good way to set it up.</p>
-
-<p><strong>attachment.rb:</strong></p>
-
-<pre><code>class Attachment &lt; ActiveRecord::Base
-
-  # Load up all descendant models
-
-  @@descendants = Dir[Rails.root + 'app/models/**/*_attachment.rb'].map do |f|
-    File.basename(f, '.*').camelize
-  end
-
-  ###
-
-  has_attached_file :file
-  belongs_to :attachable, polymorphic: true
-
-  before_create do
-    break if @@descendants.each do |descendant|
-      descendant = descendant.constantize
-      other = self.becomes descendant
-      if other.valid?
-        next self.type = descendant.to_s
-      end
-    end
-
-    throw ActiveRecord::RecordInvalid.new("Uploaded file does not satisfy any available attachment types.")
-  end
-
-end
-</code></pre>
-
-<p><strong>image_attachment.rb</strong></p>
-
-<pre><code>class ImageAttachment &lt; Attachment
-
-  validates_attachment :file,
-    presence: true,
-    size: { in: 0..5.megabytes },
-    content_type: { content_type: /image/ }
-
-end
-</code></pre>
-
-<p><strong>document_attachment.rb</strong></p>
-
-<pre><code>class DocumentAttachment &lt; Attachment
-
-  validates_attachment :file,
-    presence: true,
-    size: { in: 0..5.megabytes },
-    content_type: { content_type: [
-      "application/pdf",
-      "text/plain"
-    ] }
-
-end
-</code></pre>
-
-<p>So when you run something like <code>@attachment.save</code>, it will automatically choose the
-best model for you and save it with that type :)</p>
-]]>
-		</content>
-	</entry>
-	
+]]></content>
+  </entry>
+  
 </feed>

@@ -9,7 +9,7 @@
 		<meta content="Nathan Kot's Blog. I like to talk about building things." name="description">
 		<meta content="Nathan Kot's Musings" name="author">
 		
-		<title>Setting up Paperclip + Single Table Inheritance + Rails 4 &mdash; Nathan Kot's Musings</title>
+		<title>Category: keyboard &mdash; Nathan Kot's Musings</title>
 		
 		<!-- Styles -->
 		<link href="/stylesheets/main.css" rel="stylesheet">
@@ -44,104 +44,40 @@
 				</div> <!-- // .navi -->
 			</header>
 		
-				<!-- START OF _layouts/post.html -->
-
-<!-- START OF _includes/article.html -->
+				<!-- START OF _layouts/page.html -->
 <article>
-	<header>
-		<h1><a href="/blog/2013/08/10/setting-up-paperclip-plus-single-table-inheritance-plus-rails-4/">Setting up Paperclip + Single Table Inheritance + Rails 4</a></h1>
-		<time>10 August 2013</time>
-	</header>
-		<div class="content">
-			<p>If you want to have a single table describing a file upload, with different validations
-for each file type this is a good way to set it up.</p>
-
-<p><strong>attachment.rb:</strong></p>
-
-<pre><code>class Attachment &lt; ActiveRecord::Base
-
-  # Load up all descendant models
-
-  @@descendants = Dir[Rails.root + 'app/models/**/*_attachment.rb'].map do |f|
-    File.basename(f, '.*').camelize
-  end
-
-  ###
-
-  has_attached_file :file
-  belongs_to :attachable, polymorphic: true
-
-  before_create do
-    break if @@descendants.each do |descendant|
-      descendant = descendant.constantize
-      other = self.becomes descendant
-      if other.valid?
-        next self.type = descendant.to_s
-      end
-    end
-
-    throw ActiveRecord::RecordInvalid.new("Uploaded file does not satisfy any available attachment types.")
-  end
-
-end
-</code></pre>
-
-<p><strong>image_attachment.rb</strong></p>
-
-<pre><code>class ImageAttachment &lt; Attachment
-
-  validates_attachment :file,
-    presence: true,
-    size: { in: 0..5.megabytes },
-    content_type: { content_type: /image/ }
-
-end
-</code></pre>
-
-<p><strong>document_attachment.rb</strong></p>
-
-<pre><code>class DocumentAttachment &lt; Attachment
-
-  validates_attachment :file,
-    presence: true,
-    size: { in: 0..5.megabytes },
-    content_type: { content_type: [
-      "application/pdf",
-      "text/plain"
-    ] }
-
-end
-</code></pre>
-
-<p>So when you run something like <code>@attachment.save</code>, it will automatically choose the
-best model for you and save it with that type :)</p>
-
-		</div>
-	<footer>
-		
+<header>
+	
+			<h1 class="center">Category: keyboard</h1>
+	
+</header>
+<!-- BEGIN _layouts/category_index.html -->
 
 
-		
 
 
 
   
-		
-			Tagged under
-		
-    <a class='category' href='/blog/categories/rails/'>rails</a>
-	
+	<div class="cat-year">2013</div>
 
 
-	
-	
-	</footer>
-	
+
+  
+	<div class="cat-month">September</div>
+
+
+<!-- BEGIN _includes/archive_post.html -->
+
+<a class="title-listing" href="/blog/2013/09/05/modding-the-happy-hacking-keyboard/">Modding the Happy Hacking Keyboard</a><br>
+<!-- END _includes/archive_post.html -->
+
+
+
+
+<!-- _layouts/category_index.html -->
+
 </article>
-<!-- END OF _includes/article.html -->
-
-
-<!-- END OF _/layouts/post.html -->
+<!-- END OF _layouts/page.html -->
 
 		
 			<footer>
