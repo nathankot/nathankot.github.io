@@ -55,7 +55,8 @@ tapped, and `<CTRL>` when held down.
 
 ``` cpp
 static const uint16_t PROGMEM fn_actions[] = {
-  [2] = ACTION_MODS_TAP_KEY(MOD_LCTL, KC_ESC)      // LControl with tap Esc*
+  // LControl with tap Esc*
+  [2] = ACTION_MODS_TAP_KEY(MOD_LCTL, KC_ESC)
 };
 ```
 
