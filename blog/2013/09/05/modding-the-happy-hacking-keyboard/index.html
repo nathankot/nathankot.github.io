@@ -1,59 +1,69 @@
 
-<!doctype html>
-<!-- START OF _layouts/default.html -->
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" >
-		<meta content="width=device-width,initial-scale=1" name="viewport">
-		<meta content="Nathan Kot's Blog. I like to talk about building things." name="description">
-		<meta content="Nathan Kot's Musings" name="author">
-		
-		<title>Modding the Happy Hacking Keyboard &mdash; Nathan Kot's Musings</title>
-		
-		<!-- Styles -->
-		<link href="/stylesheets/main.css" rel="stylesheet">
-		
-		<!-- Google webfonts -->
-		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
-		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Cousine">
-		
-		<!-- jQuery and plugins -->
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-		<script src="/js/jquery.zclip.min.js"></script>
-		
-		<!-- Syntax highlighter -->
-		<link href="/stylesheets/prettify-hemisu.css" type="text/css" rel="stylesheet" />
-		<script type="text/javascript" src="/js/prettify.js"></script>
-		
-		<!--<link href="http://feeds.feedburner.com/turkeltaub" rel="alternate" title="Nathan Kot's Musings" type="application/rss+xml" />-->
-		
-	</head>
-	<body onload="prettyPrint()">
-	
-		<div class="wrap">
-	
-			<header>
-				<div class="title">Nathan Kot's Musings</div>
-				
-				<div class="navi">
-					<ul>
-						<li><a href="/">Blog</a></li>
-						<li><a href="/blog/archives">Archives</a></li>
-					<ul>
-				</div> <!-- // .navi -->
-			</header>
-		
-				<!-- START OF _layouts/post.html -->
+<!DOCTYPE HTML>
+<html lang="en-GB">
+<head>
+	<meta charset="utf-8">
+	<title>Modding the Happy Hacking Keyboard  | NK</title>
 
-<!-- START OF _includes/article.html -->
-<article>
+	<meta name="author" content="Nathan Kot">
+
+<meta name="description" content="Nathan Kot's Blog. I like to talk about building things."> <meta name="keywords" content="">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="NK" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">NK</a></h1>
+<span class="tagline">Programpreneur</span>
+<nav id="main-nav"><ul>
+	<li><a href="">Index</a></li>
+	<li><a href="/about">About</a></li>
+	<li><a href="/archives">Archives</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul>
+	<li><a href="">Index</a></li>
+	<li><a href="/about">About</a></li>
+	<li><a href="/archives">Archives</a></li>
+</ul>
+</div>
+	</div>
+</nav>
+
+
+</header>
+
+	<div id="content" class="inner"><article class="post">
 	<header>
-		<h1><a href="/blog/2013/09/05/modding-the-happy-hacking-keyboard/">Modding the Happy Hacking Keyboard</a></h1>
-		<time>05 September 2013</time>
+		<h2 class="title">Modding the Happy Hacking Keyboard</h2>
+		<div class="meta date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-05T22:45:00+12:00" pubdate data-updated="true">Sep 5<span>th</span>, 2013</time></div>
 	</header>
-		<div class="content">
-			<p>After reading <a href="http://grumpylemming.com/blog/2012/12/24/hacking-a-happy-hacking-keyboard/">this post about hacking your HHKB</a>, I set out to do the
+	<div class="entry-content"><p>After reading <a href="http://grumpylemming.com/blog/2012/12/24/hacking-a-happy-hacking-keyboard/">this post about hacking your HHKB</a>, I set out to do the
 same thing. Now that I have the finished product, I can truly say that it is
 freaking awesome to have a keyboard with <strong>all your favorite keybindings set in the
 hardware</strong>. Basically I can now &lsquo;plug and go&rsquo; into any computer and <em>it just
@@ -69,13 +79,13 @@ although I intend to change that. Originally I was gonna go with a Teensy 2
 and try to hack all the hardware together, but <a href="http://geekhack.org/index.php?topic=12047.0">after finding this post on
 Geekhack</a> I decided against risking my precious as a guinea pig for
 my first ever hardware mod, instead I purchased a complete board from a guy
-who goes by <strong>hasu</strong> on GeekHack. If you would like a more detailed guide
+who goes by <strong>hasu on GeekHack</strong>. If you would like a more detailed guide
 about how to build this mod yourself, <a href="http://grumpylemming.com/blog/2012/12/24/hacking-a-happy-hacking-keyboard/">Grumpy Lemming&rsquo;s guide</a> is a
 really good start.</p>
 
 <p>Installation was surprisingly easy using Hasu&rsquo;s board. Everything was in the right
-place &ndash; the board has a hole for the screw in the same spot as the original and bolts on
-securely. He even made use of the dip switch location to expose the bootloader
+place &ndash; the board has a hole for the screw in the same spot as the original
+board. He even made use of the dip switch location to expose the bootloader
 reset button!</p>
 
 <p><img src="/images/posts/hhkb-1.jpg" width="600" title="Hasu's Controller Board" ></p>
@@ -100,10 +110,16 @@ a few of my favorite tweaks that can be easily programmed with the
 keys. For example, the following makes the left control key act as <code>&lt;ESC&gt;</code> when
 tapped, and <code>&lt;CTRL&gt;</code> when held down.</p>
 
-<pre><code>static const uint16_t PROGMEM fn_actions[] = {
-  [2] = ACTION_MODS_TAP_KEY(MOD_LCTL, KC_ESC)      // LControl with tap Esc*
-};
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="k">static</span> <span class="k">const</span> <span class="n">uint16_t</span> <span class="n">PROGMEM</span> <span class="n">fn_actions</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">// LControl with tap Esc*</span>
+</span><span class='line'>  <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">ACTION_MODS_TAP_KEY</span><span class="p">(</span><span class="n">MOD_LCTL</span><span class="p">,</span> <span class="n">KC_ESC</span><span class="p">)</span>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>When working in VIM, you no longer have to reach up to the edge of the keyboard
 in order to hit escape, just tap control on your home row :) This may take
@@ -121,20 +137,34 @@ centered around <code>J</code> on my home row. When I hold tab (using the same
 dual-purpose modifier strategy as before), the <em>numpad layer</em> is
 switched on, something like this:</p>
 
-<pre><code>/* Layer 4: Numpad mode
- * ,-----------------------------------------------------------.
- * |Esc|   |   |   |   |   |   |   |   |   |   |   |   |   |   |
- * |-----------------------------------------------------------|
- * |FN0  |  |   |   |   |   | 7 | 8 | 9 | = |   |   |   |Backs|
- * |-----------------------------------------------------------|
- * |Contro|   |   |   |   |   | 4 | 5 | 6 | + |   |   |Return  |
- * |-----------------------------------------------------------|
- * |Shift   |   |   |   |   |   | 1 | 2 | 3 | - |   |Shift |   |
- * `-----------------------------------------------------------'
- *       |Alt|Gui  |           0           |Gui  |Alt|
- *       `-------------------------------------------'
- */
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="cm">/* Layer 4: Numpad mode</span>
+</span><span class='line'><span class="cm">  * ,-----------------------------------------------------------.</span>
+</span><span class='line'><span class="cm">  * |Esc|   |   |   |   |   |   |   |   |   |   |   |   |   |   |</span>
+</span><span class='line'><span class="cm">  * |-----------------------------------------------------------|</span>
+</span><span class='line'><span class="cm">  * |FN0  |  |   |   |   |   | 7 | 8 | 9 | = |   |   |   |Backs|</span>
+</span><span class='line'><span class="cm">  * |-----------------------------------------------------------|</span>
+</span><span class='line'><span class="cm">  * |Contro|   |   |   |   |   | 4 | 5 | 6 | + |   |   |Return  |</span>
+</span><span class='line'><span class="cm">  * |-----------------------------------------------------------|</span>
+</span><span class='line'><span class="cm">  * |Shift   |   |   |   |   |   | 1 | 2 | 3 | - |   |Shift |   |</span>
+</span><span class='line'><span class="cm">  * `-----------------------------------------------------------&#39;</span>
+</span><span class='line'><span class="cm">  *       |Alt|Gui  |           0           |Gui  |Alt|</span>
+</span><span class='line'><span class="cm">  *       `-------------------------------------------&#39;</span>
+</span><span class='line'><span class="cm">  */</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>With this setup, numeric input can finally feel like it&rsquo;s part of the &lsquo;vi-flow&rsquo;!</p>
 
@@ -144,20 +174,34 @@ switched on, something like this:</p>
 prolonged use of VIM. My letter <code>f</code> key is now also dual purpose, and when held down
 it activates vi-mode:</p>
 
-<pre><code>/* Layer 2: Vi mode
- * ,-----------------------------------------------------------.
- * |Esc| F1| F2| F3| F4| F5| F6| F7| F8| F9|F10|F11|F12|Ins|Del|
- * |-----------------------------------------------------------|
- * |Tab  |  |   |   |   |   |   |   |PgU|   |   |   |   |Backs|
- * |-----------------------------------------------------------|
- * |Contro|   |   |PgD|FN0|   |Lef|Dow|Up |Rig|   |   |Return  |
- * |-----------------------------------------------------------|
- * |Shift   |   |   |   |   |   |   |   |   |   |   |Shift |   |
- * `-----------------------------------------------------------'
- *       |Alt|Gui  |         Space         |Gui  |Alt|
- *       `-------------------------------------------'
- */
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="cm">/* Layer 2: Vi mode</span>
+</span><span class='line'><span class="cm">  * ,-----------------------------------------------------------.</span>
+</span><span class='line'><span class="cm">  * |Esc| F1| F2| F3| F4| F5| F6| F7| F8| F9|F10|F11|F12|Ins|Del|</span>
+</span><span class='line'><span class="cm">  * |-----------------------------------------------------------|</span>
+</span><span class='line'><span class="cm">  * |Tab  |  |   |   |   |   |   |   |PgU|   |   |   |   |Backs|</span>
+</span><span class='line'><span class="cm">  * |-----------------------------------------------------------|</span>
+</span><span class='line'><span class="cm">  * |Contro|   |   |PgD|FN0|   |Lef|Dow|Up |Rig|   |   |Return  |</span>
+</span><span class='line'><span class="cm">  * |-----------------------------------------------------------|</span>
+</span><span class='line'><span class="cm">  * |Shift   |   |   |   |   |   |   |   |   |   |   |Shift |   |</span>
+</span><span class='line'><span class="cm">  * `-----------------------------------------------------------&#39;</span>
+</span><span class='line'><span class="cm">  *       |Alt|Gui  |         Space         |Gui  |Alt|</span>
+</span><span class='line'><span class="cm">  *       `-------------------------------------------&#39;</span>
+</span><span class='line'><span class="cm">  */</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <h2>#4 &ndash; Mouse Bindings</h2>
 
@@ -166,92 +210,121 @@ cool-show-off kinda thing but there have been some cases where it actually
 gets useful, e.g changing focus between scrollable panes on a website. Again,
 this time I made the escape button on the top left dual purpose &ndash; press for
 <code>&lt;esc&gt;</code>, hold for mouse mouse. In mouse mode <code>hjkl</code> control movement, and the
-spacebar is left click. Like so:</p>
+space bar is left click. Like so:</p>
 
-<pre><code>/* Layer 3: Mouse mode
- * ,-----------------------------------------------------------.
- * |FN0| F1| F2| F3| F4| F5| F6| F7| F8| F9|F10|F11|F12|Ins|Del|
- * |-----------------------------------------------------------|
- * |Tab  |   |   |   |   |   |MwL|MwD|MwU|MwR|   |   |   |Backs|
- * |-----------------------------------------------------------|
- * |Contro|   |   |   |   |   |McL|McD|McU|McR|   |   |Return  |
- * |-----------------------------------------------------------|
- * |Shift   |   |   |   |   |Mb3|Mb2|Mb1|Mb4|Mb5|   |Shift |   |
- * `-----------------------------------------------------------'
- *      |Alt |Gui  |          Mb1          |Gui  |Alt|
- *      `--------------------------------------------'
- * Mc: Mouse Cursor / Mb: Mouse Button / Mw: Mouse Wheel 
- */
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="cm">/* Layer 3: Mouse mode</span>
+</span><span class='line'><span class="cm">  * ,-----------------------------------------------------------.</span>
+</span><span class='line'><span class="cm">  * |FN0| F1| F2| F3| F4| F5| F6| F7| F8| F9|F10|F11|F12|Ins|Del|</span>
+</span><span class='line'><span class="cm">  * |-----------------------------------------------------------|</span>
+</span><span class='line'><span class="cm">  * |Tab  |   |   |   |   |   |MwL|MwD|MwU|MwR|   |   |   |Backs|</span>
+</span><span class='line'><span class="cm">  * |-----------------------------------------------------------|</span>
+</span><span class='line'><span class="cm">  * |Contro|   |   |   |   |   |McL|McD|McU|McR|   |   |Return  |</span>
+</span><span class='line'><span class="cm">  * |-----------------------------------------------------------|</span>
+</span><span class='line'><span class="cm">  * |Shift   |   |   |   |   |Mb3|Mb2|Mb1|Mb4|Mb5|   |Shift |   |</span>
+</span><span class='line'><span class="cm">  * `-----------------------------------------------------------&#39;</span>
+</span><span class='line'><span class="cm">  *      |Alt |Gui  |          Mb1          |Gui  |Alt|</span>
+</span><span class='line'><span class="cm">  *      `--------------------------------------------&#39;</span>
+</span><span class='line'><span class="cm">  * Mc: Mouse Cursor / Mb: Mouse Button / Mw: Mouse Wheel </span>
+</span><span class='line'><span class="cm">  */</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>I&rsquo;m sure that are plenty of other tweaks and hacks that I haven&rsquo;t thought of.
 I&rsquo;m still continuously tweaking the firmware in search of that holy grail of
 key-bindings &ndash; it&rsquo;s been such an enjoyable experience.</p>
-
-		</div>
-	<footer>
-		
-
-
-		
-
-
-
-  
-		
-			Tagged under
-		
-    <a class='category' href='/blog/categories/keyboard/'>keyboard</a>
+</div>
 	
 
-
-	
-	
-	</footer>
-	
 </article>
-<!-- END OF _includes/article.html -->
+
+	
+	<div class="share">
+		<ul>
+			<li>
+  <a href="https://twitter.com/intent/tweet?text=Modding the Happy Hacking Keyboard by @&url=http://nathankot.github.io/blog/2013/09/05/modding-the-happy-hacking-keyboard/" title="Share Modding the Happy Hacking Keyboard on Twitter">
+    <img src="/images/social/twitter.png" />
+  </a>
+</li>
+
+			<li>
+  <a href="https://www.facebook.com/sharer.php?u=http://nathankot.github.io/blog/2013/09/05/modding-the-happy-hacking-keyboard/" title="Share Modding the Happy Hacking Keyboard on Facebook">
+    <img src="/images/social/facebook.png" />
+  </a>
+</li>
+
+			<li>
+  <a href="https://plus.google.com/share?url=http://nathankot.github.io/blog/2013/09/05/modding-the-happy-hacking-keyboard/" title="Share Modding the Happy Hacking Keyboard on Google Plus">
+    <img src="/images/social/google.png" />
+  </a>
+</li>
+
+		</ul>
+	</div>
 
 
-<!-- END OF _/layouts/post.html -->
-
-		
-			<footer>
-				Copyright &copy; 2013
-
-	Nathan Kot
 
 
-			</footer>
-			
-		</div> <!-- // .wrap -->
-	</body>
-	<script>
-		$(document).ready(function() {
-			// Make images center
-			$('p:has(img)').css('text-align', 'center');
-			
-			// Add the image's title attribute as a caption
-			$('p:has(img)').append(function () {
-				return '<div class="caption">' + $('img', this).attr('title') + '</div>';
-			});
-			
-			// Prettify code
-			$('code').addClass('prettyprint');
-			$('pre code').addClass('linenums');
-			
-			// Copy to clipboard with button
-			$('pre:has(code)').prepend(function(){
-				return '<div class="clip-btn">copy to clipboard</div>';
-			});
-			$('.clip-btn').zclip({
-				path:'/js/ZeroClipboard.swf',
-				copy: $(this).next('code').text(),
-				afterCopy: function(){
-					$(this).replaceWith('<div class="clip-btn">copied!');
-					}
-			});
-		});
+<section id="comment">
+    <h2 class="title">Comments</h2>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+	<footer id="footer" class="inner">&copy; 2013
+
+    Nathan Kot
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/hyphenator.js"></script>
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'nathankot';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://nathankot.github.io/blog/2013/09/05/modding-the-happy-hacking-keyboard/';
+        var disqus_url = 'http://nathankot.github.io/blog/2013/09/05/modding-the-happy-hacking-keyboard/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-36764309-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
 	</script>
+
+
+
+
+</body>
 </html>
-<!-- END OF _layouts/default.html -->

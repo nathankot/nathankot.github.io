@@ -1,59 +1,69 @@
 
-<!doctype html>
-<!-- START OF _layouts/default.html -->
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" >
-		<meta content="width=device-width,initial-scale=1" name="viewport">
-		<meta content="Nathan Kot's Blog. I like to talk about building things." name="description">
-		<meta content="Nathan Kot's Musings" name="author">
-		
-		<title>Setting up Paperclip + Single Table Inheritance + Rails 4 &mdash; Nathan Kot's Musings</title>
-		
-		<!-- Styles -->
-		<link href="/stylesheets/main.css" rel="stylesheet">
-		
-		<!-- Google webfonts -->
-		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
-		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Cousine">
-		
-		<!-- jQuery and plugins -->
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-		<script src="/js/jquery.zclip.min.js"></script>
-		
-		<!-- Syntax highlighter -->
-		<link href="/stylesheets/prettify-hemisu.css" type="text/css" rel="stylesheet" />
-		<script type="text/javascript" src="/js/prettify.js"></script>
-		
-		<!--<link href="http://feeds.feedburner.com/turkeltaub" rel="alternate" title="Nathan Kot's Musings" type="application/rss+xml" />-->
-		
-	</head>
-	<body onload="prettyPrint()">
-	
-		<div class="wrap">
-	
-			<header>
-				<div class="title">Nathan Kot's Musings</div>
-				
-				<div class="navi">
-					<ul>
-						<li><a href="/">Blog</a></li>
-						<li><a href="/blog/archives">Archives</a></li>
-					<ul>
-				</div> <!-- // .navi -->
-			</header>
-		
-				<!-- START OF _layouts/post.html -->
+<!DOCTYPE HTML>
+<html lang="en-GB">
+<head>
+	<meta charset="utf-8">
+	<title>Setting up Paperclip + Single Table Inheritance + Rails 4  | NK</title>
 
-<!-- START OF _includes/article.html -->
-<article>
+	<meta name="author" content="Nathan Kot">
+
+<meta name="description" content="Nathan Kot's Blog. I like to talk about building things."> <meta name="keywords" content="">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="NK" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">NK</a></h1>
+<span class="tagline">Programpreneur</span>
+<nav id="main-nav"><ul>
+	<li><a href="">Index</a></li>
+	<li><a href="/about">About</a></li>
+	<li><a href="/archives">Archives</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul>
+	<li><a href="">Index</a></li>
+	<li><a href="/about">About</a></li>
+	<li><a href="/archives">Archives</a></li>
+</ul>
+</div>
+	</div>
+</nav>
+
+
+</header>
+
+	<div id="content" class="inner"><article class="post">
 	<header>
-		<h1><a href="/blog/2013/08/10/setting-up-paperclip-plus-single-table-inheritance-plus-rails-4/">Setting up Paperclip + Single Table Inheritance + Rails 4</a></h1>
-		<time>10 August 2013</time>
+		<h2 class="title">Setting Up Paperclip + Single Table Inheritance + Rails 4</h2>
+		<div class="meta date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-10T18:11:00+12:00" pubdate data-updated="true">Aug 10<span>th</span>, 2013</time></div>
 	</header>
-		<div class="content">
-			<p>If you want to have a single table describing a file upload, with different validations
+	<div class="entry-content"><p>If you want to have a single table describing a file upload, with different validations
 for each file type this is a good way to set it up.</p>
 
 <p><strong>attachment.rb:</strong></p>
@@ -115,71 +125,85 @@ end
 
 <p>So when you run something like <code>@attachment.save</code>, it will automatically choose the
 best model for you and save it with that type :)</p>
-
-		</div>
-	<footer>
-		
-
-
-		
-
-
-
-  
-		
-			Tagged under
-		
-    <a class='category' href='/blog/categories/rails/'>rails</a>
+</div>
 	
 
-
-	
-	
-	</footer>
-	
 </article>
-<!-- END OF _includes/article.html -->
+
+	
+	<div class="share">
+		<ul>
+			<li>
+  <a href="https://twitter.com/intent/tweet?text=Setting up Paperclip + Single Table Inheritance + Rails 4 by @&url=http://nathankot.github.io/blog/2013/08/10/setting-up-paperclip-plus-single-table-inheritance-plus-rails-4/" title="Share Setting up Paperclip + Single Table Inheritance + Rails 4 on Twitter">
+    <img src="/images/social/twitter.png" />
+  </a>
+</li>
+
+			<li>
+  <a href="https://www.facebook.com/sharer.php?u=http://nathankot.github.io/blog/2013/08/10/setting-up-paperclip-plus-single-table-inheritance-plus-rails-4/" title="Share Setting up Paperclip + Single Table Inheritance + Rails 4 on Facebook">
+    <img src="/images/social/facebook.png" />
+  </a>
+</li>
+
+			<li>
+  <a href="https://plus.google.com/share?url=http://nathankot.github.io/blog/2013/08/10/setting-up-paperclip-plus-single-table-inheritance-plus-rails-4/" title="Share Setting up Paperclip + Single Table Inheritance + Rails 4 on Google Plus">
+    <img src="/images/social/google.png" />
+  </a>
+</li>
+
+		</ul>
+	</div>
 
 
-<!-- END OF _/layouts/post.html -->
-
-		
-			<footer>
-				Copyright &copy; 2013
-
-	Nathan Kot
 
 
-			</footer>
-			
-		</div> <!-- // .wrap -->
-	</body>
-	<script>
-		$(document).ready(function() {
-			// Make images center
-			$('p:has(img)').css('text-align', 'center');
-			
-			// Add the image's title attribute as a caption
-			$('p:has(img)').append(function () {
-				return '<div class="caption">' + $('img', this).attr('title') + '</div>';
-			});
-			
-			// Prettify code
-			$('code').addClass('prettyprint');
-			$('pre code').addClass('linenums');
-			
-			// Copy to clipboard with button
-			$('pre:has(code)').prepend(function(){
-				return '<div class="clip-btn">copy to clipboard</div>';
-			});
-			$('.clip-btn').zclip({
-				path:'/js/ZeroClipboard.swf',
-				copy: $(this).next('code').text(),
-				afterCopy: function(){
-					$(this).replaceWith('<div class="clip-btn">copied!');
-					}
-			});
-		});
+<section id="comment">
+    <h2 class="title">Comments</h2>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+	<footer id="footer" class="inner">&copy; 2013
+
+    Nathan Kot
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/hyphenator.js"></script>
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'nathankot';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://nathankot.github.io/blog/2013/08/10/setting-up-paperclip-plus-single-table-inheritance-plus-rails-4/';
+        var disqus_url = 'http://nathankot.github.io/blog/2013/08/10/setting-up-paperclip-plus-single-table-inheritance-plus-rails-4/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-36764309-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
 	</script>
+
+
+
+
+</body>
 </html>
-<!-- END OF _layouts/default.html -->

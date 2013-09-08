@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: rails | Nathan Kot's Musings]]></title>
+  <title><![CDATA[Category: rails | NK]]></title>
   <link href="http://nathankot.github.io/blog/categories/rails/atom.xml" rel="self"/>
   <link href="http://nathankot.github.io/"/>
-  <updated>2013-09-08T17:39:07+12:00</updated>
+  <updated>2013-09-08T20:49:49+12:00</updated>
   <id>http://nathankot.github.io/</id>
   <author>
     <name><![CDATA[Nathan Kot]]></name>

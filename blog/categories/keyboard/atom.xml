@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: keyboard | Nathan Kot's Musings]]></title>
+  <title><![CDATA[Category: keyboard | NK]]></title>
   <link href="http://nathankot.github.io/blog/categories/keyboard/atom.xml" rel="self"/>
   <link href="http://nathankot.github.io/"/>
-  <updated>2013-09-08T17:39:07+12:00</updated>
+  <updated>2013-09-08T20:49:49+12:00</updated>
   <id>http://nathankot.github.io/</id>
   <author>
     <name><![CDATA[Nathan Kot]]></name>
@@ -34,13 +34,13 @@ although I intend to change that. Originally I was gonna go with a Teensy 2
 and try to hack all the hardware together, but <a href="http://geekhack.org/index.php?topic=12047.0">after finding this post on
 Geekhack</a> I decided against risking my precious as a guinea pig for
 my first ever hardware mod, instead I purchased a complete board from a guy
-who goes by <strong>hasu</strong> on GeekHack. If you would like a more detailed guide
+who goes by <strong>hasu on GeekHack</strong>. If you would like a more detailed guide
 about how to build this mod yourself, <a href="http://grumpylemming.com/blog/2012/12/24/hacking-a-happy-hacking-keyboard/">Grumpy Lemming&rsquo;s guide</a> is a
 really good start.</p>
 
 <p>Installation was surprisingly easy using Hasu&rsquo;s board. Everything was in the right
-place &ndash; the board has a hole for the screw in the same spot as the original and bolts on
-securely. He even made use of the dip switch location to expose the bootloader
+place &ndash; the board has a hole for the screw in the same spot as the original
+board. He even made use of the dip switch location to expose the bootloader
 reset button!</p>
 
 <p><img src="/images/posts/hhkb-1.jpg" width="600" title="Hasu&rsquo;s Controller Board" ></p>
@@ -65,10 +65,12 @@ a few of my favorite tweaks that can be easily programmed with the
 keys. For example, the following makes the left control key act as <code>&lt;ESC&gt;</code> when
 tapped, and <code>&lt;CTRL&gt;</code> when held down.</p>
 
-<pre><code>static const uint16_t PROGMEM fn_actions[] = {
-  [2] = ACTION_MODS_TAP_KEY(MOD_LCTL, KC_ESC)      // LControl with tap Esc*
+<p><code>cpp
+static const uint16_t PROGMEM fn_actions[] = {
+  // LControl with tap Esc*
+  [2] = ACTION_MODS_TAP_KEY(MOD_LCTL, KC_ESC)
 };
-</code></pre>
+</code></p>
 
 <p>When working in VIM, you no longer have to reach up to the edge of the keyboard
 in order to hit escape, just tap control on your home row :) This may take
@@ -86,20 +88,21 @@ centered around <code>J</code> on my home row. When I hold tab (using the same
 dual-purpose modifier strategy as before), the <em>numpad layer</em> is
 switched on, something like this:</p>
 
-<pre><code>/* Layer 4: Numpad mode
- * ,-----------------------------------------------------------.
- * |Esc|   |   |   |   |   |   |   |   |   |   |   |   |   |   |
- * |-----------------------------------------------------------|
- * |FN0  |  |   |   |   |   | 7 | 8 | 9 | = |   |   |   |Backs|
- * |-----------------------------------------------------------|
- * |Contro|   |   |   |   |   | 4 | 5 | 6 | + |   |   |Return  |
- * |-----------------------------------------------------------|
- * |Shift   |   |   |   |   |   | 1 | 2 | 3 | - |   |Shift |   |
- * `-----------------------------------------------------------'
- *       |Alt|Gui  |           0           |Gui  |Alt|
- *       `-------------------------------------------'
- */
-</code></pre>
+<p><code>
+/* Layer 4: Numpad mode
+  * ,-----------------------------------------------------------.
+  * |Esc|   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+  * |-----------------------------------------------------------|
+  * |FN0  |  |   |   |   |   | 7 | 8 | 9 | = |   |   |   |Backs|
+  * |-----------------------------------------------------------|
+  * |Contro|   |   |   |   |   | 4 | 5 | 6 | + |   |   |Return  |
+  * |-----------------------------------------------------------|
+  * |Shift   |   |   |   |   |   | 1 | 2 | 3 | - |   |Shift |   |
+  * `-----------------------------------------------------------'
+  *       |Alt|Gui  |           0           |Gui  |Alt|
+  *       `-------------------------------------------'
+  */
+</code></p>
 
 <p>With this setup, numeric input can finally feel like it&rsquo;s part of the &lsquo;vi-flow&rsquo;!</p>
 
@@ -109,20 +112,21 @@ switched on, something like this:</p>
 prolonged use of VIM. My letter <code>f</code> key is now also dual purpose, and when held down
 it activates vi-mode:</p>
 
-<pre><code>/* Layer 2: Vi mode
- * ,-----------------------------------------------------------.
- * |Esc| F1| F2| F3| F4| F5| F6| F7| F8| F9|F10|F11|F12|Ins|Del|
- * |-----------------------------------------------------------|
- * |Tab  |  |   |   |   |   |   |   |PgU|   |   |   |   |Backs|
- * |-----------------------------------------------------------|
- * |Contro|   |   |PgD|FN0|   |Lef|Dow|Up |Rig|   |   |Return  |
- * |-----------------------------------------------------------|
- * |Shift   |   |   |   |   |   |   |   |   |   |   |Shift |   |
- * `-----------------------------------------------------------'
- *       |Alt|Gui  |         Space         |Gui  |Alt|
- *       `-------------------------------------------'
- */
-</code></pre>
+<p><code>
+/* Layer 2: Vi mode
+  * ,-----------------------------------------------------------.
+  * |Esc| F1| F2| F3| F4| F5| F6| F7| F8| F9|F10|F11|F12|Ins|Del|
+  * |-----------------------------------------------------------|
+  * |Tab  |  |   |   |   |   |   |   |PgU|   |   |   |   |Backs|
+  * |-----------------------------------------------------------|
+  * |Contro|   |   |PgD|FN0|   |Lef|Dow|Up |Rig|   |   |Return  |
+  * |-----------------------------------------------------------|
+  * |Shift   |   |   |   |   |   |   |   |   |   |   |Shift |   |
+  * `-----------------------------------------------------------'
+  *       |Alt|Gui  |         Space         |Gui  |Alt|
+  *       `-------------------------------------------'
+  */
+</code></p>
 
 <h2>#4 &ndash; Mouse Bindings</h2>
 
@@ -131,23 +135,24 @@ cool-show-off kinda thing but there have been some cases where it actually
 gets useful, e.g changing focus between scrollable panes on a website. Again,
 this time I made the escape button on the top left dual purpose &ndash; press for
 <code>&lt;esc&gt;</code>, hold for mouse mouse. In mouse mode <code>hjkl</code> control movement, and the
-spacebar is left click. Like so:</p>
+space bar is left click. Like so:</p>
 
-<pre><code>/* Layer 3: Mouse mode
- * ,-----------------------------------------------------------.
- * |FN0| F1| F2| F3| F4| F5| F6| F7| F8| F9|F10|F11|F12|Ins|Del|
- * |-----------------------------------------------------------|
- * |Tab  |   |   |   |   |   |MwL|MwD|MwU|MwR|   |   |   |Backs|
- * |-----------------------------------------------------------|
- * |Contro|   |   |   |   |   |McL|McD|McU|McR|   |   |Return  |
- * |-----------------------------------------------------------|
- * |Shift   |   |   |   |   |Mb3|Mb2|Mb1|Mb4|Mb5|   |Shift |   |
- * `-----------------------------------------------------------'
- *      |Alt |Gui  |          Mb1          |Gui  |Alt|
- *      `--------------------------------------------'
- * Mc: Mouse Cursor / Mb: Mouse Button / Mw: Mouse Wheel 
- */
-</code></pre>
+<p><code>
+/* Layer 3: Mouse mode
+  * ,-----------------------------------------------------------.
+  * |FN0| F1| F2| F3| F4| F5| F6| F7| F8| F9|F10|F11|F12|Ins|Del|
+  * |-----------------------------------------------------------|
+  * |Tab  |   |   |   |   |   |MwL|MwD|MwU|MwR|   |   |   |Backs|
+  * |-----------------------------------------------------------|
+  * |Contro|   |   |   |   |   |McL|McD|McU|McR|   |   |Return  |
+  * |-----------------------------------------------------------|
+  * |Shift   |   |   |   |   |Mb3|Mb2|Mb1|Mb4|Mb5|   |Shift |   |
+  * `-----------------------------------------------------------'
+  *      |Alt |Gui  |          Mb1          |Gui  |Alt|
+  *      `--------------------------------------------'
+  * Mc: Mouse Cursor / Mb: Mouse Button / Mw: Mouse Wheel
+  */
+</code></p>
 
 <p>I&rsquo;m sure that are plenty of other tweaks and hacks that I haven&rsquo;t thought of.
 I&rsquo;m still continuously tweaking the firmware in search of that holy grail of
