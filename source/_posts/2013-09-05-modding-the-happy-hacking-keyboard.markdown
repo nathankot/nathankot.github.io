@@ -31,11 +31,11 @@ place - the board has a hole for the screw in the same spot as the original and 
 securely. He even made use of the dip switch location to expose the bootloader
 reset button!
 
-{% img /images/posts/IMG_0052.JPG 600 Hasu's Controller Board %}
+{% img /images/posts/IMG_0052.jpg 600 Hasu's Controller Board %}
 
-{% img /images/posts/IMG_0055.JPG 600 Taking it Apart %}
+{% img /images/posts/IMG_0055.jpg 600 Taking it Apart %}
 
-{% img /images/posts/IMG_0061.JPG 600 Bootloader Reset Button %}
+{% img /images/posts/IMG_0061.jpg 600 Bootloader Reset Button %}
 
 I want to avoid turning this post into a guide, for complete instructions on
 how to set this up yourself again check out Grumpy Lemming's post. Instead I
