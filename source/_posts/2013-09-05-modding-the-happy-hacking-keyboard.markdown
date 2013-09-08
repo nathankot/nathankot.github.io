@@ -3,20 +3,19 @@ layout: post
 title: "Modding the Happy Hacking Keyboard"
 date: 2013-09-05 22:45
 comments: true
-published: false
-categories: 
+categories: keyboard
 ---
 
 After reading [this post about hacking your HHKB][grumpy], I set out to do the
-same thing. Now that I have the finished product, I can say that it is truly
-awesome to have a keyboard with **all your favorite keybindings set in the
+same thing. Now that I have the finished product, I can truly say that it is 
+freaking awesome to have a keyboard with **all your favorite keybindings set in the
 hardware**. Basically I can now 'plug and go' into any computer and _it just
 works_.
 
 Being able to do this goes beyond the already awesome feel and sound of the
 HHKB. A modded board is a whole different beast and this is what keyboard
 nirvana feels like. No more feeling awkward about working on other computers!
-Just bring your extremely portable and modded keyboard ;)
+Just bring your extremely portable modded keyboard ;)
 
 Shamefully, as a programmer I've never been much of an electronics guy,
 although I intend to change that. Originally I was gonna go with a Teensy 2
@@ -27,8 +26,8 @@ who goes by **hasu** on GeekHack. If you would like a more detailed guide
 about how to build this mod yourself, [Grumpy Lemming's guide][grumpy] is a
 really good start.
 
-Installation was laughably easy using Hasu's board everything was in the right
-place - the board has a hole for the screw in the same spot and it bolts on
+Installation was surprisingly easy using Hasu's board. Everything was in the right
+place - the board has a hole for the screw in the same spot as the original and bolts on
 securely. He even made use of the dip switch location to expose the bootloader
 reset button!
 
@@ -39,13 +38,13 @@ reset button!
 {% img /images/posts/IMG_0061.JPG 600 Bootloader Reset Button %}
 
 I want to avoid turning this post into a guide, for complete instructions on
-how to set this up yourself again check out Grumpy Lemming's Guide. Instead I
+how to set this up yourself again check out Grumpy Lemming's post. Instead I
 want to focus on describing how I feel this new board has benefited me as a
 programmer, and *why I think every programmer that have keyboard addictions
 should try this out*.
 
 I'm sure that possibilities are limited only to your imagination, but here are
-a few of my favorite tweaks that can be easily programmed through the
+a few of my favorite tweaks that can be easily programmed with the
 [tmk_keyboard repo][tmk].
 
 ## #1 - Dual-purpose modifier keys
@@ -64,7 +63,7 @@ some getting used to but I promise your fingers will thank you for it!
 
 I realize the same thing can be achieved using something like
 [KeyRemap4Macbook][keyremap]. But overall the flexibility, portability and
-overall feel-rightness makes this a superior option!
+feel-rightness makes this a superior option!
 
 
 ## #2 - Numpad on the home row
@@ -96,7 +95,7 @@ With this setup, numeric input can finally feel like it's part of the 'vi-flow'!
 ## #3 - Vi Mode
 
 Although HHKB has some nice arrow key bindings, it never feels right after
-prolonged use of vim. My `f` key is now also dual purpose, and when held down
+prolonged use of VIM. My letter `f` key is now also dual purpose, and when held down
 it activates vi-mode:
 
     /* Layer 2: Vi mode
@@ -120,7 +119,7 @@ Yep, you can control the cursor with your keyboard! This is really just a
 cool-show-off kinda thing but there have been some cases where it actually
 gets useful, e.g changing focus between scrollable panes on a website. Again,
 this time I made the escape button on the top left dual purpose - press for
-`<esc>`, hold for mouse mouse. In mouse mode `hjkl` are do movement, and the
+`<esc>`, hold for mouse mouse. In mouse mode `hjkl` control movement, and the
 spacebar is left click. Like so:
 
     /* Layer 3: Mouse mode
@@ -140,7 +139,8 @@ spacebar is left click. Like so:
 
 
 I'm sure that are plenty of other tweaks and hacks that I haven't thought of.
-Feel free to let me know :)
+I'm still continuously tweaking the firmware in search of that holy grail of
+key-bindings - it's been such an enjoyable experience.
 
 
 [grumpy]: http://grumpylemming.com/blog/2012/12/24/hacking-a-happy-hacking-keyboard/
