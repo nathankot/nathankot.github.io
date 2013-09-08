@@ -147,8 +147,8 @@ space bar is left click. Like so:
 ```
 
 
-I'm sure that are plenty of other tweaks and hacks that I haven't thought of.
-I'm still continuously tweaking the firmware in search of that holy grail of
+There must be plenty of other tweaks and hacks that I haven't thought of.
+I'm still continuously tweaking the key mappings in search of that holy grail of
 key-bindings - it's been such an enjoyable experience.
 
 
