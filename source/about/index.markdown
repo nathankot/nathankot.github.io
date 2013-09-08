@@ -17,7 +17,7 @@ Born and raised in New Zealand, I see a bright future for our IT industry.
 
 On a more technical note, I have an ongoing love affair with Ruby and VIM.
 
-You can _drop me a line_ at me@nathankot.com,
+You can _drop me a line_ at nk@nathankot.com,
 
 I'd love to hear from you :)
 
