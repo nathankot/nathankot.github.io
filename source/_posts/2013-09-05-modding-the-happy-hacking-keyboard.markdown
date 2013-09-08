@@ -40,8 +40,8 @@ reset button!
 I want to avoid turning this post into a guide, for complete instructions on
 how to set this up yourself again check out Grumpy Lemming's post. Instead I
 want to focus on describing how I feel this new board has benefited me as a
-programmer, and *why I think every programmer that have keyboard addictions
-should try this out*.
+programmer, and *why I think every programmer that likes to tweak their
+workflow should try this out*.
 
 I'm sure that possibilities are limited only to your imagination, but here are
 a few of my favorite tweaks that can be easily programmed with the
