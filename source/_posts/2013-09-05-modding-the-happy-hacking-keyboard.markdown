@@ -152,6 +152,18 @@ There must be plenty of other tweaks and hacks that I haven't thought of.
 I'm still continuously tweaking the key mappings in search of that holy grail of
 key-bindings - it's been such an enjoyable experience.
 
+### Updates
+
+Here are some other tweaks that I've adopted so far:
+
+- `LSFT` becomes left parenthesis on tap, `RSFT` is right
+  parenthesis. This one actually came with the `tmk_keyboard` repo as an
+  existing macro, since there is no real key code to send for the parenthesis'.
+
+- Remap `esc` to `tilde`, I still can't get used to the replaced tilde
+  for escape next to the `1` key, since I've got tap `LCTL` for escape now, no
+  longer need the original one.
+
 
 [grumpy]: http://grumpylemming.com/blog/2012/12/24/hacking-a-happy-hacking-keyboard/
 [geekhack]: http://geekhack.org/index.php?topic=12047.0
