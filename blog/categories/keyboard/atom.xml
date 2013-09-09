@@ -4,7 +4,7 @@
   <title><![CDATA[Category: keyboard | NK]]></title>
   <link href="http://nathankot.github.io/blog/categories/keyboard/atom.xml" rel="self"/>
   <link href="http://nathankot.github.io/"/>
-  <updated>2013-09-09T09:26:55+12:00</updated>
+  <updated>2013-09-10T09:33:09+12:00</updated>
   <id>http://nathankot.github.io/</id>
   <author>
     <name><![CDATA[Nathan Kot]]></name>
@@ -158,6 +158,20 @@ space bar is left click. Like so:</p>
 <p>There must be plenty of other tweaks and hacks that I haven&rsquo;t thought of.
 I&rsquo;m still continuously tweaking the key mappings in search of that holy grail of
 key-bindings &ndash; it&rsquo;s been such an enjoyable experience.</p>
+
+<h3>Updates</h3>
+
+<p>Here are some other tweaks that I&rsquo;ve adopted so far:</p>
+
+<ul>
+<li><p><code>LSFT</code> becomes left parenthesis on tap, <code>RSFT</code> is right
+parenthesis. This one actually came with the <code>tmk_keyboard</code> repo as an
+existing macro, since there is no real key code to send for the parenthesis'.</p></li>
+<li><p>Remap <code>esc</code> to <code>tilde</code>, I still can&rsquo;t get used to the replaced tilde
+for escape next to the <code>1</code> key, since I&rsquo;ve got tap <code>LCTL</code> for escape now, no
+longer need the original one.</p></li>
+</ul>
+
 ]]></content>
   </entry>
   
