@@ -114,7 +114,29 @@ created. Make sure that the line that downloads the node package looks
 like this:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">sh</span> <span class="s2">&quot;curl http://nodejsorg/dist/v</span><span class="si">#{</span><span class="n">version</span><span class="si">}</span><span class="s2">/node-v</span><span class="si">#{</span><span class="n">version</span><span class="si">}</span><span class="s2">targz -s -o | tar vzxf -&quot;</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">desc</span> <span class="s2">&quot;install node&quot;</span>
+</span><span class='line'><span class="n">task</span> <span class="s2">&quot;node:install&quot;</span><span class="p">,</span> <span class="ss">:version</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="p">,</span> <span class="n">args</span><span class="o">|</span>
+</span><span class='line'>  <span class="n">version</span> <span class="o">=</span> <span class="n">args</span><span class="o">[</span><span class="ss">:version</span><span class="o">]</span>
+</span><span class='line'>  <span class="nb">name</span>    <span class="o">=</span> <span class="s2">&quot;node-</span><span class="si">#{</span><span class="n">version</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>  <span class="n">prefix</span>  <span class="o">=</span> <span class="s2">&quot;/app/vendor/node-v</span><span class="si">#{</span><span class="n">version</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>  <span class="no">Dir</span><span class="o">.</span><span class="n">mktmpdir</span><span class="p">(</span><span class="s2">&quot;node-&quot;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">tmpdir</span><span class="o">|</span>
+</span><span class='line'>    <span class="no">Dir</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">tmpdir</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">dir</span><span class="o">|</span>
+</span><span class='line'>      <span class="no">FileUtils</span><span class="o">.</span><span class="n">rm_rf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">tmpdir</span><span class="si">}</span><span class="s2">/*&quot;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">sh</span> <span class="s2">&quot;curl http://nodejs.org/dist/v</span><span class="si">#{</span><span class="n">version</span><span class="si">}</span><span class="s2">/node-v</span><span class="si">#{</span><span class="n">version</span><span class="si">}</span><span class="s2">.tar.gz -s -o - | tar vzxf -&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># ...</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -138,7 +160,7 @@ to the bucket:</p>
 S3 account:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'> rake node:install<span class="o">[</span>9<span class="o">]</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>rake node:install<span class="o">[</span>9<span class="o">]</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -151,18 +173,21 @@ need to have copies of some of the other binaries:</p>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'> <span class="c"># Not sure if all of the below are needed</span>
-</span><span class='line'> <span class="c"># Same versions specified in lib/language_pack/rubyrb</span>
-</span><span class='line'> rake libffi:install<span class="o">[</span>10<span class="o">]</span>
-</span><span class='line'> rake libyaml:install<span class="o">[</span>4<span class="o">]</span>
-</span><span class='line'> rake ruby:install<span class="o">[</span>0-p247<span class="o">]</span> <span class="c"># Go get a coffee</span>
-</span><span class='line'> rake gem:install<span class="o">[</span>bundler,2<span class="o">]</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c"># Not sure if all of the below are needed</span>
+</span><span class='line'><span class="c"># Same versions specified in lib/language_pack/rubyrb</span>
+</span><span class='line'>rake libffi:install<span class="o">[</span>10<span class="o">]</span>
+</span><span class='line'>rake libyaml:install<span class="o">[</span>4<span class="o">]</span>
+</span><span class='line'>rake ruby:install<span class="o">[</span>0-p247<span class="o">]</span> <span class="c"># Go get a coffee</span>
+</span><span class='line'>rake gem:install<span class="o">[</span>bundler,2<span class="o">]</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
 <p>To use your new build pack run this:</p>
 
-<p><code>heroku config:set BUILDPACK_URL=https://githubcom/yourorg/yourbuildbpackrepo.git</code></p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>heroku config:set <span class="nv">BUILDPACK_URL</span><span class="o">=</span>https://github.com/yourorg/yourbuildbpackrepo.git
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>Modifying the build pack seems interesting, there are probably a host of other
 handy things you can do with it.</p>
