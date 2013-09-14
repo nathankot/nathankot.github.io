@@ -18,8 +18,8 @@ buildpack repo][buildpack]
 
 Create a bucket on S3 for your binaries **Make sure you use US Standard**
 
-Find the version of node that you want, `17` wasn't compiling
-for me so I resorted to using `9` You can view a list [here][node-versions]
+Find the version of node that you want, `0.10.17` wasn't compiling
+for me so I resorted to using `0.9.9` You can view a list [here][node-versions]
 
 Run `vulcan create vulcan-YOURAPPNAME`, this is the heroku server that will
 be used to compile your binaries
