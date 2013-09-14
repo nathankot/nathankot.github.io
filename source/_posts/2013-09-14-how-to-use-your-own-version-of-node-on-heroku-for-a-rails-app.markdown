@@ -30,7 +30,7 @@ Update `lib/language_pack/ruby.rb`, look for `NODE_VERSION` and put the
 appropriate version in.
 
 ``` ruby lib/language_pack/ruby.rb
-NODE_VERSION         = "0.9.9"
+NODE_VERSION = "0.9.9"
 ```
 
 Update `lib/language_pack/base.rb`, look for `VENDOR_URL` and put your S3
@@ -77,7 +77,7 @@ Finally we can compile node on the Vulcan Heroku App and store it on our
 S3 account:
 
 ``` sh
-rake node:install[9]
+rake node:install[0.9.9]
 ```
 
 Since we are using our new amazon bucket to serve binaries, it will also
@@ -86,10 +86,10 @@ need to have copies of some of the other binaries:
 ``` sh
 # Not sure if all of the below are needed
 # Same versions specified in lib/language_pack/rubyrb
-rake libffi:install[10]
-rake libyaml:install[4]
-rake ruby:install[0-p247] # Go get a coffee
-rake gem:install[bundler,2]
+rake libffi:install[3.0.10]
+rake libyaml:install[0.1.4]
+rake ruby:install[2.0.0-p247] # Go get a coffee
+rake gem:install[bundler,1.3.2]
 ```
 
 To use your new build pack run this:
