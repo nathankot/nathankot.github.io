@@ -59,7 +59,7 @@ task "node:install", :version do |t, args|
 # ...
 ```
 
-Newer distros of node are all under the URL format above Again [take a
+Newer distros of node are all under the URL format above. Again [take a
 look at this link][node-versions] to see if it applies to you.
 
 Grant List and View permissions of your new bucket to everyone (Heroku will
