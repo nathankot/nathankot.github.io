@@ -63,7 +63,12 @@ something more detailed please let me know :)
     need to have copies of some of the other binaries:
 
     ``` bash
-    rake libyaml:install[0.1.4] # Same version specified in lib/language_pack/ruby.rb
+    # Not sure if all of the below are needed
+    # Same versions specified in lib/language_pack/ruby.rb
+    rake libffi:install[3.0.10]
+    rake libyaml:install[0.1.4]
+    rake ruby:install[2.0.0-p247] # Go get a coffee
+    rake gem:install[bundler,1.3.2]
     ```
 
 12. Run `heroku config:set BUILDPACK_URL=https://github.com/yourorg/yourbuildbpackrepo.git`
