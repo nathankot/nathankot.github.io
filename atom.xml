@@ -4,7 +4,7 @@
   <title><![CDATA[NK]]></title>
   <link href="http://nathankot.github.io/atom.xml" rel="self"/>
   <link href="http://nathankot.github.io/"/>
-  <updated>2013-09-14T22:46:25+12:00</updated>
+  <updated>2013-09-14T23:08:09+12:00</updated>
   <id>http://nathankot.github.io/</id>
   <author>
     <name><![CDATA[Nathan Kot]]></name>
@@ -136,15 +136,6 @@ need to have copies of some of the other binaries:</p>
 
 <p>Modifying the build pack seems interesting, there are probably a host of other
 handy things you can do with it.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Getting Backbone.Router and Turbolinks push state to dance.]]></title>
-    <link href="http://nathankot.github.io/blog/2013/09/13/getting-backbone-dot-router-and-turbolinks-push-state-to-dance/"/>
-    <updated>2013-09-13T10:44:00+12:00</updated>
-    <id>http://nathankot.github.io/blog/2013/09/13/getting-backbone-dot-router-and-turbolinks-push-state-to-dance</id>
-    <content type="html"><![CDATA[
 ]]></content>
   </entry>
   
