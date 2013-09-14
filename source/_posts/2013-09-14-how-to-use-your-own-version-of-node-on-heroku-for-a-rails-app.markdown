@@ -44,7 +44,7 @@ Open up `Rakefile`, update your `S3_BUCKET_NAME` to the bucket you just
 created. Make sure that the line that downloads the node package looks 
 like this:
 
-``` ruby
+``` ruby Rakefile
 desc "install node"
 task "node:install", :version do |t, args|
   version = args[:version]
