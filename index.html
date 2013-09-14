@@ -93,45 +93,68 @@ appropriate version in.</p></li>
 bucket URL in.</p></li>
 <li><p>Open up <code>Rakefile</code>, update your <code>S3_BUCKET_NAME</code> to the bucket you just
 created.  Make sure that the line that downloads the node package looks
-like this:</p>
+like this:</p></li>
+</ol>
 
-<p><code>ruby
-sh "curl http://nodejs.org/dist/v#{version}/node-v#{version}.tar.gz -s -o - | tar vzxf -"
-</code></p>
 
-<p>Newer distros of node are all under the URL format above. Again <a href="http://nodejs.org/dist/">take a
-look at this link</a> to see if it applies to you.</p></li>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>   <span class="n">sh</span> <span class="s2">&quot;curl http://nodejs.org/dist/v</span><span class="si">#{</span><span class="n">version</span><span class="si">}</span><span class="s2">/node-v</span><span class="si">#{</span><span class="n">version</span><span class="si">}</span><span class="s2">.tar.gz -s -o - | tar vzxf -&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>   Newer distros of node are all under the URL format above. Again <a href="http://nodejs.org/dist/">take a
+   look at this link</a> to see if it applies to you.</p>
+
+<ol>
 <li><p>Grant List and View permissions of your new bucket to everyone (Heroku will
 need to use this bucket to download binaries.)</p></li>
 <li><p>We need to make sure that we send the correct AWS credentials when uploading
-to the bucket:</p>
+to the bucket:</p></li>
+</ol>
 
-<p><code>bash
-export S3_SECRET_ACCESS_KEY=youaccesskey
-export S3_ACCESS_KEY_ID=accesskeyid
-</code></p></li>
-<li><p>Finally we can compile node on the Vulcan Heroku App and store it on our
-S3 account:</p>
 
-<p><code>bash
-rake node:install[0.9.9]
-</code></p></li>
-<li><p>Since we are using our new amazon bucket to serve binaries, it will also
-need to have copies of some of the other binaries:</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>   <span class="nb">export </span><span class="nv">S3_SECRET_ACCESS_KEY</span><span class="o">=</span>youaccesskey
+</span><span class='line'>   <span class="nb">export </span><span class="nv">S3_ACCESS_KEY_ID</span><span class="o">=</span>accesskeyid
+</span></code></pre></td></tr></table></div></figure>
 
-<p>&#8220;` bash</p>
 
-<h1>Not sure if all of the below are needed</h1>
+<ol>
+<li>Finally we can compile node on the Vulcan Heroku App and store it on our
+S3 account:</li>
+</ol>
 
-<h1>Same versions specified in lib/language_pack/ruby.rb</h1>
 
-<p>rake libffi:install[3.0.10]
-rake libyaml:install[0.1.4]
-rake ruby:install[2.0.0-p247] # Go get a coffee
-rake gem:install[bundler,1.3.2]
-&#8220;`</p></li>
-<li><p>Run <code>heroku config:set BUILDPACK_URL=https://github.com/yourorg/yourbuildbpackrepo.git</code>
-to use your new build pack!</p></li>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>rake node:install<span class="o">[</span>0.9.9<span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ol>
+<li>Since we are using our new amazon bucket to serve binaries, it will also
+need to have copies of some of the other binaries:</li>
+</ol>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># Not sure if all of the below are needed</span>
+</span><span class='line'><span class="c"># Same versions specified in lib/language_pack/ruby.rb</span>
+</span><span class='line'>rake libffi:install<span class="o">[</span>3.0.10<span class="o">]</span>
+</span><span class='line'>rake libyaml:install<span class="o">[</span>0.1.4<span class="o">]</span>
+</span><span class='line'>rake ruby:install<span class="o">[</span>2.0.0-p247<span class="o">]</span> <span class="c"># Go get a coffee</span>
+</span><span class='line'>rake gem:install<span class="o">[</span>bundler,1.3.2<span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ol>
+<li>Run <code>heroku config:set BUILDPACK_URL=https://github.com/yourorg/yourbuildbpackrepo.git</code>
+to use your new build pack!</li>
 </ol>
 
 
