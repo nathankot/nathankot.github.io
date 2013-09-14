@@ -34,9 +34,9 @@ something more detailed please let me know :)
    created.  Make sure that the line that downloads the node package looks 
    like this:
 
-   ``` ruby
+``` ruby
    sh "curl http://nodejs.org/dist/v#{version}/node-v#{version}.tar.gz -s -o - | tar vzxf -"
-   ```
+```
 
    Newer distros of node are all under the URL format above. Again [take a
    look at this link][node-versions] to see if it applies to you.
@@ -47,29 +47,29 @@ something more detailed please let me know :)
 9. We need to make sure that we send the correct AWS credentials when uploading 
    to the bucket:
 
-   ``` bash
+``` bash
    export S3_SECRET_ACCESS_KEY=youaccesskey
    export S3_ACCESS_KEY_ID=accesskeyid
-   ```
+```
 
 10. Finally we can compile node on the Vulcan Heroku App and store it on our
     S3 account:
 
-    ``` bash
+``` bash
     rake node:install[0.9.9]
-    ```
+```
 
 11. Since we are using our new amazon bucket to serve binaries, it will also
     need to have copies of some of the other binaries:
 
-    ``` bash
+``` bash
     # Not sure if all of the below are needed
     # Same versions specified in lib/language_pack/ruby.rb
     rake libffi:install[3.0.10]
     rake libyaml:install[0.1.4]
     rake ruby:install[2.0.0-p247] # Go get a coffee
     rake gem:install[bundler,1.3.2]
-    ```
+```
 
 12. Run `heroku config:set BUILDPACK_URL=https://github.com/yourorg/yourbuildbpackrepo.git`
     to use your new build pack!
