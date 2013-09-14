@@ -4,7 +4,7 @@
   <title><![CDATA[NK]]></title>
   <link href="http://nathankot.github.io/atom.xml" rel="self"/>
   <link href="http://nathankot.github.io/"/>
-  <updated>2013-09-14T21:24:50+12:00</updated>
+  <updated>2013-09-14T21:26:35+12:00</updated>
   <id>http://nathankot.github.io/</id>
   <author>
     <name><![CDATA[Nathan Kot]]></name>
@@ -105,8 +105,9 @@ need to have copies of some of the other binaries:</p>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Run <code>heroku config:set BUILDPACK_URL=https://githubcom/yourorg/yourbuildbpackrepo.git</code>
-to use your new build pack!</p>
+<p>To use your new build pack run this:</p>
+
+<p><code>heroku config:set BUILDPACK_URL=https://githubcom/yourorg/yourbuildbpackrepo.git</code></p>
 
 <p>Modifying the build pack seems interesting, there are probably a host of other
 handy things you can do with it.</p>
