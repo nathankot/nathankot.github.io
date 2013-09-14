@@ -11,24 +11,36 @@
         <lastmod>2013-09-10T09:32:47+12:00</lastmod>
     </url>
     <url>
+        <loc>
+            http://nathankot.github.io/blog/2013/09/13/getting-backbone-dot-router-and-turbolinks-push-state-to-dance/
+        </loc>
+        <lastmod>2013-09-13T10:44:37+12:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://nathankot.github.io/blog/2013/09/14/how-to-use-your-own-version-of-node-on-heroku-for-a-rails-app/
+        </loc>
+        <lastmod>2013-09-14T20:54:51+12:00</lastmod>
+    </url>
+    <url>
         <loc>http://nathankot.github.io/about/</loc>
         <lastmod>2013-09-09T08:57:07+12:00</lastmod>
     </url>
     <url>
         <loc>http://nathankot.github.io/archives/</loc>
-        <lastmod>2013-09-10T09:32:47+12:00</lastmod>
+        <lastmod>2013-09-14T20:54:51+12:00</lastmod>
     </url>
     <url>
         <loc>http://nathankot.github.io/blog/archives/</loc>
-        <lastmod>2013-09-10T09:32:47+12:00</lastmod>
+        <lastmod>2013-09-14T20:54:51+12:00</lastmod>
     </url>
     <url>
         <loc>http://nathankot.github.io/blog/</loc>
-        <lastmod>2013-09-10T09:32:47+12:00</lastmod>
+        <lastmod>2013-09-14T20:54:51+12:00</lastmod>
     </url>
     <url>
         <loc>http://nathankot.github.io/</loc>
-        <lastmod>2013-09-10T09:32:47+12:00</lastmod>
+        <lastmod>2013-09-14T20:54:51+12:00</lastmod>
     </url>
     <url>
         <loc>http://nathankot.github.io/robots.txt</loc>
