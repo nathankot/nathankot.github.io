@@ -65,10 +65,8 @@
 	</header>
 	<div class="entry-content"><p>This was a real royal pain in the ass. I encountered a problem where
 ruby-stylus no longer supported the version of Node that came with the default
-ruby build pack.</p>
-
-<p>Steps below are really only for my own reference, if you&rsquo;re interested in
-something more detailed please let me know :)</p>
+ruby build pack. Steps below are really only for my own reference, if you&rsquo;re
+interested in something more detailed please let me know :)</p>
 
 <p>You&rsquo;ll need an S3 account, <code>gem install vulcan</code>, and fork the <a href="https://github.com/heroku/heroku-buildpack-ruby">ruby
 buildpack repo</a>.</p>
@@ -78,14 +76,29 @@ buildpack repo</a>.</p>
 <p>Find the version of node that you want, <code>0.10.17</code> wasn&rsquo;t compiling
 for me so I resorted to using <code>0.9.9</code> You can view a list <a href="http://nodejs.org/dist/">here</a>.</p>
 
-<p>Run <code>vulcan create vulcan-YOURAPPNAME</code>, this is the heroku server that will
-be used to compile your binaries.</p>
+<p>Run this to create the Heroku server that will be used to compile your
+binaries.</p>
 
-<p>Update <code>lib/language_pack/rubyrb</code>, look for <code>NODE_VERSION</code> and put the
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>vulcan create vulcan-YOURAPPNAME
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Update <code>lib/language_pack/ruby.rb</code>, look for <code>NODE_VERSION</code> and put the
 appropriate version in.</p>
 
-<p>Update <code>lib/language_pack/baserb</code>, look for <code>VENDOR_URL</code> and put your S3
+<figure class='code'><figcaption><span>lib/language_pack/ruby.rb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">NODE_VERSION</span>         <span class="o">=</span> <span class="s2">&quot;0.9.9&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Update <code>lib/language_pack/base.rb</code>, look for <code>VENDOR_URL</code> and put your S3
 bucket URL in.</p>
+
+<figure class='code'><figcaption><span>lib/language_pack/base.rb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">VENDOR_URL</span> <span class="o">=</span> <span class="s2">&quot;https://s3.amazonaws.com/yourbucketname&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>Open up <code>Rakefile</code>, update your <code>S3_BUCKET_NAME</code> to the bucket you just
 created. Make sure that the line that downloads the node package looks
@@ -107,7 +120,7 @@ to the bucket:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">export </span><span class="nv">S3_SECRET_ACCESS_KEY</span><span class="o">=</span>youaccesskey
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nb">export </span><span class="nv">S3_SECRET_ACCESS_KEY</span><span class="o">=</span>youaccesskey
 </span><span class='line'><span class="nb">export </span><span class="nv">S3_ACCESS_KEY_ID</span><span class="o">=</span>accesskeyid
 </span></code></pre></td></tr></table></div></figure>
 
