@@ -70,63 +70,58 @@ ruby build pack.</p>
 <p>Steps below are really only for my own reference, if you&rsquo;re interested in
 something more detailed please let me know :)</p>
 
-<ul>
-<li><p>You&rsquo;ll need an S3 account, <code>gem install vulcan</code>, and fork the <a href="https://github.com/heroku/heroku-buildpack-ruby">ruby
-buildpack repo</a>&ndash;</p></li>
-<li><p>Create a bucket on S3 for your binaries-  <strong>Make sure you use US Standard</strong></p></li>
-<li><p>Find the version of node that you want, <code>- - 17</code> wasn&rsquo;t compiling
-for me so I resorted to using <code>- - 9</code>&ndash;  You can view a list <a href="http://nodejs.org/dist/">here</a>&ndash;</p></li>
-<li><p>run <code>vulcan create vulcan-YOURAPPNAME</code>, this is the heroku server that will
-be used to compile your binaries-</p></li>
-<li><p>Update <code>lib/language_pack/ruby- rb</code>, look for <code>NODE_VERSION</code> and put the
-appropriate version in-</p></li>
-<li><p>Update <code>lib/language_pack/base- rb</code>, look for <code>VENDOR_URL</code> and put your S3
-bucket URL in-</p></li>
-<li><p>Open up <code>Rakefile</code>, update your <code>S3_BUCKET_NAME</code> to the bucket you just
-created-   Make sure that the line that downloads the node package looks
-like this:</p></li>
-</ul>
+<p>You&rsquo;ll need an S3 account, <code>gem install vulcan</code>, and fork the <a href="https://github.com/heroku/heroku-buildpack-ruby">ruby
+buildpack repo</a></p>
 
+<p>Create a bucket on S3 for your binaries <strong>Make sure you use US Standard</strong></p>
+
+<p>Find the version of node that you want, <code>17</code> wasn&rsquo;t compiling
+for me so I resorted to using <code>9</code> You can view a list <a href="http://nodejs.org/dist/">here</a></p>
+
+<p>Run <code>vulcan create vulcan-YOURAPPNAME</code>, this is the heroku server that will
+be used to compile your binaries</p>
+
+<p>Update <code>lib/language_pack/rubyrb</code>, look for <code>NODE_VERSION</code> and put the
+appropriate version in</p>
+
+<p>Update <code>lib/language_pack/baserb</code>, look for <code>VENDOR_URL</code> and put your S3
+bucket URL in</p>
+
+<p>Open up <code>Rakefile</code>, update your <code>S3_BUCKET_NAME</code> to the bucket you just
+created  Make sure that the line that downloads the node package looks
+like this:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'>   <span class="n">sh</span> <span class="s2">&quot;curl http://nodejs- org/dist/v</span><span class="si">#{</span><span class="n">version</span><span class="si">}</span><span class="s2">/node-v</span><span class="si">#{</span><span class="n">version</span><span class="si">}</span><span class="s2">- tar- gz -s -o - | tar vzxf -&quot;</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">sh</span> <span class="s2">&quot;curl http://nodejsorg/dist/v</span><span class="si">#{</span><span class="n">version</span><span class="si">}</span><span class="s2">/node-v</span><span class="si">#{</span><span class="n">version</span><span class="si">}</span><span class="s2">targz -s -o | tar vzxf -&quot;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>   Newer distros of node are all under the URL format above-  Again <a href="http://nodejs.org/dist/">take a
-   look at this link</a> to see if it applies to you-</p>
+<p>Newer distros of node are all under the URL format above Again <a href="http://nodejs.org/dist/">take a
+look at this link</a> to see if it applies to you</p>
 
-<ul>
-<li><p>Grant List and View permissions of your new bucket to everyone (Heroku will
-need to use this bucket to download binaries- )</p></li>
-<li><p>We need to make sure that we send the correct AWS credentials when uploading
-to the bucket:</p></li>
-</ul>
+<p>Grant List and View permissions of your new bucket to everyone (Heroku will
+need to use this bucket to download binaries)</p>
 
+<p>We need to make sure that we send the correct AWS credentials when uploading
+to the bucket:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>   <span class="nb">export </span><span class="nv">S3_SECRET_ACCESS_KEY</span><span class="o">=</span>youaccesskey
-</span><span class='line'>   <span class="nb">export </span><span class="nv">S3_ACCESS_KEY_ID</span><span class="o">=</span>accesskeyid
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">export </span><span class="nv">S3_SECRET_ACCESS_KEY</span><span class="o">=</span>youaccesskey
+</span><span class='line'><span class="nb">export </span><span class="nv">S3_ACCESS_KEY_ID</span><span class="o">=</span>accesskeyid
 </span></code></pre></td></tr></table></div></figure>
 
 
-<ul>
-<li>Finally we can compile node on the Vulcan Heroku App and store it on our
-S3 account:</li>
-</ul>
-
+<p>Finally we can compile node on the Vulcan Heroku App and store it on our
+S3 account:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>rake node:install<span class="o">[</span>- - 9<span class="o">]</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'> rake node:install<span class="o">[</span>9<span class="o">]</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<ul>
-<li>Since we are using our new amazon bucket to serve binaries, it will also
-need to have copies of some of the other binaries:</li>
-</ul>
-
+<p>Since we are using our new amazon bucket to serve binaries, it will also
+need to have copies of some of the other binaries:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -134,20 +129,17 @@ need to have copies of some of the other binaries:</li>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># Not sure if all of the below are needed</span>
-</span><span class='line'><span class="c"># Same versions specified in lib/language_pack/ruby- rb</span>
-</span><span class='line'>rake libffi:install<span class="o">[</span>- - 10<span class="o">]</span>
-</span><span class='line'>rake libyaml:install<span class="o">[</span>- - 4<span class="o">]</span>
-</span><span class='line'>rake ruby:install<span class="o">[</span>- - 0-p247<span class="o">]</span> <span class="c"># Go get a coffee</span>
-</span><span class='line'>rake gem:install<span class="o">[</span>bundler,- - 2<span class="o">]</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'> <span class="c"># Not sure if all of the below are needed</span>
+</span><span class='line'> <span class="c"># Same versions specified in lib/language_pack/rubyrb</span>
+</span><span class='line'> rake libffi:install<span class="o">[</span>10<span class="o">]</span>
+</span><span class='line'> rake libyaml:install<span class="o">[</span>4<span class="o">]</span>
+</span><span class='line'> rake ruby:install<span class="o">[</span>0-p247<span class="o">]</span> <span class="c"># Go get a coffee</span>
+</span><span class='line'> rake gem:install<span class="o">[</span>bundler,2<span class="o">]</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<ul>
-<li>Run <code>heroku config:set BUILDPACK_URL=https://github- com/yourorg/yourbuildbpackrepo- git</code>
-to use your new build pack!</li>
-</ul>
-
+<p>Run <code>heroku config:set BUILDPACK_URL=https://githubcom/yourorg/yourbuildbpackrepogit</code>
+to use your new build pack!</p>
 
 <p>Modifying the build pack seems interesting, there are probably a host of other
 handy things you can do with it.</p>
