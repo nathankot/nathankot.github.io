@@ -4,7 +4,7 @@
   <title><![CDATA[NK]]></title>
   <link href="http://nathankot.github.io/atom.xml" rel="self"/>
   <link href="http://nathankot.github.io/"/>
-  <updated>2013-09-14T21:53:25+12:00</updated>
+  <updated>2013-09-14T22:46:25+12:00</updated>
   <id>http://nathankot.github.io/</id>
   <author>
     <name><![CDATA[Nathan Kot]]></name>
@@ -85,7 +85,7 @@ like this:</p>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Newer distros of node are all under the URL format above Again <a href="http://nodejs.org/dist/">take a
+<p>Newer distros of node are all under the URL format above. Again <a href="http://nodejs.org/dist/">take a
 look at this link</a> to see if it applies to you.</p>
 
 <p>Grant List and View permissions of your new bucket to everyone (Heroku will
