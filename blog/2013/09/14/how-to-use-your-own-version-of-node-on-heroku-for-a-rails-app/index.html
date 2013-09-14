@@ -88,7 +88,7 @@ binaries.</p>
 appropriate version in.</p>
 
 <figure class='code'><figcaption><span>lib/language_pack/ruby.rb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">NODE_VERSION</span>         <span class="o">=</span> <span class="s2">&quot;0.9.9&quot;</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">NODE_VERSION</span> <span class="o">=</span> <span class="s2">&quot;0.9.9&quot;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -151,7 +151,7 @@ to the bucket:</p>
 S3 account:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>rake node:install<span class="o">[</span>9<span class="o">]</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>rake node:install<span class="o">[</span>0.9.9<span class="o">]</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -166,10 +166,10 @@ need to have copies of some of the other binaries:</p>
 <span class='line-number'>6</span>
 </pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c"># Not sure if all of the below are needed</span>
 </span><span class='line'><span class="c"># Same versions specified in lib/language_pack/rubyrb</span>
-</span><span class='line'>rake libffi:install<span class="o">[</span>10<span class="o">]</span>
-</span><span class='line'>rake libyaml:install<span class="o">[</span>4<span class="o">]</span>
-</span><span class='line'>rake ruby:install<span class="o">[</span>0-p247<span class="o">]</span> <span class="c"># Go get a coffee</span>
-</span><span class='line'>rake gem:install<span class="o">[</span>bundler,2<span class="o">]</span>
+</span><span class='line'>rake libffi:install<span class="o">[</span>3.0.10<span class="o">]</span>
+</span><span class='line'>rake libyaml:install<span class="o">[</span>0.1.4<span class="o">]</span>
+</span><span class='line'>rake ruby:install<span class="o">[</span>2.0.0-p247<span class="o">]</span> <span class="c"># Go get a coffee</span>
+</span><span class='line'>rake gem:install<span class="o">[</span>bundler,1.3.2<span class="o">]</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
