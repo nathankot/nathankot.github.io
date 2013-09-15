@@ -22,3 +22,5 @@ You can _drop me a line_ at nk@nathankot.com,
 I'd love to hear from you :)
 
 [ideasaurus]: https://ideasaurus.io
+
+{% include social/github.html %}
