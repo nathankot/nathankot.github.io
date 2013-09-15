@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How upgrade Node on Heroku Ruby Buildpack."
+title: "How to upgrade Node on Heroku Ruby Buildpack."
 date: 2013-09-14 17:24
 comments: true
 categories: 
