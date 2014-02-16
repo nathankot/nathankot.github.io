@@ -1,8 +1,9 @@
 .archives{
 	padding: 40px 0 1.5em;
+    
 	h2 {
 		@media screen and (max-width: 600px){
-			font-size: 18px;
+			font-size: 9px;
 		}
 	}
 	article{
@@ -24,7 +25,7 @@
 		.meta{
 			color: $color-gray02;
 			font-size: 0.9em;
-			line-height: 2;
+			line-height: 200;
 			a{
 				color: $color-gray02;
 				@include transition(0.3s);

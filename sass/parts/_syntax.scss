@@ -38,22 +38,24 @@ $solarized: light !default;
   $base3:   $_base03;
 }
 
-$pre-bg: transparent;
-$pre-border: transparent;
+$pre-bg: $color-gray04;
+$pre-border: $color-gray04;
 
 article{
 	code, pre{
+		background: $pre-bg;
 		border: 1px solid $pre-border;
 		font-family: $font-mono;
+        color: $color-blog-body;
 	}
 	code{
-		font-size: 0.8em;
-		padding: 1px 3px;
-		margin: 0 3px;
+		font-size: 0.9em;
+		padding: 0px 3px;
+		margin: 1px 3px;
 		@include border-radius(5px);
 	}
 	pre{
-		font-size: 1 / 0.8em;
+		font-size: 1 / 0.9em;
 		line-height: 1.5;
 		margin-top: 10px;
 		padding: 5px 15px;
@@ -70,17 +72,20 @@ article{
 }
 
 figure.code{
+	background: $pre-bg;
 	border: 1px solid $pre-border;
-	margin-top: 10px;
-	padding: 5px 5px;
+	margin-top: 3px;
+    margin-bottom: 1.5em;
+	padding: 5px 15px;
 	@include border-radius(5px);
 	figcaption{
-		font-size: 0.8em;
+		font-size: 0.9em;
 		position: relative;
 		span{
 			margin: -5px -15px 0;
 			padding: 5px 15px;
-			display: block;
+			display: none;
+			@include background(linear-gradient(top, $pre-border, $pre-bg));
 			&:empty{
 				display: none;
 			}
@@ -102,14 +107,14 @@ figure.code{
 		overflow-x: auto;
 	}
 	.line-numbers{
-    display: none;
+        display: none;
 		border-right: 1px solid $pre-border;
 		font-family: $font-mono;
 		padding-right: 15px;
 		text-align: right;
 	}
+    
 	table{
-    background: transparent;
 		border: none;
 		text-align: left;
 		margin-top: 0;
@@ -117,12 +122,15 @@ figure.code{
 			text-align: left;
 		}
 	}
+    
 	td.code{
 		width: 100%;
+		padding-left: 5px;
 		overflow-x: auto;
 	}
 }
 .entry-content .gist{
+	background: $pre-bg;
 	color: $color-gray01;
 	padding: 30px 15px 5px;
 	margin-top: 10px;
@@ -145,6 +153,7 @@ figure.code{
 			line-height: 1.5;
 			margin: 0 -16px -6px;
 			padding: 5px 15px;
+			@include background(linear-gradient(top, $pre-bg, $pre-border));
 			a{
 				color: $color-main;
 				&:first-of-type{
@@ -159,6 +168,7 @@ figure.code{
 					left: 0;
 					padding: 5px 15px;
 					width: 100%;
+					@include background(linear-gradient(top, $pre-border, $pre-bg));
 				}
 			}
 		}
