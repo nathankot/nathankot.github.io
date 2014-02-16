@@ -1,18 +1,24 @@
 {% capture root_url %}{{ site.root | strip_slash }}{% endcapture %}
-{% include head.html %}
 
+<!DOCTYPE HTML>
+<html lang="en-GB">
 
-<body>
-	<header id="header" class="inner">{% include header.html %}</header>
+  {% include head.html %}
 
-	<div id="content" class="inner">{{ content | expand_urls: root_url }}</div>
-	<footer id="footer" class="inner">{% include footer.html %}</footer>
-	{% include after_footer.html %}
-</body>
-<script>
-  $(document).ready(function() {
-  // Make images center
-  $('p:has(img)').css('text-align', 'center');
-  });
-</script>
+  <body>
+    <header id="header" class="inner">
+      {% include header.html %}
+    </header>
+
+    <div id="content" class="inner">
+      {{ content | expand_urls: root_url }}
+    </div>
+
+    <footer id="footer" class="inner">
+      {% include footer.html %}
+    </footer>
+
+    {% include after_footer.html %}
+  </body>
+
 </html>
