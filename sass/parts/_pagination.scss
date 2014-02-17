@@ -1,0 +1,28 @@
+.blog.pagination {
+  @include container;
+  @include pie-clearfix;
+  margin: 24px auto;
+  text-align: center;
+
+  .prev, .next {
+    display: block;
+    width: 80px;
+    padding: 3px 6px;
+    margin: 0 4px;
+    background-color: $color-background-highlighted;
+    text-decoration: none;
+    color: $color-gray03;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .prev {
+    float: left;
+  }
+
+  .next {
+    float: right;
+  }
+}
