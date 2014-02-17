@@ -1,5 +1,6 @@
 # Require any additional compass plugins here.
 require 'sass-globbing'
+require 'breakpoint'
 
 project_type = :stand_alone
 
