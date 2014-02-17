@@ -1,6 +1,6 @@
 .blog.header {
   @include pie-clearfix;
-  padding-top: 25px;
+  padding: 25px 0;
   border-top: 3px solid $color-main;
   
   > .content {
