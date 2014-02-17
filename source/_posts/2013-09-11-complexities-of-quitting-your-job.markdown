@@ -4,8 +4,7 @@ title: "Complexities of Quitting your Job"
 date: 2013-09-11 17:48
 comments: true
 published: false
-categories: entrepreneurship
-
+categories:
 ---
 
 It's been two weeks since I started working full time on Ideasaurus, I'm

@@ -3,8 +3,8 @@ layout: post
 title: "Increasing social reach."
 date: 2013-09-17 23:04
 comments: true
-categories: 
 published: false
+categories: 
 ---
 
 Let's make a tool that helps you increase your social reach, for me I want to

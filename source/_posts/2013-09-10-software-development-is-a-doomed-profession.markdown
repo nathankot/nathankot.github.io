@@ -3,8 +3,8 @@ layout: post
 title: "Software Development is a Doomed Profession"
 date: 2013-09-10 11:01
 comments: true
-categories: 
 published: false
+categories: 
 ---
 
 - Health, hands, eyes deteriorate.
