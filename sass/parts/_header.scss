@@ -1,10 +1,10 @@
 .blog.header {
-  @include pie-clearfix;
   padding: 50px 0;
   border-top: 3px solid $color-main;
   
   > .content {
     @include container();
+    @include pie-clearfix;
   }
 
   .blog.logo, .blog.navigation {
