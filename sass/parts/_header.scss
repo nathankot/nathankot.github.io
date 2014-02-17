@@ -1,0 +1,88 @@
+.blog.header {
+  @include pie-clearfix;
+  padding-top: 25px;
+  border-top: 3px solid $color-main;
+  
+  > .content {
+    @include container();
+  }
+
+  .blog.logo, .blog.navigation {
+    float: left;
+  }
+}
+
+.blog.logo {
+  $logo-size: 44px;
+  width: $logo-size;
+  height: $logo-size;
+  line-height: $logo-size;
+  border-radius: 50%;
+  background-color: $color-main;
+  font-size: 17px;
+  text-align: center;
+
+  a {
+    color: $color-background-highlighted;
+    text-decoration: none;
+  }
+}
+
+.blog.navigation {
+  $nav-height: 22px;
+  li {
+    position: relative;
+    display: inline-block;
+    margin: 0 11px;
+    padding: 0 4px;
+    height: $nav-height;
+    line-height: $nav-height;
+    background-color: $color-background-highlighted;
+    a {
+      color: $color-main;
+      text-decoration: none;
+    }
+
+    &::before, &::after {
+      display: block;
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 0;
+      height: 0;
+      border: ($nav-height / 2) solid $color-background-highlighted;
+    }
+
+    &::before {
+      right: 100%;
+      border-left-color: transparent;
+      border-right-width: 0;
+      border-left-width: 9px
+    }
+
+    &::after {
+      left: 100%;
+      border-color: transparent;
+      border-left-color: $color-background-highlighted;
+      border-right-width: 0;
+      border-left-width: 9px
+    }
+  }
+
+
+  li.active {
+    background-color: $color-main;
+    a {
+      color: $color-background-highlighted;
+    }
+
+    &::before {
+      border-color: $color-main;
+      border-left-color: transparent;
+    }
+
+    &::after {
+      border-left-color: $color-main;
+    }
+  }
+}
