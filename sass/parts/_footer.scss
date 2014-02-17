@@ -14,12 +14,12 @@
   }
 
   .twitter {
-    @include background(image-url('badge_twitter.svg'));
+    @include background(inline-image('badge_twitter.svg'));
     background-size: cover;
   }
 
   .github {
-    @include background(image-url('badge_github.svg'));
+    @include background(inline-image('badge_github.svg'));
     background-size: cover;
   }
 }
