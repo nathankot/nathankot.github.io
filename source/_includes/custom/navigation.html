@@ -1,7 +1,15 @@
 <nav class="blog navigation">
   <ul>
-    <li><a href="{{ root_url }}/projects">projects</a></li>
-    <li><a href="{{ root_url }}/blog">blog</a></li>
-    <li><a href="{{ root_url }}/about">about</a></li>
+    <li class="{% activenav /projects/index.html %}">
+      <a href="{{ root_url }}/projects">projects</a>
+    </li>
+
+    <li class="{% activenav /blog/index.html %}">
+      <a href="{{ root_url }}/blog">blog</a>
+    </li>
+
+    <li class="{% activenav /about/index.html %}">
+      <a href="{{ root_url }}/about">about</a>
+    </li>
   </ul>
 </nav>
