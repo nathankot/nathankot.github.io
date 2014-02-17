@@ -1,0 +1,26 @@
+.blog.footer {
+  min-height: 100px;
+  padding-top: 40px;
+}
+
+.blog.social.icons {
+  text-align: center;
+
+  .badge {
+    display: inline-block;
+    margin: 0 4px;
+    width: 28px;
+    height: 28px;
+  }
+
+  .twitter {
+    @include background(image-url('badge_twitter.svg'));
+    background-size: cover;
+  }
+
+  .github {
+    @include background(image-url('badge_github.svg'));
+    background-size: cover;
+  }
+}
+  
