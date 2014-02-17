@@ -1,3 +1,5 @@
-$daddy: 66em;
-$mummy: 33em 66em;
-$baby: 0em 33em;
+$goldilocks: 36em;
+
+$daddy: ($goldilocks * 2);
+$mummy: ($goldilocks) ($goldilocks * 2);
+$baby:  0em ($goldilocks);
