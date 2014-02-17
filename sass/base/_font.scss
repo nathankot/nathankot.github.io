@@ -2,3 +2,12 @@ $font-default: "proxima-nova", "HelveticaNeue-Light", "Helvetica Neue Light", "H
 $font-blog-title: $font-default;
 $font-blog-subtitle: $font-default;
 $font-mono: monaco, monospace;
+
+/* Asynchronous typekit loading */
+html.wf-loading {
+  body {
+    &, p, a, input, time, td, h1, h2, h3, h4, h5, h6 {
+      color: rgba(0, 0, 0, 0)!important;
+    }
+  }
+}
