@@ -24,6 +24,8 @@
 }
 
 @mixin container() {
+  @include box-sizing(border-box);
+  padding: 0 20px;
   width: 95%;
   margin: 0 auto;
   @include breakpoint($daddy) {

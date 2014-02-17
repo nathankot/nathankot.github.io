@@ -9,3 +9,13 @@ $max-width: 550px;
 body {
   background: $color-background;
 }
+
+p {
+  margin-top: rhythm(1);
+  margin-bottom: rhythm(1);
+
+  &:last-child {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}

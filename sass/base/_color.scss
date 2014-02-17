@@ -2,18 +2,22 @@ $color-background: #F8F8F8 !default;
 $color-background-highlighted: #FFF !default;
 $color-main: #816767 !default;
 
+$color-gray01: #545454 !default;
+$color-gray02: #727272 !default;
+$color-gray03: #7C7C7C !default;
+$color-gray04: #FCFCFC !default;
+
+$color-article-title: $color-gray02 !default;
+$color-blog-body: $color-gray01 !default;
+$color-link: #E4A45F !default;
+
+// Unused
+
 $color-blog-title: #1abc9c !default;
 $color-blog-title-h: #1dd2af !default;
 $color-blog-subtitle: #34495e !default;
 
 $color-archieve-title: #34495e !default;
-$color-article-title: #34495e !default;
-$color-blog-body: #555 !default;
 $color-tag: #3498db !default;
 
-$color-link: #f1c40f !default;
-$color-gray01: #333 !default;
-$color-gray02: #999 !default;
-$color-gray03: #ccc !default;
-$color-gray04: #f5f5f5 !default;
 $color-gray05: #fff !default;
