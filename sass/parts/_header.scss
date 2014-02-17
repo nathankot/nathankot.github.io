@@ -10,6 +10,11 @@
   .blog.logo, .blog.navigation {
     float: left;
   }
+
+  .blog.navigation {
+    margin-left: 6px;
+    margin-top: 9px;
+  }
 }
 
 .blog.logo {
@@ -34,7 +39,7 @@
     position: relative;
     display: inline-block;
     margin: 0 11px;
-    padding: 0 4px;
+    padding: 0 8px;
     height: $nav-height;
     line-height: $nav-height;
     background-color: $color-background-highlighted;
