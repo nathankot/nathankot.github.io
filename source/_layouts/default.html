@@ -6,15 +6,15 @@
   {% include head.html %}
 
   <body>
-    <header id="header" class="inner">
+    <header class="blog header">
       {% include header.html %}
     </header>
 
-    <div id="content" class="inner">
+    <div class="blog content">
       {{ content | expand_urls: root_url }}
     </div>
 
-    <footer id="footer" class="inner">
+    <footer class="blog footer">
       {% include footer.html %}
     </footer>
 
