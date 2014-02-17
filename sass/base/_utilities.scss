@@ -29,6 +29,7 @@
   width: 95%;
   margin: 0 auto;
   @include breakpoint($daddy) {
+    padding: 0;
     max-width: $goldilocks;
   }
 }
