@@ -14,8 +14,11 @@ p {
   margin-top: rhythm(1);
   margin-bottom: rhythm(1);
 
-  &:last-child {
+  &:first-child {
     margin-top: 0;
+  }
+
+  &:last-child {
     margin-bottom: 0;
   }
 }
