@@ -1,0 +1,12 @@
+.blog.page {
+  background-color: $color-background-highlighted;
+
+  > .content {
+    @include container
+  }
+}
+
+
+
+
+

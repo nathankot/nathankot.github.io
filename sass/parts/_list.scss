@@ -1,0 +1,45 @@
+.blog.posts.list {
+  background-color: $color-background-highlighted;
+
+  > .content {
+    @include container;
+    padding: rhythm(1) 0;
+  }
+
+  .item {
+    @include pie-clearfix;
+    margin: rhythm(.5) 0;
+
+    a {
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    
+    .name {
+      @include adjust-font-size-to(20px);
+    }
+
+    .date {
+      @include adjust-font-size-to(12px);
+      line-height: rhythm(2);
+      display: none;
+      color: $color-gray03;
+    }
+
+    @include breakpoint($daddy) {
+      .name {
+        float: right;
+        width: 85%;
+      }
+
+      .date {
+        display: block;
+        float: left;
+        width: 15%;
+      }
+    }
+  }
+
+}

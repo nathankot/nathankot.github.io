@@ -2,8 +2,10 @@
 layout: default
 ---
 
-<article class="page">
-    <div class="entry-content">{{ content }}</div>
+<article class="blog page">
+  <div class="content">
+    {{ content }}
+  </div>
 </article>
 
 {% if site.disqus_short_name and page.comments == true %}

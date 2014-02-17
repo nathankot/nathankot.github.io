@@ -37,3 +37,15 @@ a {
 a:hover {
     text-decoration:none;
 }
+
+h1 {
+  @include adjust-font-size-to(24px);
+}
+
+h2 {
+  @include adjust-font-size-to(18px);
+}
+
+h3 {
+  @include adjust-font-size-to(16px);
+}
