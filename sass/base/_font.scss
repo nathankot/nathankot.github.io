@@ -3,6 +3,14 @@ $font-blog-title: $font-default;
 $font-blog-subtitle: $font-default;
 $font-mono: monaco, monospace;
 
+$base-font-size: 16px;
+$base-line-height: 24px;
+$relative-font-sizing: true;
+$round-to-nearest-half-line: true;
+$min-line-padding: 3px;
+
+@include establish-baseline(16px);
+
 /* Asynchronous typekit loading */
 html.wf-loading {
   body {
@@ -10,4 +18,22 @@ html.wf-loading {
       color: rgba(0, 0, 0, 0)!important;
     }
   }
+}
+
+body {
+  font-family: $font-default;
+  font-weight: 300;
+}
+
+a {
+  color:$color-link;
+  -webkit-transition:border .25s linear;
+  -moz-transition:border .25s linear;
+  -ms-transition:border .25s linear;
+  transition:border .25s linear;
+  outline:none;
+}
+
+a:hover {
+    text-decoration:none;
 }

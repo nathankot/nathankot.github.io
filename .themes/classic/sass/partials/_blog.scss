@@ -1,4 +1,5 @@
 article {
+  background-color: $color-background-highlighted;
   padding-top: 1em;
   a { @extend .force-wrap; }
   header {
