@@ -4,13 +4,159 @@
   <title><![CDATA[NK]]></title>
   <link href="http://nathankot.com/atom.xml" rel="self"/>
   <link href="http://nathankot.com/"/>
-  <updated>2014-02-18T12:26:07+08:00</updated>
+  <updated>2014-02-18T13:05:26+08:00</updated>
   <id>http://nathankot.com/</id>
   <author>
     <name><![CDATA[Nathan Kot]]></name>
     
   </author>
 
+  
+  <entry>
+    <title type="html"><![CDATA[This is how I will social media.]]></title>
+    <link href="http://nathankot.com/blog/2014/02/18/this-is-how-i-will-social-media/"/>
+    <updated>2014-02-18T12:35:40+08:00</updated>
+    <id>http://nathankot.com/blog/2014/02/18/this-is-how-i-will-social-media</id>
+    <content type="html"><![CDATA[<p>There are so many different places to communicate with the world nowadays. I
+find it difficult enough to share things on my blog, let alone on Twitter,
+Facebook, Coderwall etc. So from now on I will be doing this:</p>
+
+<ol>
+<li>Write stuffs on my blog.</li>
+<li>Share the link on suitable social media.</li>
+<li>Don&rsquo;t worry about having to update everything individually.</li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[JS ad-hoc function factory]]></title>
+    <link href="http://nathankot.com/blog/2014/01/25/js-ad-hoc-function-factory/"/>
+    <updated>2014-01-25T00:26:00+08:00</updated>
+    <id>http://nathankot.com/blog/2014/01/25/js-ad-hoc-function-factory</id>
+    <content type="html"><![CDATA[<p>A fun way to avoid repetition:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="p">(</span><span class="kd">function</span> <span class="nx">addFileField</span><span class="p">(</span><span class="nx">path</span><span class="p">,</span> <span class="nx">styles</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">properties</span> <span class="o">=</span> <span class="p">{};</span>
+</span><span class='line'>  <span class="nx">properties</span><span class="p">[</span><span class="nx">path</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">styles</span><span class="o">:</span> <span class="nx">styles</span> <span class="p">};</span>
+</span><span class='line'>  <span class="nx">eventSchema</span><span class="p">.</span><span class="nx">plugin</span><span class="p">(</span><span class="nx">attachments</span><span class="p">,</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">directory</span><span class="o">:</span> <span class="nx">en</span><span class="p">.</span><span class="nx">pluralize</span><span class="p">(</span><span class="nx">path</span><span class="p">),</span>
+</span><span class='line'>    <span class="nx">storage</span><span class="o">:</span> <span class="p">{</span> <span class="nx">providerName</span><span class="o">:</span> <span class="s1">&#39;aws2js&#39;</span><span class="p">,</span> <span class="nx">options</span><span class="o">:</span> <span class="nx">config</span><span class="p">.</span><span class="nx">S3</span> <span class="p">},</span>
+</span><span class='line'>    <span class="nx">properties</span><span class="o">:</span> <span class="nx">properties</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">return</span> <span class="nx">addFileField</span><span class="p">;</span>
+</span><span class='line'><span class="p">})</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">(</span><span class="s1">&#39;avatar&#39;</span><span class="p">,</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">thumbnail</span><span class="o">:</span>  <span class="p">{</span>
+</span><span class='line'>    <span class="nx">thumbnail</span><span class="o">:</span> <span class="s1">&#39;120x120^&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">gravity</span><span class="o">:</span> <span class="s1">&#39;center&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">extent</span><span class="o">:</span> <span class="s1">&#39;120x120&#39;</span>
+</span><span class='line'>  <span class="p">},</span>
+</span><span class='line'>  <span class="nx">retina_thumbnail</span><span class="o">:</span>  <span class="p">{</span>
+</span><span class='line'>    <span class="nx">thumbnail</span><span class="o">:</span> <span class="s1">&#39;240x240^&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">gravity</span><span class="o">:</span> <span class="s1">&#39;center&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">extent</span><span class="o">:</span> <span class="s1">&#39;240x240&#39;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">})</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">(</span><span class="s1">&#39;coverPhoto&#39;</span><span class="p">,</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">original</span><span class="o">:</span> <span class="p">{},</span>
+</span><span class='line'>  <span class="nx">fitted</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">thumbnail</span><span class="o">:</span> <span class="s1">&#39;800x300^&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">gravity</span><span class="o">:</span> <span class="s1">&#39;center&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">extent</span><span class="o">:</span> <span class="s1">&#39;800x300&#39;</span>
+</span><span class='line'>  <span class="p">},</span>
+</span><span class='line'>  <span class="nx">retina_fitted</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">thumbnail</span><span class="o">:</span> <span class="s1">&#39;1600x600^&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">gravity</span><span class="o">:</span> <span class="s1">&#39;center&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">extent</span><span class="o">:</span> <span class="s1">&#39;1600x600&#39;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Newrelic ping no longer keeps Heroku app out of idle.]]></title>
+    <link href="http://nathankot.com/blog/2013/11/21/newrelic-ping-no-longer-keeps-heroku-app-out-of-idle/"/>
+    <updated>2013-11-21T22:08:00+08:00</updated>
+    <id>http://nathankot.com/blog/2013/11/21/newrelic-ping-no-longer-keeps-heroku-app-out-of-idle</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Momentum through talking about what you're gonna do next.]]></title>
+    <link href="http://nathankot.com/blog/2013/09/23/momentum-through-talking-about-what-youre-gonna-do-next/"/>
+    <updated>2013-09-23T09:35:00+08:00</updated>
+    <id>http://nathankot.com/blog/2013/09/23/momentum-through-talking-about-what-youre-gonna-do-next</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Increasing social reach.]]></title>
+    <link href="http://nathankot.com/blog/2013/09/17/increasing-social-reach/"/>
+    <updated>2013-09-17T23:04:00+08:00</updated>
+    <id>http://nathankot.com/blog/2013/09/17/increasing-social-reach</id>
+    <content type="html"><![CDATA[<p>Let&rsquo;s make a tool that helps you increase your social reach, for me I want to
+do:</p>
+
+<p>1 Tweet Per Day
+1 Blog Post Per Week
+1 Pull Request Per Week
+1 Reddit Submission Per Week
+1 HN Submission Per Week</p>
+
+<p>What if there were a tool that lets you deposit a &lsquo;bond&rsquo; and deducts cash from
+your account every time you skip?</p>
+
+<p>OR, a service that stops providing you a service if you forget, and you have
+to top up to use it again?</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[How to upgrade Node on Heroku Ruby Buildpack.]]></title>
@@ -136,6 +282,62 @@ need to have copies of some of the other binaries:</p>
 
 <p>Modifying the build pack seems interesting, there are probably a host of other
 handy things you can do with it.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Getting Backbone.Router and Turbolinks push state to dance.]]></title>
+    <link href="http://nathankot.com/blog/2013/09/13/getting-backbone-dot-router-and-turbolinks-push-state-to-dance/"/>
+    <updated>2013-09-13T10:44:00+08:00</updated>
+    <id>http://nathankot.com/blog/2013/09/13/getting-backbone-dot-router-and-turbolinks-push-state-to-dance</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Complexities of Quitting your Job]]></title>
+    <link href="http://nathankot.com/blog/2013/09/11/complexities-of-quitting-your-job/"/>
+    <updated>2013-09-11T17:48:00+08:00</updated>
+    <id>http://nathankot.com/blog/2013/09/11/complexities-of-quitting-your-job</id>
+    <content type="html"><![CDATA[<p>It&rsquo;s been two weeks since I started working full time on Ideasaurus, I&rsquo;m
+writing this down so that I can reflect on my current opinions in the future.
+It may be a <em>what the hell was I thinking??</em> moment, or perhaps a <em>I made the
+right move!!</em> moment.</p>
+
+<h1>I quit my job</h1>
+
+<p>I had an awesome job at Grabone. It was actually my first ever full-time job
+and I resigned after a short 6 month sprint. That goes against everything most
+graduates had ever been taught about their first job (e.g stay on for at least
+a year).</p>
+
+<p>I&rsquo;m not just being nice when I say that it was awesome. One sentence can
+really paint an accurate picture of what it was like there: <em>we have nerf
+guns.</em></p>
+
+<h1>Complexities of controlling all your time</h1>
+
+<p>I was about to start this heading off with &lsquo;Complexities of having too much
+time&rsquo;, but I would be lying. I <em>do not have too much time</em>, there have been a
+few days where I actually felt like I have less time. I guess the real
+difficulties arise from being responsible for your own time. Things get
+magnified</p>
+
+<h1>Looking forwards</h1>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Software Development is a Doomed Profession]]></title>
+    <link href="http://nathankot.com/blog/2013/09/10/software-development-is-a-doomed-profession/"/>
+    <updated>2013-09-10T11:01:00+08:00</updated>
+    <id>http://nathankot.com/blog/2013/09/10/software-development-is-a-doomed-profession</id>
+    <content type="html"><![CDATA[<ul>
+<li>Health, hands, eyes deteriorate.</li>
+<li>Get slower as you grow older, new technologies outpace you.</li>
+<li>Become stuck with your tool set</li>
+</ul>
+
 ]]></content>
   </entry>
   
@@ -342,6 +544,225 @@ for escape next to the <code>1</code> key, since I&rsquo;ve got tap <code>LCTL</
 longer need the original one.</p></li>
 </ul>
 
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[An Intro to Ideasaurus]]></title>
+    <link href="http://nathankot.com/blog/2013/09/01/an-intro-to-ideasaurus/"/>
+    <updated>2013-09-01T09:05:00+08:00</updated>
+    <id>http://nathankot.com/blog/2013/09/01/an-intro-to-ideasaurus</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Notes on @todo workflow optimizations]]></title>
+    <link href="http://nathankot.com/blog/2013/08/31/notes-on-at-todo-workflow-optimizations/"/>
+    <updated>2013-08-31T21:30:00+08:00</updated>
+    <id>http://nathankot.com/blog/2013/08/31/notes-on-at-todo-workflow-optimizations</id>
+    <content type="html"><![CDATA[<ul>
+<li>Show the filename in the tabline. This is more intuitive &ndash; top of the file
+is the closest to the actual content.</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[OSX Window Managaer - Amethyst. Just what I need.]]></title>
+    <link href="http://nathankot.com/blog/2013/08/27/osx-window-managaer-amethyst-just-what-i-need/"/>
+    <updated>2013-08-27T23:07:00+08:00</updated>
+    <id>http://nathankot.com/blog/2013/08/27/osx-window-managaer-amethyst-just-what-i-need</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Pomdoro on the command line, awesome.]]></title>
+    <link href="http://nathankot.com/blog/2013/08/21/pomdoro-on-the-command-line-awesome/"/>
+    <updated>2013-08-21T22:34:00+08:00</updated>
+    <id>http://nathankot.com/blog/2013/08/21/pomdoro-on-the-command-line-awesome</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[What to do when specs are running.]]></title>
+    <link href="http://nathankot.com/blog/2013/08/17/what-to-do-when-specs-are-running/"/>
+    <updated>2013-08-17T17:21:00+08:00</updated>
+    <id>http://nathankot.com/blog/2013/08/17/what-to-do-when-specs-are-running</id>
+    <content type="html"><![CDATA[<ol>
+<li>Write a blog post.</li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Vim tricks I can't live without]]></title>
+    <link href="http://nathankot.com/blog/2013/08/17/vim-tricks-i-cant-live-without/"/>
+    <updated>2013-08-17T08:50:00+08:00</updated>
+    <id>http://nathankot.com/blog/2013/08/17/vim-tricks-i-cant-live-without</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How to setup Integrity with Rails, Heroku and Github.]]></title>
+    <link href="http://nathankot.com/blog/2013/08/14/how-to-setup-integrity-with-heroku-and-github/"/>
+    <updated>2013-08-14T22:29:00+08:00</updated>
+    <id>http://nathankot.com/blog/2013/08/14/how-to-setup-integrity-with-heroku-and-github</id>
+    <content type="html"><![CDATA[<p>So I realized that <a href="http://ideasaurus.io">Ideasaurus</a> really needs some CI. Did some
+searching and found <a href="http://integrity.github.io/">Integrity</a>. Seems good, let&rsquo;s go!</p>
+
+<p>First clone it:</p>
+
+<pre><code>$ git clone https://github.com/integrity/integrity.git
+</code></pre>
+
+<p>Lets take a look at the <code>init.rb</code> config, it basically tells you what to do.
+Just uncomment the Heroku-related stuff and comment out the conflicting stuff.</p>
+
+<p>Make some changes to the <code>Gemfile</code>, you&rsquo;ll need to comment out the following gems
+since Heroku can&rsquo;t build them:</p>
+
+<pre><code># gem 'dm-sqlite-adapter'
+# gem 'do_sqlite3'
+</code></pre>
+
+<p>Also make sure you uncomment the Postgres adapters:</p>
+
+<pre><code># Uncomment if you're using pg or mysql instead of sqlite
+gem 'pg'
+gem 'dm-postgres-adapter', '~&gt; 1.2.0'
+</code></pre>
+
+<p>Bundle install:</p>
+
+<pre><code>$ bundle install
+</code></pre>
+
+<p>Make a new heroku app:</p>
+
+<pre><code>$ heroku apps:create
+$ heroku addons:add heroku-postgresql:dev
+</code></pre>
+
+<p>Setup a Github <a href="https://help.github.com/articles/post-receive-hooks">post-receive webhook</a>,
+set the webhook url to: <code>http://YOURAPP.com/build/github/ANY_TOKEN_HERE</code> and set the <code>github_token</code>
+to your <code>ANY_TOKEN_HERE</code>.</p>
+
+<p>Choose a username/password you want to use with integrity:</p>
+
+<pre><code>$ heroku config:set ADMIN_USERNAME=your_user_name ADMIN_PASSWORD=yourpassword
+</code></pre>
+
+<p>Deploy:</p>
+
+<pre><code>$ git push heroku master --set-upstream
+$ heroku run rake db
+</code></pre>
+
+<p>Go to the Heroku app you just created and set up a project, you&rsquo;ll need to setup an
+additional database on Heroku for your builds to use:</p>
+
+<pre><code>$ heroku addons:add heroku-postgresql:dev # (Add another one)
+</code></pre>
+
+<p>Now copy and paste this script into <code>config/database.ci.yml</code></p>
+
+<pre><code>&lt;%
+
+# This is taken from how Heroku does it.
+# Need to setup db this way for CI
+
+require 'cgi'
+require 'uri'
+
+begin
+  uri = URI.parse(ENV["HEROKU_POSTGRESQL_PINK_URL"]) # &lt;&lt;&lt; Replace this with your color
+rescue URI::InvalidURIError
+  raise "Invalid DATABASE_URL"
+end
+
+raise "No RACK_ENV or RAILS_ENV found" unless ENV["RAILS_ENV"] || ENV["RACK_ENV"]
+
+def attribute(name, value, force_string = false)
+  if value
+    value_string =
+      if force_string
+        '"' + value + '"'
+      else
+        value
+      end
+    "#{name}: #{value_string}"
+  else
+    ""
+  end
+end
+
+adapter = uri.scheme
+adapter = "postgresql" if adapter == "postgres"
+
+database = (uri.path || "").split("/")[1]
+
+username = uri.user
+password = uri.password
+
+host = uri.host
+port = uri.port
+
+params = CGI.parse(uri.query || "")
+
+%&gt;
+
+&lt;%= ENV["RAILS_ENV"] || ENV["RACK_ENV"] %&gt;:
+  &lt;%= attribute "adapter",  adapter %&gt;
+  &lt;%= attribute "database", database %&gt;
+  &lt;%= attribute "username", username %&gt;
+  &lt;%= attribute "password", password, true %&gt;
+  &lt;%= attribute "host",     host %&gt;
+  &lt;%= attribute "port",     port %&gt;
+
+&lt;% params.each do |key, value| %&gt;
+  &lt;%= key %&gt;: &lt;%= value.first %&gt;
+&lt;% end %&gt;
+</code></pre>
+
+<p>Replace the key marked above with the database url that you just generated.</p>
+
+<p>Create a task with this:</p>
+
+<pre><code>namespace :ci do
+
+  task :copy_yml do
+    system("cp #{Rails.root}/config/database.ci.yml #{Rails.root}/config/database.yml")
+  end
+
+  desc "Prepare for CI and run test suite."
+  task :build =&gt; ['ci:copy_yml', 'db:test:prepare', 'spec'] do
+  end
+
+end
+</code></pre>
+
+<p>In the build script of your project run this:</p>
+
+<pre><code>bundle install
+rake ci:build
+</code></pre>
+
+<p>Happy building :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Life is a poker game.]]></title>
+    <link href="http://nathankot.com/blog/2013/08/12/life-is-a-poker-game/"/>
+    <updated>2013-08-12T23:19:00+08:00</updated>
+    <id>http://nathankot.com/blog/2013/08/12/life-is-a-poker-game</id>
+    <content type="html"><![CDATA[
 ]]></content>
   </entry>
   

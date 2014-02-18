@@ -1,0 +1,327 @@
+
+
+<!DOCTYPE HTML>
+<html lang="en-GB">
+
+  <head>
+  
+
+  <meta charset="utf-8">
+  <title>How to setup Integrity with Rails, Heroku and Github. | NK</title>
+
+  <meta name="author" content="Nathan Kot">
+  <meta name="description" content=" Nathan Kot's Site. "> <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <link href="/atom.xml" rel="alternate" title="NK" type="application/atom+xml">
+  <link rel="canonical" href="">
+  <link href="/favicon.png" rel="shortcut icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+  
+
+</head>
+
+
+  <body>
+    <header class="blog header">
+      <div class="content">
+  
+
+  <h1 class="blog logo">
+    <a href="/">NK</a>
+  </h1>
+
+  <nav class="blog navigation">
+  <ul>
+    <li class="">
+      <a href="/blog">blog</a>
+    </li>
+
+    <li class="">
+      <a href="/about">about</a>
+    </li>
+  </ul>
+</nav>
+
+</div>
+
+
+
+    </header>
+
+    <div class="blog content">
+      <article class="post">
+  
+  
+  <div class="content">
+  <header class="article header">
+    <div class="article date">
+      
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2013-08-14T22:29:00+08:00" pubdate data-updated="true">Aug 14<span>th</span>, 2013Aug 14<span>th</span>, 2013</time>
+    </div>
+
+    <h2 class="article title">
+      
+        How to Setup Integrity With Rails, Heroku and Github.
+        
+      </a>
+    </h2>
+  </header>
+
+  <div class="article content">
+    <p>So I realized that <a href="http://ideasaurus.io">Ideasaurus</a> really needs some CI. Did some
+searching and found <a href="http://integrity.github.io/">Integrity</a>. Seems good, let&rsquo;s go!</p>
+
+<p>First clone it:</p>
+
+<pre><code>$ git clone https://github.com/integrity/integrity.git
+</code></pre>
+
+<p>Lets take a look at the <code>init.rb</code> config, it basically tells you what to do.
+Just uncomment the Heroku-related stuff and comment out the conflicting stuff.</p>
+
+<p>Make some changes to the <code>Gemfile</code>, you&rsquo;ll need to comment out the following gems
+since Heroku can&rsquo;t build them:</p>
+
+<pre><code># gem 'dm-sqlite-adapter'
+# gem 'do_sqlite3'
+</code></pre>
+
+<p>Also make sure you uncomment the Postgres adapters:</p>
+
+<pre><code># Uncomment if you're using pg or mysql instead of sqlite
+gem 'pg'
+gem 'dm-postgres-adapter', '~&gt; 1.2.0'
+</code></pre>
+
+<p>Bundle install:</p>
+
+<pre><code>$ bundle install
+</code></pre>
+
+<p>Make a new heroku app:</p>
+
+<pre><code>$ heroku apps:create
+$ heroku addons:add heroku-postgresql:dev
+</code></pre>
+
+<p>Setup a Github <a href="https://help.github.com/articles/post-receive-hooks">post-receive webhook</a>,
+set the webhook url to: <code>http://YOURAPP.com/build/github/ANY_TOKEN_HERE</code> and set the <code>github_token</code>
+to your <code>ANY_TOKEN_HERE</code>.</p>
+
+<p>Choose a username/password you want to use with integrity:</p>
+
+<pre><code>$ heroku config:set ADMIN_USERNAME=your_user_name ADMIN_PASSWORD=yourpassword
+</code></pre>
+
+<p>Deploy:</p>
+
+<pre><code>$ git push heroku master --set-upstream
+$ heroku run rake db
+</code></pre>
+
+<p>Go to the Heroku app you just created and set up a project, you&rsquo;ll need to setup an
+additional database on Heroku for your builds to use:</p>
+
+<pre><code>$ heroku addons:add heroku-postgresql:dev # (Add another one)
+</code></pre>
+
+<p>Now copy and paste this script into <code>config/database.ci.yml</code></p>
+
+<pre><code>&lt;%
+
+# This is taken from how Heroku does it.
+# Need to setup db this way for CI
+
+require 'cgi'
+require 'uri'
+
+begin
+  uri = URI.parse(ENV["HEROKU_POSTGRESQL_PINK_URL"]) # &lt;&lt;&lt; Replace this with your color
+rescue URI::InvalidURIError
+  raise "Invalid DATABASE_URL"
+end
+
+raise "No RACK_ENV or RAILS_ENV found" unless ENV["RAILS_ENV"] || ENV["RACK_ENV"]
+
+def attribute(name, value, force_string = false)
+  if value
+    value_string =
+      if force_string
+        '"' + value + '"'
+      else
+        value
+      end
+    "#{name}: #{value_string}"
+  else
+    ""
+  end
+end
+
+adapter = uri.scheme
+adapter = "postgresql" if adapter == "postgres"
+
+database = (uri.path || "").split("/")[1]
+
+username = uri.user
+password = uri.password
+
+host = uri.host
+port = uri.port
+
+params = CGI.parse(uri.query || "")
+
+%&gt;
+
+&lt;%= ENV["RAILS_ENV"] || ENV["RACK_ENV"] %&gt;:
+  &lt;%= attribute "adapter",  adapter %&gt;
+  &lt;%= attribute "database", database %&gt;
+  &lt;%= attribute "username", username %&gt;
+  &lt;%= attribute "password", password, true %&gt;
+  &lt;%= attribute "host",     host %&gt;
+  &lt;%= attribute "port",     port %&gt;
+
+&lt;% params.each do |key, value| %&gt;
+  &lt;%= key %&gt;: &lt;%= value.first %&gt;
+&lt;% end %&gt;
+</code></pre>
+
+<p>Replace the key marked above with the database url that you just generated.</p>
+
+<p>Create a task with this:</p>
+
+<pre><code>namespace :ci do
+
+  task :copy_yml do
+    system("cp #{Rails.root}/config/database.ci.yml #{Rails.root}/config/database.yml")
+  end
+
+  desc "Prepare for CI and run test suite."
+  task :build =&gt; ['ci:copy_yml', 'db:test:prepare', 'spec'] do
+  end
+
+end
+</code></pre>
+
+<p>In the build script of your project run this:</p>
+
+<pre><code>bundle install
+rake ci:build
+</code></pre>
+
+<p>Happy building :)</p>
+
+    
+  </div>
+
+  
+    <section class="article comments">
+      <div id="disqus_thread" aria-live="polite">
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </section>
+  
+</div>
+
+</article>
+
+
+  
+	<div class="share">
+	  <!-- <ul> -->
+	  <!--   <li>
+  <a href="https://twitter.com/intent/tweet?text=How to setup Integrity with Rails, Heroku and Github. by @nathankot&url=http://nathankot.com/blog/2013/08/14/how-to-setup-integrity-with-heroku-and-github/" title="Share How to setup Integrity with Rails, Heroku and Github. on Twitter">
+    <img src="/images/social/twitter.png" />
+  </a>
+</li>
+ -->
+	  <!--   <li>
+  <a href="https://www.facebook.com/sharer.php?u=http://nathankot.com/blog/2013/08/14/how-to-setup-integrity-with-heroku-and-github/" title="Share How to setup Integrity with Rails, Heroku and Github. on Facebook">
+    <img src="/images/social/facebook.png" />
+  </a>
+</li>
+ -->
+	  <!--   <li>
+  <a href="https://plus.google.com/share?url=http://nathankot.com/blog/2013/08/14/how-to-setup-integrity-with-heroku-and-github/" title="Share How to setup Integrity with Rails, Heroku and Github. on Google Plus">
+    <img src="/images/social/google.png" />
+  </a>
+</li>
+ -->
+	  <!-- </ul> -->
+	</div>
+
+
+
+
+
+    </div>
+
+    <footer class="blog footer">
+      <div class="blog social icons">  <a     href="http://twitter.com/nathankot"    class="twitter badge"  ></a>  <a     href="https://github.com/nathankot"     class="github badge"  ></a></div>
+    </footer>
+
+    <script type="text/javascript">
+  (function(d) {
+    var config = { kitId: 'tkl8juq', scriptTimeout: 3000 },
+    h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='//use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+  })(document);
+</script>
+
+<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/hyphenator.js"></script>
+
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'nathankot';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://nathankot.com/blog/2013/08/14/how-to-setup-integrity-with-heroku-and-github/';
+        var disqus_url = 'http://nathankot.com/blog/2013/08/14/how-to-setup-integrity-with-heroku-and-github/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-36764309-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+
+
+  </body>
+
+</html>
