@@ -7,7 +7,7 @@ published: false
 categories: 
 ---
 
-A fun way to avoid repitition:
+A fun way to avoid repetition:
 
 ```javascript
 (function addFileField(path, styles) {
