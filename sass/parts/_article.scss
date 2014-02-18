@@ -61,26 +61,24 @@ article{
     margin-top: rhythm(2);
   }
 
-  .article.content {
-    text-align: justify;
+  p, li {
+    color: $color-blog-body;
+  }
 
-    p, li {
-      color: $color-blog-body;
-    }
+  img, video {
+    max-width: 100%;
+    height: auto;
+    border: 6px solid darken($color-gray04, 2.5%);
+    @include border-radius(2px);
+  }
 
-    img, video {
-      max-width: 100%;
-      height: auto;
-      border: 6px solid darken($color-gray04, 2.5%);
-      @include border-radius(2px);
-    }
+  ol {
+    list-style: decimal;
+  }
 
-    blockquote{
-      padding: 5px 15px;
-      margin-top: 1px;
-      & > p:first-of-type{
-        margin-top: 0;
-      }
-    }
+  blockquote {
+    background: $color-gray04;
+    margin: rhythm(1) -30px;
+    padding: 5px 30px;
   }
 }
