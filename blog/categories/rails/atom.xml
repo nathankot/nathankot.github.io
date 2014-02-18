@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: rails | NK]]></title>
-  <link href="http://nathankot.github.io/blog/categories/rails/atom.xml" rel="self"/>
-  <link href="http://nathankot.github.io/"/>
-  <updated>2013-09-16T11:40:53+12:00</updated>
-  <id>http://nathankot.github.io/</id>
+  <link href="http://nathankot.com/blog/categories/rails/atom.xml" rel="self"/>
+  <link href="http://nathankot.com/"/>
+  <updated>2014-02-18T12:26:07+08:00</updated>
+  <id>http://nathankot.com/</id>
   <author>
     <name><![CDATA[Nathan Kot]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Setting up Paperclip + Single Table Inheritance + Rails 4]]></title>
-    <link href="http://nathankot.github.io/blog/2013/08/10/setting-up-paperclip-plus-single-table-inheritance-plus-rails-4/"/>
-    <updated>2013-08-10T18:11:00+12:00</updated>
-    <id>http://nathankot.github.io/blog/2013/08/10/setting-up-paperclip-plus-single-table-inheritance-plus-rails-4</id>
+    <link href="http://nathankot.com/blog/2013/08/10/setting-up-paperclip-plus-single-table-inheritance-plus-rails-4/"/>
+    <updated>2013-08-10T18:11:00+08:00</updated>
+    <id>http://nathankot.com/blog/2013/08/10/setting-up-paperclip-plus-single-table-inheritance-plus-rails-4</id>
     <content type="html"><![CDATA[<p>If you want to have a single table describing a file upload, with different validations
 for each file type this is a good way to set it up.</p>
 

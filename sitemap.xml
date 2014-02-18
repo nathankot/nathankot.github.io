@@ -2,42 +2,42 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>
-            http://nathankot.github.io/blog/2013/08/10/setting-up-paperclip-plus-single-table-inheritance-plus-rails-4/
+            http://nathankot.com/blog/2013/08/10/setting-up-paperclip-plus-single-table-inheritance-plus-rails-4/
         </loc>
-        <lastmod>2013-09-08T20:56:23+12:00</lastmod>
+        <lastmod>2014-02-18T12:18:24+08:00</lastmod>
     </url>
     <url>
-        <loc>http://nathankot.github.io/blog/2013/09/05/modding-the-happy-hacking-keyboard/</loc>
-        <lastmod>2013-09-10T09:32:47+12:00</lastmod>
+        <loc>http://nathankot.com/blog/2013/09/05/modding-the-happy-hacking-keyboard/</loc>
+        <lastmod>2014-02-18T12:18:24+08:00</lastmod>
     </url>
     <url>
         <loc>
-            http://nathankot.github.io/blog/2013/09/14/how-to-use-your-own-version-of-node-on-heroku-for-a-rails-app/
+            http://nathankot.com/blog/2013/09/14/how-to-use-your-own-version-of-node-on-heroku-for-a-rails-app/
         </loc>
-        <lastmod>2013-09-16T11:40:13+12:00</lastmod>
+        <lastmod>2014-02-18T12:18:24+08:00</lastmod>
     </url>
     <url>
-        <loc>http://nathankot.github.io/about/</loc>
-        <lastmod>2013-09-16T11:34:09+12:00</lastmod>
+        <loc>http://nathankot.com/about/</loc>
+        <lastmod>2014-02-18T12:18:24+08:00</lastmod>
     </url>
     <url>
-        <loc>http://nathankot.github.io/archives/</loc>
-        <lastmod>2013-09-16T11:40:13+12:00</lastmod>
+        <loc>http://nathankot.com/archives/</loc>
+        <lastmod>2014-02-18T12:18:24+08:00</lastmod>
     </url>
     <url>
-        <loc>http://nathankot.github.io/blog/archives/</loc>
-        <lastmod>2013-09-16T11:40:13+12:00</lastmod>
+        <loc>http://nathankot.com/blog/archives/</loc>
+        <lastmod>2014-02-18T12:18:24+08:00</lastmod>
     </url>
     <url>
-        <loc>http://nathankot.github.io/blog/</loc>
-        <lastmod>2013-09-16T11:40:13+12:00</lastmod>
+        <loc>http://nathankot.com/blog/</loc>
+        <lastmod>2014-02-18T12:18:24+08:00</lastmod>
     </url>
     <url>
-        <loc>http://nathankot.github.io/</loc>
-        <lastmod>2013-09-16T11:40:13+12:00</lastmod>
+        <loc>http://nathankot.com/</loc>
+        <lastmod>2014-02-18T12:18:24+08:00</lastmod>
     </url>
     <url>
-        <loc>http://nathankot.github.io/robots.txt</loc>
-        <lastmod>2013-09-08T17:52:11+12:00</lastmod>
+        <loc>http://nathankot.com/robots.txt</loc>
+        <lastmod>2014-02-18T12:18:24+08:00</lastmod>
     </url>
 </urlset>

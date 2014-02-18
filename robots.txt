@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://nathankot.github.io/sitemap.xml 
+Sitemap: http://nathankot.com/sitemap.xml 
