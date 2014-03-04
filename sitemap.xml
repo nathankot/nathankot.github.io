@@ -11,6 +11,12 @@
         <lastmod>2014-02-18T17:18:24+13:00</lastmod>
     </url>
     <url>
+        <loc>
+            http://nathankot.com/blog/2013/09/14/how-to-use-your-own-version-of-node-on-heroku-for-a-rails-app/
+        </loc>
+        <lastmod>2014-03-04T16:33:34+13:00</lastmod>
+    </url>
+    <url>
         <loc>http://nathankot.com/blog/2014/02/18/this-is-how-i-will-social-media/</loc>
         <lastmod>2014-02-18T18:04:17+13:00</lastmod>
     </url>
@@ -24,19 +30,19 @@
     </url>
     <url>
         <loc>http://nathankot.com/archives/</loc>
-        <lastmod>2014-03-02T16:06:33+13:00</lastmod>
+        <lastmod>2014-03-04T16:33:34+13:00</lastmod>
     </url>
     <url>
         <loc>http://nathankot.com/blog/archives/</loc>
-        <lastmod>2014-03-02T16:06:33+13:00</lastmod>
+        <lastmod>2014-03-04T16:33:34+13:00</lastmod>
     </url>
     <url>
         <loc>http://nathankot.com/blog/</loc>
-        <lastmod>2014-03-02T16:06:33+13:00</lastmod>
+        <lastmod>2014-03-04T16:33:34+13:00</lastmod>
     </url>
     <url>
         <loc>http://nathankot.com/</loc>
-        <lastmod>2014-03-02T16:06:33+13:00</lastmod>
+        <lastmod>2014-03-04T16:33:34+13:00</lastmod>
     </url>
     <url>
         <loc>http://nathankot.com/robots.txt</loc>
