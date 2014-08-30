@@ -36,11 +36,11 @@
   <nav class="blog navigation">
   <ul>
     <li class="">
-      <a href="/blog">blog</a>
+      <a href="/">projects</a>
     </li>
 
-    <li class="">
-      <a href="/about">about</a>
+    <li>
+      <a href="http://dev.slashnull.io">blog</a>
     </li>
   </ul>
 </nav>
@@ -52,532 +52,55 @@
     </header>
 
     <div class="blog content">
-      
-
-
-  
-  <article class="post">
-    <div class="content">
-  <header class="article header">
-    <div class="article date">
-      
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2014-03-02T15:36:20+13:00" pubdate data-updated="true"></time>
-    </div>
-
-    <h2 class="article title">
-      <a href="/blog/2014/03/02/on-judging-a-dev-by-their-tools/">
-        On Judging a Dev by Their Tools
-        
-      </a>
-    </h2>
-  </header>
-
-  <div class="article content">
+      <article class="blog page">
+  <div class="content">
     
-      <p>I have always found that developers who spend time perfecting their tools
-turn out to be very passionate with their work. After all, it takes <em>a lot</em> of
-time, trial and error, to figure out the work flow that works best for
-you.</p>
 
-<p>However that is not to say that devs who do not spend time on their tools are
-not passionate &ndash; there can be a host of reasons why they haven&rsquo;t focused on
-building their tools. It&rsquo;s an asymmetrical indicator.</p>
 
-<p>Consider two devs that both using Vim. One has morphed a boilerplate into
-their own unique set of key bindings, while the other is still using the
-boilerplate in stock. Obviously the former has shown &lsquo;effort&rsquo; and is likely to
-enjoy what they do. However no judgement should be made on the latter, perhaps
-the original key bindings were perfect, or they were too busy focusing on more
-important things. Who knows.</p>
+<div class="projects">
+  <div class="project-container">
+    <h4>javascript</h4>
 
-<p>There are so many asymmetrical indicators that are too easily taken to be
-symmetrical. Just a random example from my head: a thick French accent
-indicates that someone is likely to be French, but not having one does not
-indicate that they are not.</p>
-
-      
-      
-    
+    <ul class="projects-list">
+      <li><a href="https://wed.is">wed.is</a></li>
+      <li><a href="http://blanket.io">blanket.io</a></li>
+    </ul>
   </div>
 
-  
-</div>
+  <div class="project-container">
+    <h4>ruby</h4>
 
-  </article>
-
-  
-  <article class="post">
-    <div class="content">
-  <header class="article header">
-    <div class="article date">
-      
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2014-02-18T17:35:40+13:00" pubdate data-updated="true"></time>
-    </div>
-
-    <h2 class="article title">
-      <a href="/blog/2014/02/18/this-is-how-i-will-social-media/">
-        This Is How I Will Social Media.
-        
-      </a>
-    </h2>
-  </header>
-
-  <div class="article content">
-    
-      <p>There are so many different places to communicate with the world nowadays. I
-find it difficult enough to share things on my blog, let alone on Twitter,
-Facebook, Coderwall etc. So from now on I will be doing this:</p>
-
-<ol>
-<li>Write stuffs on my blog.</li>
-<li>Share the link on suitable social media.</li>
-<li>Don&rsquo;t worry about having to update everything individually.</li>
-</ol>
-
-
-      
-      
-    
+    <ul class="projects-list">
+      <li><a href="https://itunes.com/apps//wedis">Wed.is app</a></li>
+      <li><a href="https://github.com/nathankot/motion-bindable">motion-bindable</a></li>
+      <li><a href="https://github.com/nathankot/rssly">rssly</a></li>
+    </ul>
   </div>
 
-  
-</div>
+  <div class="project-container">
+    <h4>php</h4>
 
-  </article>
-
-  
-  <article class="post">
-    <div class="content">
-  <header class="article header">
-    <div class="article date">
-      
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2013-09-14T17:24:00+12:00" pubdate data-updated="true"></time>
-    </div>
-
-    <h2 class="article title">
-      <a href="/blog/2013/09/14/how-to-use-your-own-version-of-node-on-heroku-for-a-rails-app/">
-        How to Upgrade Node on Heroku Ruby Buildpack.
-        
-      </a>
-    </h2>
-  </header>
-
-  <div class="article content">
-    
-      <p>This was a real royal pain in the ass. I encountered a problem where
-ruby-stylus no longer supported the version of Node that came with the default
-ruby build pack. Steps below are really only for my own reference, if you&rsquo;re
-interested in something more detailed please let me know :)</p>
-
-<p>You&rsquo;ll need an S3 account, <code>gem install vulcan</code>, and fork the <a href="https://github.com/heroku/heroku-buildpack-ruby">ruby
-buildpack repo</a>.</p>
-
-<p>Create a bucket on S3 for your binaries. <strong>Make sure you use US Standard</strong>.</p>
-
-<p>Find the version of node that you want, <code>0.10.17</code> wasn&rsquo;t compiling
-for me so I resorted to using <code>0.9.9</code> You can view a list <a href="http://nodejs.org/dist/">here</a>.</p>
-
-<p>Run this to create the Heroku server that will be used to compile your
-binaries.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>vulcan create vulcan-YOURAPPNAME
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Update <code>lib/language_pack/ruby.rb</code>, look for <code>NODE_VERSION</code> and put the
-appropriate version in.</p>
-
-<figure class='code'><figcaption><span>lib/language_pack/ruby.rb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">NODE_VERSION</span> <span class="o">=</span> <span class="s2">&quot;0.9.9&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Update <code>lib/language_pack/base.rb</code>, look for <code>VENDOR_URL</code> and put your S3
-bucket URL in.</p>
-
-<figure class='code'><figcaption><span>lib/language_pack/base.rb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">VENDOR_URL</span> <span class="o">=</span> <span class="s2">&quot;https://s3.amazonaws.com/yourbucketname&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Open up <code>Rakefile</code>, update your <code>S3_BUCKET_NAME</code> to the bucket you just
-created. Make sure that the line that downloads the node package looks
-like this:</p>
-
-<figure class='code'><figcaption><span>Rakefile</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">desc</span> <span class="s2">&quot;install node&quot;</span>
-</span><span class='line'><span class="n">task</span> <span class="s2">&quot;node:install&quot;</span><span class="p">,</span> <span class="ss">:version</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="p">,</span> <span class="n">args</span><span class="o">|</span>
-</span><span class='line'>  <span class="n">version</span> <span class="o">=</span> <span class="n">args</span><span class="o">[</span><span class="ss">:version</span><span class="o">]</span>
-</span><span class='line'>  <span class="nb">name</span>    <span class="o">=</span> <span class="s2">&quot;node-</span><span class="si">#{</span><span class="n">version</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>  <span class="n">prefix</span>  <span class="o">=</span> <span class="s2">&quot;/app/vendor/node-v</span><span class="si">#{</span><span class="n">version</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>  <span class="no">Dir</span><span class="o">.</span><span class="n">mktmpdir</span><span class="p">(</span><span class="s2">&quot;node-&quot;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">tmpdir</span><span class="o">|</span>
-</span><span class='line'>    <span class="no">Dir</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">tmpdir</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">dir</span><span class="o">|</span>
-</span><span class='line'>      <span class="no">FileUtils</span><span class="o">.</span><span class="n">rm_rf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">tmpdir</span><span class="si">}</span><span class="s2">/*&quot;</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>      <span class="n">sh</span> <span class="s2">&quot;curl http://nodejs.org/dist/v</span><span class="si">#{</span><span class="n">version</span><span class="si">}</span><span class="s2">/node-v</span><span class="si">#{</span><span class="n">version</span><span class="si">}</span><span class="s2">.tar.gz -s -o - | tar vzxf -&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># ...</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Newer distros of node are all under the URL format above. Again <a href="http://nodejs.org/dist/">take a
-look at this link</a> to see if it applies to you.</p>
-
-<p>Grant List and View permissions of your new bucket to everyone (Heroku will
-need to use this bucket to download binaries.)</p>
-
-<p>We need to make sure that we send the correct AWS credentials when uploading
-to the bucket:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nb">export </span><span class="nv">S3_SECRET_ACCESS_KEY</span><span class="o">=</span>youaccesskey
-</span><span class='line'><span class="nb">export </span><span class="nv">S3_ACCESS_KEY_ID</span><span class="o">=</span>accesskeyid
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Finally we can compile node on the Vulcan Heroku App and store it on our
-S3 account:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>rake node:install<span class="o">[</span>0.9.9<span class="o">]</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Since we are using our new amazon bucket to serve binaries, it will also
-need to have copies of some of the other binaries:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c"># Not sure if all of the below are needed</span>
-</span><span class='line'><span class="c"># Same versions specified in lib/language_pack/rubyrb</span>
-</span><span class='line'>rake libffi:install<span class="o">[</span>3.0.10<span class="o">]</span>
-</span><span class='line'>rake libyaml:install<span class="o">[</span>0.1.4<span class="o">]</span>
-</span><span class='line'>rake ruby:install<span class="o">[</span>2.0.0-p247<span class="o">]</span> <span class="c"># Go get a coffee</span>
-</span><span class='line'>rake gem:install<span class="o">[</span>bundler,1.3.2<span class="o">]</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>To use your new build pack run this:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>heroku config:set <span class="nv">BUILDPACK_URL</span><span class="o">=</span>https://github.com/yourorg/yourbuildbpackrepo.git
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Modifying the build pack seems interesting, there are probably a host of other
-handy things you can do with it.</p>
-
-      
-      
-    
+    <ul class="projects-list">
+      <li><a href="http://neighbourly.co.nz">neighbourly.co.nz</a></li>
+      <li><a href="http://grabone.co.nz">grabone.co.nz</a></li>
+      <li><a href="http://sellyourhobby.com">sellyourhobby.com</a></li>
+    </ul>
   </div>
 
-  
-</div>
+  <div class="project-container">
+    <h4>other</h4>
 
-  </article>
-
-  
-  <article class="post">
-    <div class="content">
-  <header class="article header">
-    <div class="article date">
-      
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2013-09-05T22:45:00+12:00" pubdate data-updated="true"></time>
-    </div>
-
-    <h2 class="article title">
-      <a href="/blog/2013/09/05/modding-the-happy-hacking-keyboard/">
-        Modding the Happy Hacking Keyboard
-        
-      </a>
-    </h2>
-  </header>
-
-  <div class="article content">
-    
-      <p>After reading <a href="http://grumpylemming.com/blog/2012/12/24/hacking-a-happy-hacking-keyboard/">this post about hacking your HHKB</a>, I set out to do the
-same thing. Now that I have the finished product, I can truly say that it is
-freaking awesome to have a keyboard with <strong>all your favorite keybindings set in the
-hardware</strong>. Basically I can now &lsquo;plug and go&rsquo; into any computer and <em>it just
-works</em>.</p>
-
-<p>Being able to do this goes beyond the already awesome feel and sound of the
-HHKB. A modded board is a whole different beast and this is what keyboard
-nirvana feels like. No more feeling awkward about working on other computers!
-Just bring your extremely portable modded keyboard ;)</p>
-
-<p>Shamefully, as a programmer I&rsquo;ve never been much of an electronics guy,
-although I intend to change that. Originally I was gonna go with a Teensy 2
-and try to hack all the hardware together, but <a href="http://geekhack.org/index.php?topic=12047.0">after finding this post on
-Geekhack</a> I decided against risking my precious as a guinea pig for
-my first ever hardware mod, instead I purchased a complete board from a guy
-who goes by <strong>hasu on GeekHack</strong>. If you would like a more detailed guide
-about how to build this mod yourself, <a href="http://grumpylemming.com/blog/2012/12/24/hacking-a-happy-hacking-keyboard/">Grumpy Lemming&rsquo;s guide</a> is a
-really good start.</p>
-
-<p>Installation was surprisingly easy using Hasu&rsquo;s board. Everything was in the right
-place &ndash; the board has a hole for the screw in the same spot as the original
-board. He even made use of the dip switch location to expose the bootloader
-reset button!</p>
-
-<p><img src="/images/posts/hhkb-1.jpg" width="600" title="Hasu's Controller Board" ></p>
-
-<p><img src="/images/posts/hhkb-2.jpg" width="600" title="Taking it Apart" ></p>
-
-<p><img src="/images/posts/hhkb-3.jpg" width="600" title="Bootloader Reset Button" ></p>
-
-<p>I want to avoid turning this post into a guide, if you get the completed board
-from Hasu it is extremely straightforward. For complete instructions on
-how to set this up with a Teensy again check out Grumpy Lemming&rsquo;s post. Instead I
-want to focus on describing how I feel this new board has benefited me as a
-programmer, and <em>why I think every programmer that likes to tweak their
-workflow should try something like this out</em>.</p>
-
-<p>I&rsquo;m sure that possibilities are limited only to your imagination, but here are
-a few of my favorite tweaks that can be easily programmed with the
-<a href="https://github.com/tmk/tmk_keyboard">tmk_keyboard repo</a>.</p>
-
-<h2>#1 &ndash; Dual-purpose modifier keys</h2>
-
-<p>What has been the most powerful aspect of this for me are dual purpose modifier
-keys. For example, the following makes the left control key act as <code>&lt;ESC&gt;</code> when
-tapped, and <code>&lt;CTRL&gt;</code> when held down.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="k">static</span> <span class="k">const</span> <span class="n">uint16_t</span> <span class="n">PROGMEM</span> <span class="n">fn_actions</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class='line'>  <span class="c1">// LControl with tap Esc*</span>
-</span><span class='line'>  <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">ACTION_MODS_TAP_KEY</span><span class="p">(</span><span class="n">MOD_LCTL</span><span class="p">,</span> <span class="n">KC_ESC</span><span class="p">)</span>
-</span><span class='line'><span class="p">};</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>When working in VIM, you no longer have to reach up to the edge of the keyboard
-in order to hit escape, just tap control on your home row :) This may take
-some getting used to but I promise your fingers will thank you for it!</p>
-
-<p>I realize the same thing can be achieved using something like
-<a href="https://pqrs.org/macosx/keyremap4macbook/">KeyRemap4Macbook</a>. But overall the flexibility, portability and
-feel-rightness makes this a superior option!</p>
-
-<h2>#2 &ndash; Numpad on the home row</h2>
-
-<p>The HHKB doesn&rsquo;t have a numpad. But even when I had a board that did, I rarely
-used it &ndash; it was just too far away. With my current setup I have a numpad
-centered around <code>J</code> on my home row. When I hold tab (using the same
-dual-purpose modifier strategy as before), the <em>numpad layer</em> is
-switched on, something like this:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="cm">/* Layer 4: Numpad mode</span>
-</span><span class='line'><span class="cm">  * ,-----------------------------------------------------------.</span>
-</span><span class='line'><span class="cm">  * |Esc|   |   |   |   |   |   |   |   |   |   |   |   |   |   |</span>
-</span><span class='line'><span class="cm">  * |-----------------------------------------------------------|</span>
-</span><span class='line'><span class="cm">  * |FN0  |  |   |   |   |   | 7 | 8 | 9 | = |   |   |   |Backs|</span>
-</span><span class='line'><span class="cm">  * |-----------------------------------------------------------|</span>
-</span><span class='line'><span class="cm">  * |Contro|   |   |   |   |   | 4 | 5 | 6 | + |   |   |Return  |</span>
-</span><span class='line'><span class="cm">  * |-----------------------------------------------------------|</span>
-</span><span class='line'><span class="cm">  * |Shift   |   |   |   |   |   | 1 | 2 | 3 | - |   |Shift |   |</span>
-</span><span class='line'><span class="cm">  * `-----------------------------------------------------------&#39;</span>
-</span><span class='line'><span class="cm">  *       |Alt|Gui  |           0           |Gui  |Alt|</span>
-</span><span class='line'><span class="cm">  *       `-------------------------------------------&#39;</span>
-</span><span class='line'><span class="cm">  */</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>With this setup, numeric input can finally feel like it&rsquo;s part of the &lsquo;vi-flow&rsquo;!</p>
-
-<h2>#3 &ndash; Vi Mode</h2>
-
-<p>Although HHKB has some nice arrow key bindings, it never feels right after
-prolonged use of VIM. My letter <code>f</code> key is now also dual purpose, and when held down
-it activates vi-mode:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="cm">/* Layer 2: Vi mode</span>
-</span><span class='line'><span class="cm">  * ,-----------------------------------------------------------.</span>
-</span><span class='line'><span class="cm">  * |Esc| F1| F2| F3| F4| F5| F6| F7| F8| F9|F10|F11|F12|Ins|Del|</span>
-</span><span class='line'><span class="cm">  * |-----------------------------------------------------------|</span>
-</span><span class='line'><span class="cm">  * |Tab  |  |   |   |   |   |   |   |PgU|   |   |   |   |Backs|</span>
-</span><span class='line'><span class="cm">  * |-----------------------------------------------------------|</span>
-</span><span class='line'><span class="cm">  * |Contro|   |   |PgD|FN0|   |Lef|Dow|Up |Rig|   |   |Return  |</span>
-</span><span class='line'><span class="cm">  * |-----------------------------------------------------------|</span>
-</span><span class='line'><span class="cm">  * |Shift   |   |   |   |   |   |   |   |   |   |   |Shift |   |</span>
-</span><span class='line'><span class="cm">  * `-----------------------------------------------------------&#39;</span>
-</span><span class='line'><span class="cm">  *       |Alt|Gui  |         Space         |Gui  |Alt|</span>
-</span><span class='line'><span class="cm">  *       `-------------------------------------------&#39;</span>
-</span><span class='line'><span class="cm">  */</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>#4 &ndash; Mouse Bindings</h2>
-
-<p>Yep, you can control the cursor with your keyboard! This is really just a
-cool-show-off kinda thing but there have been some cases where it actually
-gets useful, e.g changing focus between scrollable panes on a website. Again,
-this time I made the escape button on the top left dual purpose &ndash; press for
-<code>&lt;esc&gt;</code>, hold for mouse mouse. In mouse mode <code>hjkl</code> control movement, and the
-space bar is left click. Like so:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="cm">/* Layer 3: Mouse mode</span>
-</span><span class='line'><span class="cm">  * ,-----------------------------------------------------------.</span>
-</span><span class='line'><span class="cm">  * |FN0| F1| F2| F3| F4| F5| F6| F7| F8| F9|F10|F11|F12|Ins|Del|</span>
-</span><span class='line'><span class="cm">  * |-----------------------------------------------------------|</span>
-</span><span class='line'><span class="cm">  * |Tab  |   |   |   |   |   |MwL|MwD|MwU|MwR|   |   |   |Backs|</span>
-</span><span class='line'><span class="cm">  * |-----------------------------------------------------------|</span>
-</span><span class='line'><span class="cm">  * |Contro|   |   |   |   |   |McL|McD|McU|McR|   |   |Return  |</span>
-</span><span class='line'><span class="cm">  * |-----------------------------------------------------------|</span>
-</span><span class='line'><span class="cm">  * |Shift   |   |   |   |   |Mb3|Mb2|Mb1|Mb4|Mb5|   |Shift |   |</span>
-</span><span class='line'><span class="cm">  * `-----------------------------------------------------------&#39;</span>
-</span><span class='line'><span class="cm">  *      |Alt |Gui  |          Mb1          |Gui  |Alt|</span>
-</span><span class='line'><span class="cm">  *      `--------------------------------------------&#39;</span>
-</span><span class='line'><span class="cm">  * Mc: Mouse Cursor / Mb: Mouse Button / Mw: Mouse Wheel </span>
-</span><span class='line'><span class="cm">  */</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>There must be plenty of other tweaks and hacks that I haven&rsquo;t thought of.
-I&rsquo;m still continuously tweaking the key mappings in search of that holy grail of
-key-bindings &ndash; it&rsquo;s been such an enjoyable experience.</p>
-
-<h3>Updates</h3>
-
-<p>Here are some other tweaks that I&rsquo;ve adopted so far:</p>
-
-<ul>
-<li><p><code>LSFT</code> becomes left parenthesis on tap, <code>RSFT</code> is right
-parenthesis. This one actually came with the <code>tmk_keyboard</code> repo as an
-existing macro, since there is no real key code to send for the parenthesis&#8217;.</p></li>
-<li><p>Remap <code>esc</code> to <code>tilde</code>, I still can&rsquo;t get used to the replaced tilde
-for escape next to the <code>1</code> key, since I&rsquo;ve got tap <code>LCTL</code> for escape now, no
-longer need the original one.</p></li>
-</ul>
-
-
-      
-      
-    
+    <ul class="projects-list">
+      <li><a href="https://github.com/nathankot/dotfiles">dotfiles</a></li>
+      <li><a href="https://github.com/nathankot/Karma.gs">karma.gs</a></li>
+    </ul>
   </div>
-
-  
 </div>
 
-  </article>
+  </div>
+</article>
 
 
-<nav class="blog pagination">
-  
-
-  
-    <a href="/blog/page/2/" class="next">Next</a>
-  
-</nav>
 
     </div>
 
