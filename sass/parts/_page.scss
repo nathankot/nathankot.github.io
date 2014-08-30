@@ -6,7 +6,19 @@
   }
 }
 
+.projects {
+  @include clearfix
+}
 
+.projects h4 {
+  @include adjust-font-size-to(24px)
+}
 
+.project-container {
+  width: 33%;
+  float: left;
+}
 
-
+.projects-list {
+  @include trailer(1)
+}

@@ -1,22 +1,46 @@
 ---
-layout: default
+layout: page
 ---
 
 {% assign index = true %}
 
-{% for post in paginator.posts %}
-  {% assign content = post.content %}
-  <article class="post">
-    {% include article.html %}
-  </article>
-{% endfor %}
 
-<nav class="blog pagination">
-  {% if paginator.previous_page %}
-    <a href="{{paginator.previous_page}}" class="prev">Previous</a>
-  {% endif %}
+<div class="projects">
+  <div class="project-container">
+    <h4>javascript</h4>
 
-  {% if paginator.next_page %}
-    <a href="{{paginator.next_page}}" class="next">Next</a>
-  {% endif %}
-</nav>
+    <ul class="projects-list">
+      <li><a href="https://wed.is">wed.is</a></li>
+      <li><a href="http://blanket.io">blanket.io</a></li>
+    </ul>
+  </div>
+
+  <div class="project-container">
+    <h4>ruby</h4>
+
+    <ul class="projects-list">
+      <li><a href="https://itunes.com/apps//wedis">Wed.is app</a></li>
+      <li><a href="https://github.com/nathankot/motion-bindable">motion-bindable</a></li>
+      <li><a href="https://github.com/nathankot/rssly">rssly</a></li>
+    </ul>
+  </div>
+
+  <div class="project-container">
+    <h4>php</h4>
+
+    <ul class="projects-list">
+      <li><a href="http://neighbourly.co.nz">neighbourly.co.nz</a></li>
+      <li><a href="http://grabone.co.nz">grabone.co.nz</a></li>
+      <li><a href="http://sellyourhobby.com">sellyourhobby.com</a></li>
+    </ul>
+  </div>
+
+  <div class="project-container">
+    <h4>other</h4>
+
+    <ul class="projects-list">
+      <li><a href="https://github.com/nathankot/dotfiles">dotfiles</a></li>
+      <li><a href="https://github.com/nathankot/Karma.gs">karma.gs</a></li>
+    </ul>
+  </div>
+</div>
