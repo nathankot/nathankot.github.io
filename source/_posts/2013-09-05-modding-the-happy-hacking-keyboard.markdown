@@ -1,10 +1,9 @@
 ---
-layout: redirect
+layout: post
 title: "Modding the Happy Hacking Keyboard"
 date: 2013-09-05 22:45
 comments: true
 categories: keyboard
-redirect_to: http://dev.slashnull.io/blog/2013/09/05/modding-the-hhkb/
 ---
 
 After reading [this post about hacking your HHKB][grumpy], I set out to do the
