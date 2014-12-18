@@ -4,7 +4,8 @@
 }
 
 .blog.social.icons {
-  text-align: center;
+  @include container;
+  text-align: left;
 
   .badge {
     display: inline-block;
