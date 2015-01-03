@@ -28,7 +28,7 @@
     content: "rb";
   }
 
-  li.js::before {
+  li.javascript::before {
     content: "js";
   }
 
@@ -38,6 +38,10 @@
 
   li.stylus::before {
     content: "styl";
+  }
+
+  li.haskell::before {
+    content: "hs";
   }
 
   a {
