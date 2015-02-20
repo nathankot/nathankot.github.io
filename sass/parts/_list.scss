@@ -1,10 +1,6 @@
 .blog.posts.list {
   background-color: $color-background-highlighted;
-
-  > .content {
-    @include container;
-    padding: rhythm(1) 0;
-  }
+  margin-bottom: rhythm(2);
 
   .item {
     @include pie-clearfix;
@@ -18,12 +14,11 @@
     }
     
     .name {
-      @include adjust-font-size-to(20px);
+      @include adjust-font-size-to(14px);
     }
 
     .date {
       @include adjust-font-size-to(12px);
-      line-height: rhythm(2);
       display: none;
       color: $color-gray03;
     }

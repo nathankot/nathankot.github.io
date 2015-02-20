@@ -4,7 +4,6 @@ layout: page
 
 {% assign index = true %}
 
-
 <ul class="projects">
   <li class="haskell"><a href="https://github.com/nathankot/wsproxy">wsproxy</a></li>
   <li class="javascript"><a href="https://www.wed.is">wed.is</a></li>
@@ -20,3 +19,11 @@ layout: page
   <li class="lua"><a href="https://github.com/nathankot/mjolnir.tiling">mjolnir.tiling</a></li>
   <li class="other"><a href="http://dev.slashnull.io">/dev/null</a></li>
 </ul>
+
+<div class="blog posts list">
+  <div class="content">
+    {% for post in site.posts reverse %}
+      {% include archive_post.html %}
+    {% endfor %}
+  </div>
+</div>
