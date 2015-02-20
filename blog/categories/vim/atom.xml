@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: vim | NK]]></title>
+  <link href="http://nathankot.com/blog/categories/vim/atom.xml" rel="self"/>
+  <link href="http://nathankot.com/"/>
+  <updated>2015-02-21T11:44:09+13:00</updated>
+  <id>http://nathankot.com/</id>
+  <author>
+    <name><![CDATA[Nathan Kot]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[7 Confessions of an Emacs convert coming from vim.]]></title>
+    <link href="http://nathankot.com/blog/2015/02/21/cofessions-of-an-emacs-convert/"/>
+    <updated>2015-02-21T10:30:20+13:00</updated>
+    <id>http://nathankot.com/blog/2015/02/21/cofessions-of-an-emacs-convert</id>
+    <content type="html"><![CDATA[<h2>Emacs needs a new icon</h2>
+
+<p>Seriously the logo for emacs sucks. If it hadn&rsquo;t, I might&rsquo;ve tried Emacs a long
+time ago. I imagine a lot of people are in the same boat here, there are
+<a href="http://jasonm23.github.io/">many</a> <a href="http://emacs.sexy/">replacement</a> icons out there!</p>
+
+<h2>Evil-mode is just as good as vim, if not better</h2>
+
+<p>If you come from vim, <a href="http://www.emacswiki.org/emacs/Evil">evil-mode</a> is a must have. If you&rsquo;re expecting
+half-assed vim emulation then you will be disappointed. Evil-mode can do
+everything vim can. Sometimes even more: remember <a href="https://github.com/tpope/vim-repeat">vim-repeat</a>? Well
+repeating evil-mode plugin commands just works, no more unexpected repeat behavior!</p>
+
+<h2>Smoother, faster, more stable</h2>
+
+<p>Apart from startup time, everything just feels so much nicer compared to a vim
+overloaded with plugins (I make the distinction because vanilla vim is obviously
+going to be very crisp.) Startup time can be improved drastically by
+<a href="https://github.com/jwiegley/use-package">lazy-loading plugins</a> anyway.</p>
+
+<h2>The emacs community is small, but that&rsquo;s okay</h2>
+
+<p>Vim has won the popularity contest &ndash; undisputed. No problem &ndash; whilst the
+vim community needs masses of people maintaining and fixing it&rsquo;s plugins, most
+emacs plugins are very stable due to the editor&rsquo;s better design choices and <a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/">language</a>.</p>
+
+<h2>Waiting on Neovim? Give emacs a try</h2>
+
+<p>That&rsquo;s why I did. After spending some time playing around with <a href="http://neovim.org">Neovim</a>
+I realized that it&rsquo;s far from stable, and the transition would be a pain in the
+ass anyway. Emacs has already solved a lot of the problems Neovim is trying to
+solve. And when Neovim <em>does</em> become a headless text editor, Emacs can take
+advantage of that as well ;)</p>
+
+<h2>Great excuse to learn Lisp</h2>
+
+<p>I&rsquo;m still not a <em>huge</em> fan of the lisp family, but I can see it&rsquo;s
+merits. Nevertheless I would pick elisp over vimscript any day.</p>
+
+<h2>I wish Vim was this good</h2>
+
+<p>Imagine the design choices of Emacs coupled with the relentless community of
+Vim, damn. Perhaps Neovim can realize this?</p>
+]]></content>
+  </entry>
+  
+</feed>
