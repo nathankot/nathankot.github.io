@@ -50,6 +50,8 @@ merits. Nevertheless I would pick elisp over vimscript any day.
 Imagine the design choices of Emacs coupled with the relentless community of
 Vim, damn. Perhaps Neovim can realize this?
 
+_Want to try emacs? [Read this awesome pictogram first =D][how-to-learn].
+
 [replacement1]: http://jasonm23.github.io/
 [replacement2]: http://emacs.sexy/
 [evil]: http://www.emacswiki.org/emacs/Evil
@@ -57,3 +59,4 @@ Vim, damn. Perhaps Neovim can realize this?
 [elisp]: https://www.gnu.org/software/emacs/manual/html_node/elisp/
 [use-package]: https://github.com/jwiegley/use-package
 [neovim]: http://neovim.org
+[how-to-learn]: http://emacs.sexy/img/How-to-Learn-Emacs-v2-Large.png
