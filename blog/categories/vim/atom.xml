@@ -4,7 +4,7 @@
   <title><![CDATA[Category: vim | NK]]></title>
   <link href="http://nathankot.com/blog/categories/vim/atom.xml" rel="self"/>
   <link href="http://nathankot.com/"/>
-  <updated>2015-02-21T11:51:23+13:00</updated>
+  <updated>2015-02-21T11:57:37+13:00</updated>
   <id>http://nathankot.com/</id>
   <author>
     <name><![CDATA[Nathan Kot]]></name>
@@ -61,6 +61,8 @@ merits. Nevertheless I would pick elisp over vimscript any day.</p>
 
 <p>Imagine the design choices of Emacs coupled with the relentless community of
 Vim, damn. Perhaps Neovim can realize this?</p>
+
+<p>_Want to try emacs? <a href="http://emacs.sexy/img/How-to-Learn-Emacs-v2-Large.png">Read this awesome pictogram first =D</a>.</p>
 ]]></content>
   </entry>
   
