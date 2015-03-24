@@ -4,38 +4,42 @@
         <loc>
             http://nathankot.com/blog/2013/08/10/setting-up-paperclip-plus-single-table-inheritance-plus-rails-4/
         </loc>
-        <lastmod>2014-02-18T17:18:24+13:00</lastmod>
+        <lastmod>2014-02-18T13:18:24+09:00</lastmod>
     </url>
     <url>
         <loc>http://nathankot.com/blog/2013/09/05/modding-the-happy-hacking-keyboard/</loc>
-        <lastmod>2014-08-31T12:03:07+12:00</lastmod>
+        <lastmod>2014-08-31T09:03:07+09:00</lastmod>
     </url>
     <url>
         <loc>http://nathankot.com/blog/2014/01/25/js-ad-hoc-function-factory/</loc>
-        <lastmod>2015-02-21T10:26:38+13:00</lastmod>
+        <lastmod>2015-02-21T06:26:38+09:00</lastmod>
     </url>
     <url>
         <loc>http://nathankot.com/blog/2015/02/21/cofessions-of-an-emacs-convert/</loc>
-        <lastmod>2015-02-21T11:59:00+13:00</lastmod>
+        <lastmod>2015-02-21T07:59:00+09:00</lastmod>
+    </url>
+    <url>
+        <loc>http://nathankot.com/blog/2015/03/24/using-monads-in-swift/</loc>
+        <lastmod>2015-03-24T17:06:06+09:00</lastmod>
     </url>
     <url>
         <loc>http://nathankot.com/archives/</loc>
-        <lastmod>2015-02-21T11:59:00+13:00</lastmod>
+        <lastmod>2015-03-24T17:06:06+09:00</lastmod>
     </url>
     <url>
         <loc>http://nathankot.com/blog/archives/</loc>
-        <lastmod>2015-02-21T11:59:00+13:00</lastmod>
+        <lastmod>2015-03-24T17:06:06+09:00</lastmod>
     </url>
     <url>
         <loc>http://nathankot.com/blog/</loc>
-        <lastmod>2015-02-21T11:59:00+13:00</lastmod>
+        <lastmod>2015-03-24T17:06:06+09:00</lastmod>
     </url>
     <url>
         <loc>http://nathankot.com/</loc>
-        <lastmod>2015-02-21T11:59:00+13:00</lastmod>
+        <lastmod>2015-03-24T17:06:06+09:00</lastmod>
     </url>
     <url>
         <loc>http://nathankot.com/robots.txt</loc>
-        <lastmod>2014-02-18T17:18:24+13:00</lastmod>
+        <lastmod>2014-02-18T13:18:24+09:00</lastmod>
     </url>
 </urlset>
