@@ -7,7 +7,7 @@ categories: swift monad
 ---
 
 One of the coolest features of Swift is that it lets you define your own
-operators. This leads to being able to re-implement many operators found in more
+operators. This leads to being able to re-implement many operators found in 
 functional languages that we know and love.
 
 [Swiftz][swiftz] is a new library that implements a handful of essential and obscure
@@ -37,8 +37,8 @@ func participant4(phrase: String) -> Maybe<String> {
 }
 ```
 
-Now how do we write a function that takes a phrase and an ordered list of
-participants, and then returns the result? We could do this:
+Now, how do we write a function that takes a phrase and an ordered list of
+participants and then returns the result? We could do this:
 
 ```
 func play(initialPhrase: String, participants: [String -> Maybe<String>]) {
@@ -53,7 +53,7 @@ func play(initialPhrase: String, participants: [String -> Maybe<String>]) {
 
 You'll notice that we are checking for `isNone()` on each iteration because we
 don't want to pass the next participant anything if the game has already
-stopped. This is the problem that Monad's solve, given the context of `Maybe` it
+stopped. This is a problem that Monad's solve, given the context of `Maybe` it
 _knows_ how to handle the case of nothing or something:
 
 ```
