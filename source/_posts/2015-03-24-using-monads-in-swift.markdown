@@ -19,7 +19,7 @@ Let's implement a game of chinese whispers. But in this version, any participant
 can give up on the game. We have the participants, each a function that _might_
 return a phrase that they think is correct, or nothing at all:
 
-```
+```swift
 func participant1(phrase: String) -> Maybe<String> {
   return Maybe.just(phrase)
 }
@@ -40,7 +40,7 @@ func participant4(phrase: String) -> Maybe<String> {
 Now, how do we write a function that takes a phrase and an ordered list of
 participants and then returns the result? We could do this:
 
-```
+```swift
 func play(initialPhrase: String, participants: [String -> Maybe<String>]) {
   var result: Maybe<String> = Maybe.just(initialPhrase)
   for participant in participants {
@@ -56,7 +56,7 @@ don't want to pass the next participant anything if the game has already
 stopped. This is a problem that Monad's solve, given the context of `Maybe` it
 _knows_ how to handle the case of nothing or something:
 
-```
+```swift
 func play(initialPhrase: String, participants: [String -> Maybe<String>]) {
   var result: Maybe<String> = Maybe.just(initialPhrase)
   for participant in participants {
@@ -71,7 +71,7 @@ func play(initialPhrase: String, participants: [String -> Maybe<String>]) {
 Okay. That saved about one line, but we can make the entire thing more
 functional:
 
-```
+```swift
 func play(initialPhrase: String, _ transform: String -> Maybe<String>) {
   return transform(initialPhrase)
 }
