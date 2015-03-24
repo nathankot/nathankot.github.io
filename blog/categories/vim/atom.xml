@@ -4,7 +4,7 @@
   <title><![CDATA[Category: vim | NK]]></title>
   <link href="http://nathankot.com/blog/categories/vim/atom.xml" rel="self"/>
   <link href="http://nathankot.com/"/>
-  <updated>2015-03-24T17:06:40+09:00</updated>
+  <updated>2015-03-24T17:28:32+09:00</updated>
   <id>http://nathankot.com/</id>
   <author>
     <name><![CDATA[Nathan Kot]]></name>
@@ -40,7 +40,7 @@ going to be very crisp.) Startup time can be improved drastically by
 
 <h2>The emacs community is small, but that&rsquo;s okay</h2>
 
-<p>Vim has won the popularity contest &ndash; undisputed. No problem &ndash; whilst the
+<p>Vim has won the popularity contest - undisputed. No problem - whilst the
 vim community needs masses of people maintaining and fixing it&rsquo;s plugins, most
 emacs plugins are very stable due to the editor&rsquo;s better design choices and <a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/">language</a>.</p>
 

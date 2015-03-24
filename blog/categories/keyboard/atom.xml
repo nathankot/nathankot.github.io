@@ -4,7 +4,7 @@
   <title><![CDATA[Category: keyboard | NK]]></title>
   <link href="http://nathankot.com/blog/categories/keyboard/atom.xml" rel="self"/>
   <link href="http://nathankot.com/"/>
-  <updated>2015-03-24T17:06:40+09:00</updated>
+  <updated>2015-03-24T17:28:32+09:00</updated>
   <id>http://nathankot.com/</id>
   <author>
     <name><![CDATA[Nathan Kot]]></name>
@@ -39,15 +39,15 @@ about how to build this mod yourself, <a href="http://grumpylemming.com/blog/201
 really good start.</p>
 
 <p>Installation was surprisingly easy using Hasu&rsquo;s board. Everything was in the right
-place &ndash; the board has a hole for the screw in the same spot as the original
+place - the board has a hole for the screw in the same spot as the original
 board. He even made use of the dip switch location to expose the bootloader
 reset button!</p>
 
-<p>{% img /images/posts/hhkb-1.jpg 600 Hasu&rsquo;s Controller Board %}</p>
+<p><img src="/images/posts/hhkb-1.jpg" width="600" title="Hasu&rsquo;s Controller Board" ></p>
 
-<p>{% img /images/posts/hhkb-2.jpg 600 Taking it Apart %}</p>
+<p><img src="/images/posts/hhkb-2.jpg" width="600" title="Taking it Apart" ></p>
 
-<p>{% img /images/posts/hhkb-3.jpg 600 Bootloader Reset Button %}</p>
+<p><img src="/images/posts/hhkb-3.jpg" width="600" title="Bootloader Reset Button" ></p>
 
 <p>I want to avoid turning this post into a guide, if you get the completed board
 from Hasu it is extremely straightforward. For complete instructions on
@@ -60,18 +60,17 @@ workflow should try something like this out</em>.</p>
 a few of my favorite tweaks that can be easily programmed with the
 <a href="https://github.com/tmk/tmk_keyboard">tmk_keyboard repo</a>.</p>
 
-<h2>#1 &ndash; Dual-purpose modifier keys</h2>
+<h2>#1 - Dual-purpose modifier keys</h2>
 
 <p>What has been the most powerful aspect of this for me are dual purpose modifier
 keys. For example, the following makes the left control key act as <code>&lt;ESC&gt;</code> when
 tapped, and <code>&lt;CTRL&gt;</code> when held down.</p>
 
-<p><code>cpp
-static const uint16_t PROGMEM fn_actions[] = {
+<pre><code class="cpp">static const uint16_t PROGMEM fn_actions[] = {
   // LControl with tap Esc*
   [2] = ACTION_MODS_TAP_KEY(MOD_LCTL, KC_ESC)
 };
-</code></p>
+</code></pre>
 
 <p>When working in VIM, you no longer have to reach up to the edge of the keyboard
 in order to hit escape, just tap control on your home row :) This may take
@@ -81,16 +80,15 @@ some getting used to but I promise your fingers will thank you for it!</p>
 <a href="https://pqrs.org/macosx/keyremap4macbook/">KeyRemap4Macbook</a>. But overall the flexibility, portability and
 feel-rightness makes this a superior option!</p>
 
-<h2>#2 &ndash; Numpad on the home row</h2>
+<h2>#2 - Numpad on the home row</h2>
 
 <p>The HHKB doesn&rsquo;t have a numpad. But even when I had a board that did, I rarely
-used it &ndash; it was just too far away. With my current setup I have a numpad
+used it - it was just too far away. With my current setup I have a numpad
 centered around <code>J</code> on my home row. When I hold tab (using the same
 dual-purpose modifier strategy as before), the <em>numpad layer</em> is
 switched on, something like this:</p>
 
-<p><code>
-/* Layer 4: Numpad mode
+<pre><code>/* Layer 4: Numpad mode
   * ,-----------------------------------------------------------.
   * |Esc|   |   |   |   |   |   |   |   |   |   |   |   |   |   |
   * |-----------------------------------------------------------|
@@ -103,18 +101,17 @@ switched on, something like this:</p>
   *       |Alt|Gui  |           0           |Gui  |Alt|
   *       `-------------------------------------------'
   */
-</code></p>
+</code></pre>
 
 <p>With this setup, numeric input can finally feel like it&rsquo;s part of the &lsquo;vi-flow&rsquo;!</p>
 
-<h2>#3 &ndash; Vi Mode</h2>
+<h2>#3 - Vi Mode</h2>
 
 <p>Although HHKB has some nice arrow key bindings, it never feels right after
 prolonged use of VIM. My letter <code>f</code> key is now also dual purpose, and when held down
 it activates vi-mode:</p>
 
-<p><code>
-/* Layer 2: Vi mode
+<pre><code>/* Layer 2: Vi mode
   * ,-----------------------------------------------------------.
   * |Esc| F1| F2| F3| F4| F5| F6| F7| F8| F9|F10|F11|F12|Ins|Del|
   * |-----------------------------------------------------------|
@@ -127,19 +124,18 @@ it activates vi-mode:</p>
   *       |Alt|Gui  |         Space         |Gui  |Alt|
   *       `-------------------------------------------'
   */
-</code></p>
+</code></pre>
 
-<h2>#4 &ndash; Mouse Bindings</h2>
+<h2>#4 - Mouse Bindings</h2>
 
 <p>Yep, you can control the cursor with your keyboard! This is really just a
 cool-show-off kinda thing but there have been some cases where it actually
 gets useful, e.g changing focus between scrollable panes on a website. Again,
-this time I made the escape button on the top left dual purpose &ndash; press for
+this time I made the escape button on the top left dual purpose - press for
 <code>&lt;esc&gt;</code>, hold for mouse mouse. In mouse mode <code>hjkl</code> control movement, and the
 space bar is left click. Like so:</p>
 
-<p><code>
-/* Layer 3: Mouse mode
+<pre><code>/* Layer 3: Mouse mode
   * ,-----------------------------------------------------------.
   * |FN0| F1| F2| F3| F4| F5| F6| F7| F8| F9|F10|F11|F12|Ins|Del|
   * |-----------------------------------------------------------|
@@ -151,13 +147,13 @@ space bar is left click. Like so:</p>
   * `-----------------------------------------------------------'
   *      |Alt |Gui  |          Mb1          |Gui  |Alt|
   *      `--------------------------------------------'
-  * Mc: Mouse Cursor / Mb: Mouse Button / Mw: Mouse Wheel
+  * Mc: Mouse Cursor / Mb: Mouse Button / Mw: Mouse Wheel 
   */
-</code></p>
+</code></pre>
 
 <p>There must be plenty of other tweaks and hacks that I haven&rsquo;t thought of.
 I&rsquo;m still continuously tweaking the key mappings in search of that holy grail of
-key-bindings &ndash; it&rsquo;s been such an enjoyable experience.</p>
+key-bindings - it&rsquo;s been such an enjoyable experience.</p>
 
 <h3>Updates</h3>
 
@@ -166,7 +162,7 @@ key-bindings &ndash; it&rsquo;s been such an enjoyable experience.</p>
 <ul>
 <li><p><code>LSFT</code> becomes left parenthesis on tap, <code>RSFT</code> is right
 parenthesis. This one actually came with the <code>tmk_keyboard</code> repo as an
-existing macro, since there is no real key code to send for the parenthesis'.</p></li>
+existing macro, since there is no real key code to send for the parenthesis&#8217;.</p></li>
 <li><p>Remap <code>esc</code> to <code>tilde</code>, I still can&rsquo;t get used to the replaced tilde
 for escape next to the <code>1</code> key, since I&rsquo;ve got tap <code>LCTL</code> for escape now, no
 longer need the original one.</p></li>
