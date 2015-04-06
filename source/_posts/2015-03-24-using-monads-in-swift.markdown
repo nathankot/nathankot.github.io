@@ -78,14 +78,17 @@ func play(initialPhrase: String, _ transform: String -> Maybe<String>) {
 
 // And usage looks like:
 play("hello there", { phrase: String -> Maybe<String> in
-  return Maybe.just(phrase) >>- participant1 >>- participant2 >>- participant3
+  return pure(phrase)
+         >>- participant1
+         >>- participant2
+         >>- participant3
 })
 
-// Or, IF Swift supported partial operator application:
-// • is an operator defined by Swiftz (compose)
-play("hello there, (>>- participant1
-                    >>- participant2
-                    >>- participant3) • Maybe.just)
+// Or: 
+play("hello there, ((((>>-participant1)
+                       >>-participant2)
+                       >>-participant3) • Maybe.just))
+                       // • is an operator defined by Swiftz (compose)
 ```
 
 [swiftz]: https://github.com/typelift/Swiftz
