@@ -187,20 +187,26 @@ functional:</p>
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
 </pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">func</span> <span class="nf">play</span><span class="p">(</span><span class="nl">initialPhrase</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">_</span> <span class="nl">transform</span><span class="p">:</span> <span class="n">String</span> <span class="o">-&gt;</span> <span class="n">Maybe</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>  <span class="k">return</span> <span class="n">transform</span><span class="p">(</span><span class="n">initialPhrase</span><span class="p">)</span>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'>
 </span><span class='line'><span class="c1">// And usage looks like:</span>
 </span><span class='line'><span class="n">play</span><span class="p">(</span><span class="s">&quot;hello there&quot;</span><span class="p">,</span> <span class="p">{</span> <span class="nl">phrase</span><span class="p">:</span> <span class="n">String</span> <span class="o">-&gt;</span> <span class="n">Maybe</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="k">in</span>
-</span><span class='line'>  <span class="k">return</span> <span class="n">Maybe</span><span class="p">.</span><span class="n">just</span><span class="p">(</span><span class="n">phrase</span><span class="p">)</span> <span class="o">&gt;&gt;-</span> <span class="n">participant1</span> <span class="o">&gt;&gt;-</span> <span class="n">participant2</span> <span class="o">&gt;&gt;-</span> <span class="n">participant3</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">pure</span><span class="p">(</span><span class="n">phrase</span><span class="p">)</span>
+</span><span class='line'>         <span class="o">&gt;&gt;-</span> <span class="n">participant1</span>
+</span><span class='line'>         <span class="o">&gt;&gt;-</span> <span class="n">participant2</span>
+</span><span class='line'>         <span class="o">&gt;&gt;-</span> <span class="n">participant3</span>
 </span><span class='line'><span class="p">})</span>
 </span><span class='line'>
-</span><span class='line'><span class="c1">// Or, IF Swift supported partial operator application:</span>
-</span><span class='line'><span class="c1">// • is an operator defined by Swiftz (compose)</span>
-</span><span class='line'><span class="n">play</span><span class="p">(</span><span class="s">&quot;hello there, (&gt;&gt;- participant1</span>
-</span><span class='line'>                    <span class="o">&gt;&gt;-</span> <span class="n">participant2</span>
-</span><span class='line'>                    <span class="o">&gt;&gt;-</span> <span class="n">participant3</span><span class="p">)</span> <span class="err">•</span> <span class="n">Maybe</span><span class="p">.</span><span class="n">just</span><span class="p">)</span>
+</span><span class='line'><span class="c1">// Or: </span>
+</span><span class='line'><span class="n">play</span><span class="p">(</span><span class="s">&quot;hello there, ((((&gt;&gt;-participant1)</span>
+</span><span class='line'>                       <span class="o">&gt;&gt;-</span><span class="n">participant2</span><span class="p">)</span>
+</span><span class='line'>                       <span class="o">&gt;&gt;-</span><span class="n">participant3</span><span class="p">)</span> <span class="err">•</span> <span class="n">Maybe</span><span class="p">.</span><span class="n">just</span><span class="p">))</span>
+</span><span class='line'>                       <span class="c1">// • is an operator defined by Swiftz (compose)</span>
 </span></code></pre></td></tr></table></div></figure>
 
 

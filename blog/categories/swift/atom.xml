@@ -4,7 +4,7 @@
   <title><![CDATA[Category: swift | NK]]></title>
   <link href="http://nathankot.com/blog/categories/swift/atom.xml" rel="self"/>
   <link href="http://nathankot.com/"/>
-  <updated>2015-03-27T16:05:33+09:00</updated>
+  <updated>2015-04-07T01:04:01+09:00</updated>
   <id>http://nathankot.com/</id>
   <author>
     <name><![CDATA[Nathan Kot]]></name>
@@ -86,14 +86,17 @@ functional:</p>
 
 // And usage looks like:
 play("hello there", { phrase: String -&gt; Maybe&lt;String&gt; in
-  return Maybe.just(phrase) &gt;&gt;- participant1 &gt;&gt;- participant2 &gt;&gt;- participant3
+  return pure(phrase)
+         &gt;&gt;- participant1
+         &gt;&gt;- participant2
+         &gt;&gt;- participant3
 })
 
-// Or, IF Swift supported partial operator application:
-// • is an operator defined by Swiftz (compose)
-play("hello there, (&gt;&gt;- participant1
-                    &gt;&gt;- participant2
-                    &gt;&gt;- participant3) • Maybe.just)
+// Or: 
+play("hello there, ((((&gt;&gt;-participant1)
+                       &gt;&gt;-participant2)
+                       &gt;&gt;-participant3) • Maybe.just))
+                       // • is an operator defined by Swiftz (compose)
 </code></pre>
 ]]></content>
   </entry>
