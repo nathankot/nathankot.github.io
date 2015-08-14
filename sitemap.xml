@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://nathankot.com/blog/2015/05/11/a-pattern-for-synchronizing-asynchronous-pipelines/</loc>
+    <lastmod>2015-05-11T16:22:09+09:00</lastmod>
+  </url>
+  <url>
     <loc>http://nathankot.com/blog/2015/03/27/bose-qc25-japan-concept-model-first-look/</loc>
     <lastmod>2015-03-27T15:48:59+09:00</lastmod>
   </url>
@@ -53,8 +57,5 @@
   </url>
   <url>
     <loc>http://nathankot.com/blog/categories/monad/</loc>
-  </url>
-  <url>
-    <loc>http://nathankot.com/page2/</loc>
   </url>
 </urlset>
