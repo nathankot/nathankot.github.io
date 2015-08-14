@@ -7,7 +7,7 @@
     display: inline-block;
     content: "*";
     color: $color-gray02;
-    width: 26px;
+    width: 32px;
     font-variant: small-caps;
     font-size: 0.7em;
   }
@@ -34,6 +34,10 @@
 
   li.haskell::before {
     content: "hs";
+  }
+
+  li.swift::before {
+    content: "swift";
   }
 
   a {
