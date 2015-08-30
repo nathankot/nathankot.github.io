@@ -67,11 +67,11 @@ First file we need to build is a manifest file. `gulp-rev` generates a json file
 but a space-delimited list should do fine.
 
 ```make
-# Here we're saying that we need all the files available in order to generate
+# Here we're saying that we need all the src files available in order to generate
 # this manifest. It's a given in this scenario, but if you are revisioning some intermediate
 # build folder this rule basically instructs make to build the intermediate
 # folder first.
-$(DIST_FOLDER)/assets-manifest: $(FILES_TO_VERSION)
+$(DIST_FOLDER)/assets-manifest: $(SRC_FILES)
 	# Ensures that the directory exists. Good command to have before each rule.
 	@mkdir -p $(@D)
 	@echo "Creating assets versioning file -> $@"
