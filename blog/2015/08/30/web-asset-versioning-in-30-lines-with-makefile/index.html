@@ -173,11 +173,11 @@ but a space-delimited list should do fine.</p>
 <span class='line-number'>20</span>
 <span class='line-number'>21</span>
 <span class='line-number'>22</span>
-</pre></td><td class='code'><pre><code class='make'><span class='line'><span class="c"># Here we&#39;re saying that we need all the src files available in order to generate</span>
+</pre></td><td class='code'><pre><code class='make'><span class='line'><span class="c"># Here we&#39;re saying that we need all the files available in order to generate</span>
 </span><span class='line'><span class="c"># this manifest. It&#39;s a given in this scenario, but if you are revisioning some intermediate</span>
 </span><span class='line'><span class="c"># build folder this rule basically instructs make to build the intermediate</span>
 </span><span class='line'><span class="c"># folder first.</span>
-</span><span class='line'><span class="nf">$(DIST_FOLDER)/assets-manifest</span><span class="o">:</span> <span class="k">$(</span><span class="nv">SRC_FILES</span><span class="k">)</span>
+</span><span class='line'><span class="nf">$(DIST_FOLDER)/assets-manifest</span><span class="o">:</span> <span class="k">$(</span><span class="nv">FILES_TO_VERSION</span><span class="k">)</span>
 </span><span class='line'><span class="c">  # Ensures that the directory exists. Good command to have before each rule.</span>
 </span><span class='line'>  @mkdir -p <span class="k">$(</span>@D<span class="k">)</span>
 </span><span class='line'>  @echo <span class="s2">&quot;Creating assets versioning file -&gt; $@&quot;</span>
