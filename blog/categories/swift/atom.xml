@@ -4,7 +4,7 @@
   <title><![CDATA[Category: swift | NK]]></title>
   <link href="http://nathankot.com/blog/categories/swift/atom.xml" rel="self"/>
   <link href="http://nathankot.com/"/>
-  <updated>2015-08-30T23:57:35+09:00</updated>
+  <updated>2015-11-12T16:50:18+13:00</updated>
   <id>http://nathankot.com/</id>
   <author>
     <name><![CDATA[Nathan Kot]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Using monads in Swift]]></title>
     <link href="http://nathankot.com/blog/2015/03/24/using-monads-in-swift/"/>
-    <updated>2015-03-24T16:18:52+09:00</updated>
+    <updated>2015-03-24T20:18:52+13:00</updated>
     <id>http://nathankot.com/blog/2015/03/24/using-monads-in-swift</id>
     <content type="html"><![CDATA[<p>One of the coolest features of Swift is that it lets you define your own
 operators. This leads to being able to re-implement many operators found in
