@@ -7,37 +7,9 @@
     display: inline-block;
     content: "*";
     color: $color-gray02;
-    width: 32px;
+    width: 24px;
     font-variant: small-caps;
     font-size: 0.7em;
-  }
-
-  li.lua::before {
-    content: "lua";
-  }
-
-  li.ruby::before {
-    content: "rb";
-  }
-
-  li.javascript::before {
-    content: "js";
-  }
-
-  li.php::before {
-    content: "php";
-  }
-
-  li.stylus::before {
-    content: "styl";
-  }
-
-  li.haskell::before {
-    content: "hs";
-  }
-
-  li.swift::before {
-    content: "swift";
   }
 
   a {
