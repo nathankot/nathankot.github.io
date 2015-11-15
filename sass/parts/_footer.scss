@@ -23,5 +23,10 @@
     @include background(inline-image('badge_github.svg'));
     background-size: cover;
   }
+
+  .dribbble {
+    @include background(inline-image('badge_dribbble.svg'));
+    background-size: cover;
+  }
 }
   
