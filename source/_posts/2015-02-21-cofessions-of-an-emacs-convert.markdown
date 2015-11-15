@@ -3,6 +3,7 @@ layout: post
 title: "7 Confessions of an Emacs convert coming from vim"
 date: 2015-02-21 10:30:20 +1300
 comments: true
+published: false
 categories: vim emacs
 ---
 

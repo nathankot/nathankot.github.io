@@ -3,7 +3,7 @@ layout: post
 title: "JS ad-hoc function factory"
 date: 2014-01-25 00:26
 comments: true
-published: true
+published: false
 categories: 
 ---
 
