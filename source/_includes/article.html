@@ -27,12 +27,4 @@
     {% else %}{{ content }}
     {% endif %}
   </div>
-
-  {% if site.disqus_short_name and show_comments %}
-    <section class="article comments">
-      <div id="disqus_thread" aria-live="polite">
-        {% include post/disqus_thread.html %}
-      </div>
-    </section>
-  {% endif %}
 </div>
