@@ -7,7 +7,7 @@
   
 
   <meta charset="utf-8">
-  <title>NK</title>
+  <title>Monad&#8217;s and cookie jars | NK</title>
 
   <meta name="author" content="Nathan Kot">
   <meta name="description" content=" Nathan Kot's Site. "> <meta name="keywords" content="">
@@ -44,74 +44,74 @@
     </header>
 
     <div class="blog content">
-      <div class="blog page">
+      <article class="post">
+  
+  
   <div class="content">
-    
-
-<ul class="projects">
-  <li><a href="https://rumuki.com">rumuki</a></li>
-  <li><a href="https://github.com/nathankot/NKMultipeer">nkmultipeer</a></li>
-  <li><a href="https://github.com/nathankot/wsproxy">wsproxy</a></li>
-  <li><a href="https://www.wed.is">wed.is</a></li>
-  <li><a href="http://itunes.com/apps/wedis">wed.is app</a></li>
-  <li><a href="http://getblanket.com">getblanket.com</a></li>
-  <li><a href="https://github.com/nathankot/motion-bindable">motion-bindable</a></li>
-  <li><a href="https://github.com/nathankot/rssly">rssly</a></li>
-  <li><a href="http://neighbourly.co.nz">neighbourly.co.nz</a></li>
-  <li><a href="http://grabone.co.nz">grabone.co.nz</a></li>
-  <li><a href="https://github.com/nathankot/dotfiles">dotfiles</a></li>
-  <li><a href="https://github.com/nathankot/Karma.gs">karma.gs</a></li>
-  <li><a href="https://github.com/nathankot/mjolnir.tiling">mjolnir.tiling</a></li>
-</ul>
-
-<div class="blog posts list">
-  <div class="content">
-    
+  <header class="article header">
+    <div class="article date">
       
 
-<div class="blog post list item">
-  <h3 class="name"><a href="/blog/2016/06/23/monads-and-cookie-jars/">Monad&#8217;s and cookie jars</a></h3>
-  <span class="date">W25, 2016</span>
-</div>
 
-    
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2016-06-23T22:22:11-07:00" pubdate data-updated="true"></time>
+    </div>
+
+    <h2 class="article title">
       
+        Monad&#8217;s and cookie jars
+        
+      </a>
+    </h2>
+  </header>
 
-<div class="blog post list item">
-  <h3 class="name"><a href="/blog/2015/08/29/web-asset-versioning-in-30-lines-with-makefile/">Web asset versioning in 30 lines, with Makefile</a></h3>
-  <span class="date">W34, 2015</span>
-</div>
+  <div class="article content">
+    <p><em>I&rsquo;ve come across a handful of analogies for monads. Unfortunately I don&rsquo;t
+remember I lot of them being very good at explaining why monad&rsquo;s are
+useful. Here&rsquo;s my attempt.</em></p>
 
-    
-      
+<p>Imagine you&rsquo;re at the end of a long line of people. There&rsquo;s a stack of cookies
+that gets passed down from the start of the line. You&rsquo;re eager to try one of
+these cookies but you have no idea when it&rsquo;ll be your turn, or even if there are
+enough cookies to go around. The problem here is that given a line of unknown
+length, you can never be sure whether the stack of cookies have already been
+depleted or that it&rsquo;s just taking a while to reach you.</p>
 
-<div class="blog post list item">
-  <h3 class="name"><a href="/blog/2015/03/24/using-monads-in-swift/">Using monads in Swift</a></h3>
-  <span class="date">W12, 2015</span>
-</div>
+<p>Enter the cookie jar. Now if you know that these cookies are stored in a jar,
+and that even if the jar is empty it will still be passed down the line. You can
+now know for sure that if you have not received the cookie jar, it is simply
+taking a long time to reach you.</p>
 
-    
-      
-
-<div class="blog post list item">
-  <h3 class="name"><a href="/blog/2013/09/05/modding-the-happy-hacking-keyboard/">Modding the Happy Hacking Keyboard</a></h3>
-  <span class="date">W35, 2013</span>
-</div>
-
-    
-      
-
-<div class="blog post list item">
-  <h3 class="name"><a href="/blog/2013/08/10/setting-up-paperclip-plus-single-table-inheritance-plus-rails-4/">Setting up Paperclip + Single Table Inheritance + Rails 4</a></h3>
-  <span class="date">W31, 2013</span>
-</div>
+<p>The cookie jar represents what is called a <code>Maybe</code> monad. It either does or
+doesn&rsquo;t have cookies, regardless you&rsquo;ll still get the jar and pass it on.</p>
 
     
   </div>
+
+  
+    <section class="article comments">
+      <div id="disqus_thread" aria-live="polite">
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </section>
+  
 </div>
 
-  </div>
-</div>
+</article>
+
+
+  
+
 
 
 
@@ -136,7 +136,10 @@
       var disqus_shortname = 'nathankot';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://nathankot.com/blog/2016/06/23/monads-and-cookie-jars/';
+        var disqus_url = 'http://nathankot.com/blog/2016/06/23/monads-and-cookie-jars/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
