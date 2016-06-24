@@ -39,7 +39,15 @@ $solarized: light !default;
 }
 
 $pre-bg: $color-gray04;
-$pre-border: $color-gray04;
+$pre-border: $color-gray03;
+
+code {
+  background: $pre-bg;
+  padding: 0 6px;
+  border-radius: 2px;
+  border: 1px solid $pre-border;
+  font: $font-mono;
+}
 
 figure.code {
   background: $pre-bg;
@@ -71,7 +79,7 @@ figure.code {
   }
 
   .line-numbers{
-    border-right: 1px solid $pre-border;
+    border-right: 1px solid $pre-bg;
     font-family: $font-mono;
     padding-right: 15px;
     text-align: right;
