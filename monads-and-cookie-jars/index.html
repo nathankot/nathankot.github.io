@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Monad&#x27;s and cookie jars &middot; Nathan Kot&#x27;s Blog</title>
+    <meta name="description" content="" />
+    <link rel="shortcut icon"  href="http://nathankot.com/favicon.ico" />
+    <link rel="alternate" type="application/atom+xml" title="RSS" href="http://nathankot.com/atom.xml">
+
+    <style>html,body{background:#fffaf7;color:#2d2d2d;font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"}a,a:visited{color:darkred;text-decoration:none}a:hover{text-decoration:underline}main{margin:auto;max-width:38rem;padding:.8rem}pre{background:#fff;overflow:scroll;padding:1rem}td{border:1px solid #2d2d2d;padding:10px}img{height:auto;max-width:100%}.homepage-list{list-style:none;padding:1rem 0}.homepage-list li{align-items:center;display:flex;flex-wrap:wrap;justify-content:space-between;margin-bottom:10px}@media (max-width: 38rem){.homepage-list li a{width:100%}}</style>
+
+    <meta property="og:site_name" content="Nathan Kot&#x27;s Blog">
+      <meta name="author" content="Nathan Kot" />
+      <meta property="og:title" content="Monad&#x27;s and cookie jars">
+      <meta property="og:description" content="">
+      <meta property="og:url" content="http://nathankot.com/monads-and-cookie-jars/">
+      <meta property="og:image" content="">
+
+      <meta property="og:type" content="article" />
+        <meta property="article:published_time" content="2016-06-23T00:00:00+00:00" />
+
+      
+      
+    
+
+  </head>
+  
+
+  <body>
+    <main id="main" role="main">
+
+      
+      <header role="banner">
+        <h3 style="margin-top:0;">
+          <a href="http://nathankot.com" title="Home">Nathan Kot&#x27;s Blog</a>
+          <br /><small></small>
+        </h3>
+      </header>
+      <hr />
+      
+
+      
+<article>
+  <h1>Monad&#x27;s and cookie jars</h1>
+
+  
+    <p style="font-size:90%;">Posted on <time datetime="2016-06-23T00:00:00+00:00">June 23, 2016</time></p>
+  
+
+  <p><em>I've come across a handful of analogies for monads. Unfortunately I don't
+remember I lot of them being very good at explaining why monad's are
+useful. Here's my attempt.</em></p>
+<p>Imagine you're at the end of a long line of people. There's a stack of cookies
+that gets passed down from the start of the line. You're eager to try one of
+these cookies but you have no idea when it'll be your turn, or even if there are
+enough cookies to go around. The problem here is that given a line of unknown
+length, you can never be sure whether the stack of cookies have already been
+depleted or that it's just taking a while to reach you.</p>
+<p>Enter the cookie jar. Now if you know that these cookies are stored in a jar,
+and that even if the jar is empty it will still be passed down the line. You can
+now know for sure that if you have not received the cookie jar, it is simply
+taking a long time to reach you.</p>
+<p>The cookie jar represents what is called a <code>Maybe</code> monad. It either does or
+doesn't have cookies, regardless you'll still get the jar and pass it on.</p>
+
+</article>
+
+
+      
+      <footer role="contentinfo">
+        <hr />
+        
+        <nav style="margin-bottom:1rem;" role="navigation">
+          
+            <a href="http://nathankot.com/about">About</a>
+            
+          
+        </nav>
+        
+        
+        <small>Built with <a href="https://www.getzola.org/">Zola</a>.<br />
+          
+          
+        </small>
+        
+      </footer>
+      
+
+    </main>
+    
+    
+  </body>
+</html>
+

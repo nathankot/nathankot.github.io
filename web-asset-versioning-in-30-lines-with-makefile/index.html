@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Web asset versioning in 30 lines, with Makefile &middot; Nathan Kot&#x27;s Blog</title>
+    <meta name="description" content="" />
+    <link rel="shortcut icon"  href="http://nathankot.com/favicon.ico" />
+    <link rel="alternate" type="application/atom+xml" title="RSS" href="http://nathankot.com/atom.xml">
+
+    <style>html,body{background:#fffaf7;color:#2d2d2d;font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"}a,a:visited{color:darkred;text-decoration:none}a:hover{text-decoration:underline}main{margin:auto;max-width:38rem;padding:.8rem}pre{background:#fff;overflow:scroll;padding:1rem}td{border:1px solid #2d2d2d;padding:10px}img{height:auto;max-width:100%}.homepage-list{list-style:none;padding:1rem 0}.homepage-list li{align-items:center;display:flex;flex-wrap:wrap;justify-content:space-between;margin-bottom:10px}@media (max-width: 38rem){.homepage-list li a{width:100%}}</style>
+
+    <meta property="og:site_name" content="Nathan Kot&#x27;s Blog">
+      <meta name="author" content="Nathan Kot" />
+      <meta property="og:title" content="Web asset versioning in 30 lines, with Makefile">
+      <meta property="og:description" content="">
+      <meta property="og:url" content="http://nathankot.com/web-asset-versioning-in-30-lines-with-makefile/">
+      <meta property="og:image" content="">
+
+      <meta property="og:type" content="article" />
+        <meta property="article:published_time" content="2015-08-30T00:00:00+00:00" />
+
+      
+      
+    
+
+  </head>
+  
+
+  <body>
+    <main id="main" role="main">
+
+      
+      <header role="banner">
+        <h3 style="margin-top:0;">
+          <a href="http://nathankot.com" title="Home">Nathan Kot&#x27;s Blog</a>
+          <br /><small></small>
+        </h3>
+      </header>
+      <hr />
+      
+
+      
+<article>
+  <h1>Web asset versioning in 30 lines, with Makefile</h1>
+
+  
+    <p style="font-size:90%;">Posted on <time datetime="2015-08-30T00:00:00+00:00">August 30, 2015</time></p>
+  
+
+  <p>I've been using <code>Makefile</code> to compile web apps recently, and it's been
+liberating. I want to show how even the most complex-seeming tasks can be
+achieved with terseness and finesse using a <code>Makefile</code>.</p>
+<p>Here, we'll tackle the issue of <em>asset versioning</em>, that is, calculating a
+checksum for each file and appending it to it's base name - a powerful, fool
+proof way to achieve cache-busting. We're gonna implement the equivalent of
+<a href="https://github.com/sindresorhus/gulp-rev">gulp-rev</a> or <a href="https://github.com/theasta/grunt-assets-versioning">grunt-assets-versioning</a> using
+pure bash ;)</p>
+<p>Let's setup an environment. We'll need a source folder with files and a final
+destination folder to work with.</p>
+<pre data-lang="make" style="background-color:#2b303b;color:#c0c5ce;" class="language-make "><code class="language-make" data-lang="make"><span style="color:#bf616a;">SRC_FOLDER   </span><span>:= </span><span style="color:#a3be8c;">src
+</span><span style="color:#bf616a;">DIST_FOLDER  </span><span>:= </span><span style="color:#a3be8c;">dist
+</span></code></pre>
+<p>Now we need to build a list of files that we want to end up with. For this
+example I'm going to assume the <code>src</code> folder looks something like this:</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>/src
+</span><span>  index.html
+</span><span>  index.js
+</span><span>  index.css
+</span><span>    /images
+</span><span>      background.png
+</span><span>      background@2x.png
+</span></code></pre>
+<p>Let's use <code>find</code> to do this:</p>
+<pre data-lang="make" style="background-color:#2b303b;color:#c0c5ce;" class="language-make "><code class="language-make" data-lang="make"><span style="color:#bf616a;">SRC_FILES </span><span>:= </span><span style="color:#b48ead;">$(</span><span style="color:#96b5b4;">shell </span><span style="color:#bf616a;">find </span><span style="color:#b48ead;">$(</span><span style="color:#bf616a;">SRC_FOLDER</span><span style="color:#b48ead;">)</span><span style="color:#bf616a;"> -type</span><span style="color:#a3be8c;"> f</span><span style="color:#b48ead;">)
+</span><span style="color:#65737e;"># Our destination should look like a one-to-one copy of src
+</span><span style="color:#bf616a;">DIST_FILES </span><span>= </span><span style="color:#b48ead;">$(</span><span style="color:#96b5b4;">patsubst </span><span style="color:#b48ead;">$(</span><span style="color:#bf616a;">SRC_FOLDER</span><span style="color:#b48ead;">)</span><span style="color:#a3be8c;">/</span><span style="color:#bf616a;">%</span><span style="color:#a3be8c;">, </span><span style="color:#b48ead;">$(</span><span style="color:#bf616a;">DIST_FOLDER</span><span style="color:#b48ead;">)</span><span style="color:#a3be8c;">/</span><span style="color:#bf616a;">%</span><span style="color:#a3be8c;">, </span><span style="color:#b48ead;">$(</span><span style="color:#bf616a;">SRC_FILES</span><span style="color:#b48ead;">))
+</span></code></pre>
+<p>Now that we know our inputs and outputs, we can hook things up. You might have
+noticed that our destination file names don't have checksums appended to
+them. The way I like to do it is to keep <em>a copy of the original and revisioned
+version</em>. It helps make with selective re-compilation, and acts as a fallback if
+by chance a file reference has not been replaced properly.</p>
+<p>Not all files will want to have their names changed. Typically, you don't want
+to move your <code>index.html</code> file to a different name. So we store a var for all
+the files that we do want to move:</p>
+<pre data-lang="make" style="background-color:#2b303b;color:#c0c5ce;" class="language-make "><code class="language-make" data-lang="make"><span style="color:#65737e;"># We&#39;re saying, only choose html/css/js/png/jpg files, but exclude index.html
+</span><span style="color:#bf616a;">FILES_TO_VERSION </span><span>= </span><span style="color:#b48ead;">$(</span><span style="color:#96b5b4;">strip </span><span style="color:#b48ead;">$(</span><span style="color:#96b5b4;">shell echo </span><span style="color:#b48ead;">$(</span><span style="color:#bf616a;">SRC_FILES</span><span style="color:#b48ead;">) </span><span style="color:#a3be8c;">\
+</span><span style="color:#a3be8c;">					</span><span>| </span><span style="color:#bf616a;">grep -e  </span><span>&quot;</span><span style="color:#a3be8c;">.*</span><span style="color:#96b5b4;">\.\(</span><span style="color:#a3be8c;">html</span><span style="color:#96b5b4;">\|</span><span style="color:#a3be8c;">css</span><span style="color:#96b5b4;">\|</span><span style="color:#a3be8c;">js</span><span style="color:#96b5b4;">\|</span><span style="color:#a3be8c;">png</span><span style="color:#96b5b4;">\|</span><span style="color:#a3be8c;">jpg</span><span style="color:#96b5b4;">\)</span><span>&quot; </span><span style="color:#a3be8c;">\
+</span><span style="color:#a3be8c;">					</span><span>| </span><span style="color:#bf616a;">grep -v -e </span><span>&quot;</span><span style="color:#a3be8c;">.*index</span><span style="color:#96b5b4;">\.</span><span style="color:#a3be8c;">html</span><span>&quot;</span><span style="color:#b48ead;">))
+</span></code></pre>
+<p>First file we need to build is a manifest file. <code>gulp-rev</code> generates a json file
+but a space-delimited list should do fine.</p>
+<pre data-lang="make" style="background-color:#2b303b;color:#c0c5ce;" class="language-make "><code class="language-make" data-lang="make"><span style="color:#65737e;"># Here we&#39;re saying that we need all the src files available in order to generate
+</span><span style="color:#65737e;"># this manifest. It&#39;s a given in this scenario, but if you are revisioning some intermediate
+</span><span style="color:#65737e;"># build folder this rule basically instructs make to build the intermediate
+</span><span style="color:#65737e;"># folder first.
+</span><span style="color:#b48ead;">$(</span><span style="color:#bf616a;">DIST_FOLDER</span><span style="color:#b48ead;">)</span><span style="color:#8fa1b3;">/assets-manifest</span><span>: </span><span style="color:#b48ead;">$(</span><span style="color:#bf616a;">SRC_FILES</span><span style="color:#b48ead;">)
+</span><span>	</span><span style="color:#65737e;"># Ensures that the directory exists. Good command to have before each rule.
+</span><span>	</span><span style="color:#d08770;">@</span><span style="color:#bf616a;">mkdir -p </span><span style="color:#b48ead;">$(</span><span style="color:#bf616a;">@D</span><span style="color:#b48ead;">)
+</span><span>	</span><span style="color:#d08770;">@</span><span style="color:#96b5b4;">echo </span><span>&quot;</span><span style="color:#a3be8c;">Creating assets versioning file -&gt; </span><span style="color:#bf616a;">$@</span><span>&quot;
+</span><span>	</span><span style="color:#65737e;"># Here we have a load of bash. Pretty much does this:
+</span><span>	</span><span style="color:#65737e;"># 1. Looking at all the files that we want to version
+</span><span>	</span><span style="color:#65737e;"># 2. Turn them into lines with the filename and (md5 hash)[0..4]. i.e
+</span><span>	</span><span style="color:#65737e;">#        src/index.css j23jd
+</span><span>	</span><span style="color:#65737e;"># 3. Transform this into the original file, and new file name. i.e
+</span><span>	</span><span style="color:#65737e;">#        src/index.css src/index.j23jd.css
+</span><span>	</span><span style="color:#65737e;"># 4. Strip the src folder part. i.e
+</span><span>	</span><span style="color:#65737e;">#        /index.css /index.j23jd.css
+</span><span>	</span><span style="color:#65737e;"># 5. Write to the assets file
+</span><span>	</span><span style="color:#d08770;">@</span><span style="color:#96b5b4;">echo </span><span style="color:#b48ead;">$(</span><span style="color:#bf616a;">FILES_TO_VERSION</span><span style="color:#b48ead;">)   </span><span>| </span><span style="color:#bf616a;">xargs -n1 -I</span><span>% sh</span><span style="color:#bf616a;"> -c </span><span>&#39;</span><span style="color:#a3be8c;">echo %; md5 -q % | cut -c 1-5;</span><span>&#39; \
+</span><span>								| </span><span style="color:#bf616a;">xargs -n2 </span><span>\
+</span><span>								| </span><span style="color:#bf616a;">sed </span><span>&#39;</span><span style="color:#a3be8c;">s|</span><span style="color:#96b5b4;">\(</span><span style="color:#a3be8c;">[^ ]*</span><span style="color:#96b5b4;">\)\.\(</span><span style="color:#a3be8c;">[^</span><span style="color:#96b5b4;">\.</span><span style="color:#a3be8c;">]*</span><span style="color:#96b5b4;">\) \(</span><span style="color:#a3be8c;">.*</span><span style="color:#96b5b4;">\)</span><span style="color:#a3be8c;">|</span><span style="color:#96b5b4;">\1</span><span style="color:#a3be8c;">.</span><span style="color:#96b5b4;">\2 \1</span><span style="color:#a3be8c;">.</span><span style="color:#96b5b4;">\3</span><span style="color:#a3be8c;">.</span><span style="color:#96b5b4;">\2</span><span style="color:#a3be8c;">|</span><span>&#39; \
+</span><span>								| </span><span style="color:#bf616a;">sed </span><span>&#39;</span><span style="color:#a3be8c;">s|</span><span style="color:#b48ead;">$(</span><span style="color:#bf616a;">SRC_FOLDER</span><span style="color:#b48ead;">)</span><span style="color:#a3be8c;">||g</span><span>&#39; \
+</span><span>								&gt; </span><span style="color:#bf616a;">$@
+</span></code></pre>
+<p>Your manifest file will look something like this:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">$</span><span> cat dist/assets-manifest
+</span><span style="color:#bf616a;">/index.html</span><span> /index.3jsl2.html
+</span><span style="color:#bf616a;">/index.js</span><span> /index.93jfk.js
+</span><span style="color:#bf616a;">/index.css</span><span> /index.j23jd.css
+</span><span style="color:#bf616a;">/images/background.png</span><span> /images/background.jdlm1.png
+</span><span style="color:#bf616a;">/images/background@2x.png</span><span> /images/background@2x.19djm.png
+</span></code></pre>
+<p>Once we have the manifest file, using it, we can build each file in <code>dist</code>
+individually.</p>
+<pre data-lang="make" style="background-color:#2b303b;color:#c0c5ce;" class="language-make "><code class="language-make" data-lang="make"><span style="color:#65737e;"># We&#39;re saying, every file in dist is dependent on the file of the same
+</span><span style="color:#65737e;"># name in src AND the asset manifest file.
+</span><span style="color:#b48ead;">$(</span><span style="color:#bf616a;">DIST_FOLDER</span><span style="color:#b48ead;">)</span><span style="color:#8fa1b3;">/</span><span style="color:#bf616a;">%</span><span>: </span><span style="color:#b48ead;">$(</span><span style="color:#bf616a;">SRC_FOLDER</span><span style="color:#b48ead;">)</span><span style="color:#a3be8c;">/</span><span style="color:#bf616a;">% </span><span style="color:#b48ead;">$(</span><span style="color:#bf616a;">DIST_FOLDER</span><span style="color:#b48ead;">)</span><span style="color:#a3be8c;">/assets-manifest
+</span><span>	</span><span style="color:#d08770;">@</span><span style="color:#bf616a;">mkdir -p </span><span style="color:#b48ead;">$(</span><span style="color:#bf616a;">@D</span><span style="color:#b48ead;">)
+</span><span>	</span><span style="color:#65737e;"># Copy the original file to the new location. We&#39;ll modify it in-place after
+</span><span>	</span><span style="color:#d08770;">@</span><span style="color:#96b5b4;">echo </span><span>&quot;</span><span style="color:#a3be8c;">Copying </span><span style="color:#bf616a;">$&lt;</span><span style="color:#a3be8c;"> -&gt; </span><span style="color:#bf616a;">$@</span><span>&quot;
+</span><span>	</span><span style="color:#d08770;">@</span><span style="color:#bf616a;">cp $&lt; $@
+</span><span>	</span><span style="color:#65737e;"># If we have a text file, then replace all asset references using the
+</span><span>	</span><span style="color:#65737e;"># manifest file. Note here that we are doing &#39;naive&#39; replacement, it will
+</span><span>	</span><span style="color:#65737e;"># only work with absolute paths. I don&#39;t see a reason to not use absolute paths
+</span><span>	</span><span style="color:#65737e;"># in your assets, so this probably isn&#39;t a real limitation.
+</span><span>	</span><span style="color:#d08770;">@</span><span style="color:#b48ead;">if </span><span style="color:#bf616a;">file $&lt; </span><span>| </span><span style="color:#bf616a;">grep -q</span><span> text; </span><span style="color:#b48ead;">then </span><span>\
+</span><span>		</span><span style="color:#96b5b4;">echo </span><span>&quot;</span><span style="color:#a3be8c;">Updating asset references </span><span style="color:#bf616a;">$&lt;</span><span style="color:#a3be8c;"> -&gt; </span><span style="color:#bf616a;">$@</span><span>&quot;; \
+</span><span>		</span><span style="color:#65737e;"># The following is pretty complex but the end result is in-file \
+</span><span>		</span><span style="color:#65737e;"># replacement of all file references with their versioned path. \
+</span><span style="color:#65737e;">		cat $(DIST_FOLDER)/assets-manifest | xargs -n2 -I% sh -c &#39;p=(`echo &quot;%&quot;`); sed -i &quot;&quot; &quot;s|$${p[0]}|$${p[1]}|g&quot; $@&#39;; \
+</span><span style="color:#65737e;">	 fi
+</span><span>	</span><span style="color:#65737e;"># Now we make another copy of the same file to it&#39;s new versioned path, if it
+</span><span>	</span><span style="color:#65737e;"># is referenced in the manifest. Here you can easily swap `cp` for `mv` if you
+</span><span>	</span><span style="color:#65737e;"># don&#39;t want to keep the original.
+</span><span>	</span><span style="color:#d08770;">@</span><span style="color:#bf616a;">NEW_BASE_NAME</span><span>=</span><span style="color:#b48ead;">$$(</span><span style="color:#bf616a;">cat </span><span style="color:#b48ead;">$(</span><span style="color:#bf616a;">DIST_FOLDER</span><span style="color:#b48ead;">)</span><span style="color:#bf616a;">/assets-manifest | grep $* | sed &#39;s|[^ ]* ||&#39;</span><span style="color:#b48ead;">)</span><span>; \
+</span><span>		</span><span style="color:#65737e;"># Get the new filename and if it exists copy to the new basename \
+</span><span>		</span><span style="color:#b48ead;">if </span><span style="color:#96b5b4;">[ </span><span style="color:#bf616a;">-n </span><span>&quot;</span><span style="color:#96b5b4;">$$</span><span style="color:#a3be8c;">NEW_BASE_NAME</span><span>&quot; </span><span style="color:#96b5b4;">]</span><span>; </span><span style="color:#b48ead;">then </span><span>\
+</span><span>			</span><span style="color:#96b5b4;">echo </span><span>&quot;</span><span style="color:#a3be8c;">Creating versioned asset </span><span style="color:#bf616a;">$@</span><span style="color:#a3be8c;"> -&gt; </span><span style="color:#b48ead;">$(</span><span style="color:#bf616a;">DIST_FOLDER</span><span style="color:#b48ead;">)</span><span style="color:#96b5b4;">$$</span><span style="color:#a3be8c;">NEW_BASE_NAME</span><span>&quot;; \
+</span><span>			</span><span style="color:#bf616a;">cp $@ </span><span style="color:#b48ead;">$(</span><span style="color:#bf616a;">DIST_FOLDER</span><span style="color:#b48ead;">)</span><span style="color:#96b5b4;">$$</span><span>NEW_BASE_NAME; \
+</span><span>		</span><span style="color:#b48ead;">fi
+</span></code></pre>
+<p>And the <strong>final result</strong> is...</p>
+<pre data-lang="make" style="background-color:#2b303b;color:#c0c5ce;" class="language-make "><code class="language-make" data-lang="make"><span style="color:#bf616a;">SRC_FOLDER   </span><span>:= </span><span style="color:#a3be8c;">src
+</span><span style="color:#bf616a;">DIST_FOLDER  </span><span>:= </span><span style="color:#a3be8c;">dist
+</span><span>
+</span><span style="color:#bf616a;">SRC_FILES </span><span>:= </span><span style="color:#b48ead;">$(</span><span style="color:#96b5b4;">shell </span><span style="color:#bf616a;">find </span><span style="color:#b48ead;">$(</span><span style="color:#bf616a;">SRC_FOLDER</span><span style="color:#b48ead;">)</span><span style="color:#bf616a;"> -type</span><span style="color:#a3be8c;"> f</span><span style="color:#b48ead;">)
+</span><span style="color:#bf616a;">DIST_FILES </span><span>= </span><span style="color:#b48ead;">$(</span><span style="color:#96b5b4;">patsubst </span><span style="color:#b48ead;">$(</span><span style="color:#bf616a;">SRC_FOLDER</span><span style="color:#b48ead;">)</span><span style="color:#a3be8c;">/</span><span style="color:#bf616a;">%</span><span style="color:#a3be8c;">, </span><span style="color:#b48ead;">$(</span><span style="color:#bf616a;">DIST_FOLDER</span><span style="color:#b48ead;">)</span><span style="color:#a3be8c;">/</span><span style="color:#bf616a;">%</span><span style="color:#a3be8c;">, </span><span style="color:#b48ead;">$(</span><span style="color:#bf616a;">SRC_FILES</span><span style="color:#b48ead;">))
+</span><span>
+</span><span style="color:#bf616a;">FILES_TO_VERSION </span><span>= </span><span style="color:#b48ead;">$(</span><span style="color:#96b5b4;">strip </span><span style="color:#b48ead;">$(</span><span style="color:#96b5b4;">shell echo </span><span style="color:#b48ead;">$(</span><span style="color:#bf616a;">SRC_FILES</span><span style="color:#b48ead;">) </span><span style="color:#a3be8c;">\
+</span><span style="color:#a3be8c;">					</span><span>| </span><span style="color:#bf616a;">grep -e  </span><span>&quot;</span><span style="color:#a3be8c;">.*</span><span style="color:#96b5b4;">\.\(</span><span style="color:#a3be8c;">html</span><span style="color:#96b5b4;">\|</span><span style="color:#a3be8c;">css</span><span style="color:#96b5b4;">\|</span><span style="color:#a3be8c;">js</span><span style="color:#96b5b4;">\|</span><span style="color:#a3be8c;">png</span><span style="color:#96b5b4;">\|</span><span style="color:#a3be8c;">jpg</span><span style="color:#96b5b4;">\)</span><span>&quot; </span><span style="color:#a3be8c;">\
+</span><span style="color:#a3be8c;">					</span><span>| </span><span style="color:#bf616a;">grep -v -e </span><span>&quot;</span><span style="color:#a3be8c;">.*index</span><span style="color:#96b5b4;">\.</span><span style="color:#a3be8c;">html</span><span>&quot;</span><span style="color:#b48ead;">))
+</span><span>
+</span><span style="color:#b48ead;">$(</span><span style="color:#bf616a;">DIST_FOLDER</span><span style="color:#b48ead;">)</span><span style="color:#8fa1b3;">/assets-manifest</span><span>: </span><span style="color:#b48ead;">$(</span><span style="color:#bf616a;">SRC_FILES</span><span style="color:#b48ead;">)
+</span><span>	</span><span style="color:#d08770;">@</span><span style="color:#bf616a;">mkdir -p </span><span style="color:#b48ead;">$(</span><span style="color:#bf616a;">@D</span><span style="color:#b48ead;">)
+</span><span>	</span><span style="color:#d08770;">@</span><span style="color:#96b5b4;">echo </span><span>&quot;</span><span style="color:#a3be8c;">Creating assets versioning file -&gt; </span><span style="color:#bf616a;">$@</span><span>&quot;
+</span><span>	</span><span style="color:#d08770;">@</span><span style="color:#96b5b4;">echo </span><span style="color:#b48ead;">$(</span><span style="color:#bf616a;">FILES_TO_VERSION</span><span style="color:#b48ead;">)   </span><span>| </span><span style="color:#bf616a;">xargs -n1 -I</span><span>% sh</span><span style="color:#bf616a;"> -c </span><span>&#39;</span><span style="color:#a3be8c;">echo %; md5 -q % | cut -c 1-5;</span><span>&#39; \
+</span><span>								| </span><span style="color:#bf616a;">xargs -n2 </span><span>\
+</span><span>								| </span><span style="color:#bf616a;">sed </span><span>&#39;</span><span style="color:#a3be8c;">s|</span><span style="color:#96b5b4;">\(</span><span style="color:#a3be8c;">[^ ]*</span><span style="color:#96b5b4;">\)\.\(</span><span style="color:#a3be8c;">[^</span><span style="color:#96b5b4;">\.</span><span style="color:#a3be8c;">]*</span><span style="color:#96b5b4;">\) \(</span><span style="color:#a3be8c;">.*</span><span style="color:#96b5b4;">\)</span><span style="color:#a3be8c;">|</span><span style="color:#96b5b4;">\1</span><span style="color:#a3be8c;">.</span><span style="color:#96b5b4;">\2 \1</span><span style="color:#a3be8c;">.</span><span style="color:#96b5b4;">\3</span><span style="color:#a3be8c;">.</span><span style="color:#96b5b4;">\2</span><span style="color:#a3be8c;">|</span><span>&#39; \
+</span><span>								| </span><span style="color:#bf616a;">sed </span><span>&#39;</span><span style="color:#a3be8c;">s|</span><span style="color:#b48ead;">$(</span><span style="color:#bf616a;">SRC_FOLDER</span><span style="color:#b48ead;">)</span><span style="color:#a3be8c;">||g</span><span>&#39; \
+</span><span>								&gt; </span><span style="color:#bf616a;">$@
+</span><span>
+</span><span style="color:#b48ead;">$(</span><span style="color:#bf616a;">DIST_FOLDER</span><span style="color:#b48ead;">)</span><span style="color:#8fa1b3;">/</span><span style="color:#bf616a;">%</span><span>: </span><span style="color:#b48ead;">$(</span><span style="color:#bf616a;">SRC_FOLDER</span><span style="color:#b48ead;">)</span><span style="color:#a3be8c;">/</span><span style="color:#bf616a;">% </span><span style="color:#b48ead;">$(</span><span style="color:#bf616a;">DIST_FOLDER</span><span style="color:#b48ead;">)</span><span style="color:#a3be8c;">/assets-manifest
+</span><span>	</span><span style="color:#d08770;">@</span><span style="color:#bf616a;">mkdir -p </span><span style="color:#b48ead;">$(</span><span style="color:#bf616a;">@D</span><span style="color:#b48ead;">)
+</span><span>	</span><span style="color:#d08770;">@</span><span style="color:#96b5b4;">echo </span><span>&quot;</span><span style="color:#a3be8c;">Copying </span><span style="color:#bf616a;">$&lt;</span><span style="color:#a3be8c;"> -&gt; </span><span style="color:#bf616a;">$@</span><span>&quot;
+</span><span>	</span><span style="color:#d08770;">@</span><span style="color:#bf616a;">cp $&lt; $@
+</span><span>	</span><span style="color:#d08770;">@</span><span style="color:#b48ead;">if </span><span style="color:#bf616a;">file $&lt; </span><span>| </span><span style="color:#bf616a;">grep -q</span><span> text; </span><span style="color:#b48ead;">then </span><span>\
+</span><span>		</span><span style="color:#96b5b4;">echo </span><span>&quot;</span><span style="color:#a3be8c;">Updating asset references </span><span style="color:#bf616a;">$&lt;</span><span style="color:#a3be8c;"> -&gt; </span><span style="color:#bf616a;">$@</span><span>&quot;; \
+</span><span>		</span><span style="color:#bf616a;">cat </span><span style="color:#b48ead;">$(</span><span style="color:#bf616a;">DIST_FOLDER</span><span style="color:#b48ead;">)</span><span>/assets-manifest | </span><span style="color:#bf616a;">xargs -n2 -I</span><span>% sh</span><span style="color:#bf616a;"> -c </span><span>&#39;</span><span style="color:#a3be8c;">p=(`echo &quot;%&quot;`); sed -i &quot;&quot; &quot;s|</span><span style="color:#b48ead;">$${</span><span style="color:#bf616a;">p[0]</span><span style="color:#b48ead;">}</span><span style="color:#a3be8c;">|</span><span style="color:#b48ead;">$${</span><span style="color:#bf616a;">p[1]</span><span style="color:#b48ead;">}</span><span style="color:#a3be8c;">|g&quot; </span><span style="color:#bf616a;">$@</span><span>&#39;; \
+</span><span>	 </span><span style="color:#b48ead;">fi
+</span><span>	</span><span style="color:#d08770;">@</span><span style="color:#bf616a;">NEW_BASE_NAME</span><span>=</span><span style="color:#b48ead;">$$(</span><span style="color:#bf616a;">cat </span><span style="color:#b48ead;">$(</span><span style="color:#bf616a;">DIST_FOLDER</span><span style="color:#b48ead;">)</span><span style="color:#bf616a;">/assets-manifest | grep $* | sed &#39;s|[^ ]* ||&#39;</span><span style="color:#b48ead;">)</span><span>; \
+</span><span>		</span><span style="color:#b48ead;">if </span><span style="color:#96b5b4;">[ </span><span style="color:#bf616a;">-n </span><span>&quot;</span><span style="color:#96b5b4;">$$</span><span style="color:#a3be8c;">NEW_BASE_NAME</span><span>&quot; </span><span style="color:#96b5b4;">]</span><span>; </span><span style="color:#b48ead;">then </span><span>\
+</span><span>			</span><span style="color:#96b5b4;">echo </span><span>&quot;</span><span style="color:#a3be8c;">Creating versioned asset </span><span style="color:#bf616a;">$@</span><span style="color:#a3be8c;"> -&gt; </span><span style="color:#b48ead;">$(</span><span style="color:#bf616a;">DIST_FOLDER</span><span style="color:#b48ead;">)</span><span style="color:#96b5b4;">$$</span><span style="color:#a3be8c;">NEW_BASE_NAME</span><span>&quot;; \
+</span><span>			</span><span style="color:#bf616a;">cp $@ </span><span style="color:#b48ead;">$(</span><span style="color:#bf616a;">DIST_FOLDER</span><span style="color:#b48ead;">)</span><span style="color:#96b5b4;">$$</span><span>NEW_BASE_NAME; \
+</span><span>		</span><span style="color:#b48ead;">fi
+</span></code></pre>
+
+</article>
+
+
+      
+      <footer role="contentinfo">
+        <hr />
+        
+        <nav style="margin-bottom:1rem;" role="navigation">
+          
+            <a href="http://nathankot.com/about">About</a>
+            
+          
+        </nav>
+        
+        
+        <small>Built with <a href="https://www.getzola.org/">Zola</a>.<br />
+          
+          
+        </small>
+        
+      </footer>
+      
+
+    </main>
+    
+    
+  </body>
+</html>
+

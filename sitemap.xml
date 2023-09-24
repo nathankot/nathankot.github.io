@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>http://nathankot.com/</loc>
+    </url>
+    <url>
+        <loc>http://nathankot.com/about/</loc>
+    </url>
+    <url>
+        <loc>http://nathankot.com/modding-the-happy-hacking-keyboard/</loc>
+        <lastmod>2013-09-05</lastmod>
+    </url>
+    <url>
+        <loc>http://nathankot.com/monads-and-cookie-jars/</loc>
+        <lastmod>2016-06-23</lastmod>
+    </url>
+    <url>
+        <loc>http://nathankot.com/web-asset-versioning-in-30-lines-with-makefile/</loc>
+        <lastmod>2015-08-30</lastmod>
+    </url>
+</urlset>
